@@ -3,173 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <title>Équilibre Vital – Commande</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{font-family:Arial;background:#f4f6f4;padding:15px}
-.container{max-width:520px;margin:auto;background:#fff;padding:20px;border-radius:12px}
-h2{text-align:center;color:#2e7d32}
-
-button.main{background:#2e7d32;color:#fff;border:none;border-radius:8px;padding:12px;font-size:16px;width:100%}
-
-.product-list{display:none;border:1px solid #ddd;border-radius:10px;margin-top:10px;max-height:260px;overflow-y:auto;background:#fafafa}
-.product-item{display:flex;align-items:center;padding:8px;border-bottom:1px solid #eee;cursor:pointer}
-.product-item img{width:40px;height:40px;border-radius:6px;margin-right:10px}
-.product-item:hover{background:#e8f5e9}
-
-.product-box{display:none;margin-top:15px;border:1px solid #ddd;border-radius:10px;padding:12px}
-.product-box img{width:100%;max-height:200px;object-fit:contain;border-radius:8px}
-.price{color:#2e7d32;font-weight:bold;margin:8px 0}
-
-select,input,textarea{width:100%;padding:10px;margin:8px 0}
-
-.cart-item{border-bottom:1px solid #ddd;padding:6px 0;display:flex;justify-content:space-between;align-items:center}
-.cart-item button{background:#eee;color:#444;border:none;border-radius:6px;padding:4px 8px}
-
-button.whatsapp{background:#25d366;color:white;border:none;border-radius:8px;font-size:16px;padding:12px;width:100%}
-
-.small{font-size:12px;color:#555;margin-top:10px}
+body{font-family:Arial;background:#f6f6f6;margin:0;padding:15px}
+h1{text-align:center}
+.card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
+select,input,button{width:100%;padding:10px;margin-top:8px}
+button{background:#25D366;color:#fff;border:none;border-radius:5px;font-size:16px}
+button:hover{opacity:.9}
+#productPreview img{max-width:120px;margin-top:10px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin-top:5px}
+.remove{color:#b00;cursor:pointer;font-size:14px}
+.small{font-size:13px;color:#555}
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<h2>🟢 Équilibre Vital</h2>
+<h1>🟢 Équilibre Vital</h1>
 
-<button class="main" onclick="toggleList()">🔽 Choisir un produit</button>
-
-<div class="product-list" id="productList"></div>
-
-<div class="product-box" id="productBox">
-  <img id="pImg">
-  <h3 id="pName"></h3>
-  <p class="price" id="pPrice"></p>
-  <p id="pDesc"></p>
-
-  <label>Quantité</label>
-  <select id="qty">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
-
-  <button class="main" onclick="addToCart()">Ajouter au panier</button>
+<div class="card">
+<h3>Informations de livraison</h3>
+<input id="name" placeholder="Nom et prénom">
+<input id="address" placeholder="Adresse de livraison">
+<p class="small">
+Paiement à la livraison.<br>
+Une copie de la carte d’identité sera demandée après confirmation.<br>
+Livraison gratuite partout au Maroc dès 600 DH.
+</p>
 </div>
 
-<h3>🧾 Panier</h3>
+<div class="card">
+<h3>Choisir un produit</h3>
+
+<select id="productSelect"></select>
+
+<select id="qty">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+</select>
+
+<div id="productPreview"></div>
+
+<button onclick="addToCart()">Ajouter au panier</button>
+</div>
+
+<div class="card">
+<h3>Panier</h3>
 <div id="cart"></div>
-<p class="price" id="total">Total : 0 DH</p>
-
-<label>Nom & Prénom *</label>
-<input id="name">
-
-<label>Adresse de livraison *</label>
-<textarea id="address"></textarea>
-
-<p class="small">
-✔ Paiement à la livraison<br>
-🚚 Livraison gratuite à partir de 600 DH<br>
-📄 Une copie de la carte d’identité sera demandée après confirmation.
-</p>
-
-<button class="whatsapp" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
-
+<p><strong>Total : <span id="total">0</span> DH</strong></p>
+<button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 </div>
 
 <script>
-const WHATSAPP = "212752789277";
-
 const products = [
- {n:"Aloe MSM",p:376,i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg",d:"Aide à soutenir le confort des articulations et des muscles."},
- {n:"Arctic Sea 120",p:516,i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg",d:"Oméga-3 et 9 pour le cœur et le cerveau."},
- {n:"Bee Honey",p:274,i:"https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg",d:"Miel naturel pour énergie et vitalité."},
- {n:"Berry Nectar",p:425,i:"https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg",d:"Boisson antioxydante revitalisante."},
- {n:"Bright Toothgel",p:125,i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg",d:"Dentifrice à l’aloe vera sans fluor."},
- {n:"Forever Calcium",p:394,i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg",d:"Renforce os et dents."},
- {n:"Forever Daily",p:275,i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg",d:"Multivitamines quotidiennes."},
- {n:"Forever Lean",p:515,i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg",d:"Soutien du métabolisme."},
- {n:"Gel d'Aloe Vera",p:425,i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg",d:"Renforce l’immunité et la digestion."},
- {n:"Gelée Royale",p:539,i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg",d:"Énergie et défenses naturelles."},
- {n:"Kids",p:227,i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg",d:"Vitamines pour enfants."},
- {n:"Pro-B",p:483,i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg",d:"Équilibre intestinal."},
- {n:"Propolis comprimés",p:520,i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg",d:"Renforce l’immunité."},
- {n:"Therm",p:488,i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg",d:"Soutien énergétique."},
- {n:"Ultra Lite Plus",p:344,i:"https://i.postimg.cc/yxnvMcVL/Screenshot-20260210-155747-Google.jpg",d:"Shake protéiné."}
-].sort((a,b)=>a.n.localeCompare(b.n));
+{n:"Aloe Vera Gel",p:425,d:"Soutient le système immunitaire et aide à lutter contre la fatigue.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
+{n:"Forever Fiber",p:327,d:"Fibres hydrosolubles pour le confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
+{n:"Bright Toothgel",p:125,d:"Dentifrice sans fluor à l’aloe vera.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
+{n:"Sunscreen",p:273,d:"Crème solaire protectrice et hydratante.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
+{n:"Propolis Crème",p:322,d:"Apaise et protège la peau.",i:"https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg"},
+{n:"Forever Calcium",p:394,d:"Renforce les os et les dents.",i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
+{n:"Arctic Sea 120",p:516,d:"Oméga 3 et 9 pour cœur et cerveau.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
+{n:"Forever Move",p:821,d:"Souplesse articulaire et confort musculaire.",i:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
+{n:"Bee Pollen",p:248,d:"Énergie et vitalité naturelle.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
+{n:"Kids",p:227,d:"Vitamines et minéraux pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"}
+];
 
-let selected = null;
-let cart = [];
+products.sort((a,b)=>a.n.localeCompare(b.n));
 
-const list = document.getElementById("productList");
-const cartDiv = document.getElementById("cart");
+const select=document.getElementById("productSelect");
+const preview=document.getElementById("productPreview");
+const cartDiv=document.getElementById("cart");
+const totalSpan=document.getElementById("total");
+
+let cart=[];
 
 products.forEach((p,i)=>{
- list.innerHTML += `
- <div class="product-item" onclick="selectProduct(${i})">
-   <img src="${p.i}"> ${p.n}
- </div>`;
+  const o=document.createElement("option");
+  o.value=i;
+  o.textContent=p.n+" - "+p.p+" DH";
+  select.appendChild(o);
 });
 
-function toggleList(){
- list.style.display = list.style.display === "block" ? "none" : "block";
-}
+select.onchange=()=>showProduct();
+showProduct();
 
-function selectProduct(i){
- selected = products[i];
- pImg.src = selected.i;
- pName.innerText = selected.n;
- pPrice.innerText = selected.p + " DH";
- pDesc.innerText = selected.d;
- productBox.style.display = "block";
- list.style.display = "none";
+function showProduct(){
+  const p=products[select.value];
+  preview.innerHTML=`
+    <img src="${p.i}">
+    <p><strong>${p.n}</strong></p>
+    <p>${p.d}</p>
+    <p><strong>${p.p} DH</strong></p>`;
 }
 
 function addToCart(){
- if(!selected) return;
- cart.push({n:selected.n,p:selected.p,q:parseInt(qty.value)});
- updateCart();
+  const p=products[select.value];
+  const q=parseInt(document.getElementById("qty").value);
+  cart.push({n:p.n,p:p.p,q});
+  renderCart();
 }
 
-function updateCart(){
- let t = 0;
- cartDiv.innerHTML = "";
- cart.forEach((c,i)=>{
-   const line = c.p * c.q;
-   t += line;
-   cartDiv.innerHTML += `
-   <div class="cart-item">
-     ${c.n} x ${c.q} = ${line} DH
-     <button onclick="removeItem(${i})">Supprimer</button>
-   </div>`;
- });
- total.innerText = "Total : " + t + " DH";
+function renderCart(){
+  cartDiv.innerHTML="";
+  let total=0;
+  cart.forEach((c,i)=>{
+    total+=c.p*c.q;
+    cartDiv.innerHTML+=`
+    <div class="cart-item">
+      ${c.n} x ${c.q}
+      <span class="remove" onclick="removeItem(${i})">Supprimer</span>
+    </div>`;
+  });
+  totalSpan.textContent=total;
 }
 
 function removeItem(i){
- cart.splice(i,1);
- updateCart();
+  cart.splice(i,1);
+  renderCart();
 }
 
 function sendWhatsApp(){
- if(!name.value || !address.value){
-   alert("Veuillez compléter vos informations de livraison");
-   return;
- }
- if(cart.length===0){
-   alert("Votre panier est vide");
-   return;
- }
- let msg = "Commande Équilibre Vital%0A%0A";
- let t = 0;
- cart.forEach(c=>{
-   t += c.p * c.q;
-   msg += `- ${c.n} x ${c.q}%0A`;
- });
- msg += `%0ATotal : ${t} DH%0ANom : ${name.value}%0AAdresse : ${address.value}`;
- window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
+  const name=document.getElementById("name").value.trim();
+  const address=document.getElementById("address").value.trim();
+  if(!name || !address){alert("Veuillez compléter vos informations de livraison");return;}
+  if(cart.length===0){alert("Votre panier est vide");return;}
+
+  let msg="Commande Équilibre Vital%0A%0A";
+  let t=0;
+  cart.forEach(c=>{
+    t+=c.p*c.q;
+    msg+=`- ${c.n} x ${c.q}%0A`;
+  });
+
+  msg+=`%0ATotal : ${t} DH`;
+  msg+=`%0ANom : ${name}`;
+  msg+=`%0AAdresse : ${address}`;
+  msg+=`%0APaiement à la livraison`;
+  msg+=`%0ACopie CIN demandée après confirmation`;
+
+  window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
 
