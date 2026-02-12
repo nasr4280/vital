@@ -23,7 +23,7 @@ button.main{background:#2e7d32;color:#fff;border:none;border-radius:8px;padding:
 
 select,input,textarea{width:100%;padding:10px;margin:8px 0}
 
-.cart-item{border-bottom:1px solid #ddd;padding:6px 0}
+.cart-item{border-bottom:1px solid #ddd;padding:6px 0;display:flex;justify-content:space-between;align-items:center}
 .cart-item button{background:#eee;color:#444;border:none;border-radius:6px;padding:4px 8px}
 
 button.whatsapp{background:#25d366;color:white;border:none;border-radius:8px;font-size:16px;padding:12px;width:100%}
@@ -49,7 +49,11 @@ button.whatsapp{background:#25d366;color:white;border:none;border-radius:8px;fon
 
   <label>Quantité</label>
   <select id="qty">
-    <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
   </select>
 
   <button class="main" onclick="addToCart()">Ajouter au panier</button>
@@ -60,10 +64,10 @@ button.whatsapp{background:#25d366;color:white;border:none;border-radius:8px;fon
 <p class="price" id="total">Total : 0 DH</p>
 
 <label>Nom & Prénom *</label>
-<input id="name" required>
+<input id="name">
 
 <label>Adresse de livraison *</label>
-<textarea id="address" required></textarea>
+<textarea id="address"></textarea>
 
 <p class="small">
 ✔ Paiement à la livraison<br>
@@ -76,75 +80,96 @@ button.whatsapp{background:#25d366;color:white;border:none;border-radius:8px;fon
 </div>
 
 <script>
-const WHATSAPP="212752789277";
+const WHATSAPP = "212752789277";
 
-const products=[
-{n:"Aloe MSM",p:376,i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg",d:"Aide à soutenir le confort des articulations et des muscles."},
-{n:"Arctic Sea 120",p:516,i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg",d:"Oméga-3 et 9 pour le cœur et le cerveau."},
-{n:"Bee Honey",p:274,i:"https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg",d:"Miel naturel pour énergie et vitalité."},
-{n:"Berry Nectar",p:425,i:"https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg",d:"Boisson antioxydante revitalisante."},
-{n:"Bright Toothgel",p:125,i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg",d:"Dentifrice à l’aloe vera sans fluor."},
-{n:"Forever Calcium",p:394,i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg",d:"Renforce os et dents."},
-{n:"Forever Daily",p:275,i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg",d:"Multivitamines quotidiennes."},
-{n:"Forever Lean",p:515,i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg",d:"Soutien du métabolisme."},
-{n:"Gel d'Aloe Vera",p:425,i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg",d:"Renforce l’immunité et la digestion."},
-{n:"Gelée Royale",p:539,i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg",d:"Énergie et défenses naturelles."},
-{n:"Kids",p:227,i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg",d:"Vitamines pour enfants."},
-{n:"Pro-B",p:483,i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg",d:"Équilibre intestinal."},
-{n:"Propolis comprimés",p:520,i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg",d:"Renforce l’immunité."},
-{n:"Therm",p:488,i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg",d:"Soutien énergétique."},
-{n:"Ultra Lite Plus",p:344,i:"https://i.postimg.cc/yxnvMcVL/Screenshot-20260210-155747-Google.jpg",d:"Shake protéiné."}
+const products = [
+ {n:"Aloe MSM",p:376,i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg",d:"Aide à soutenir le confort des articulations et des muscles."},
+ {n:"Arctic Sea 120",p:516,i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg",d:"Oméga-3 et 9 pour le cœur et le cerveau."},
+ {n:"Bee Honey",p:274,i:"https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg",d:"Miel naturel pour énergie et vitalité."},
+ {n:"Berry Nectar",p:425,i:"https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg",d:"Boisson antioxydante revitalisante."},
+ {n:"Bright Toothgel",p:125,i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg",d:"Dentifrice à l’aloe vera sans fluor."},
+ {n:"Forever Calcium",p:394,i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg",d:"Renforce os et dents."},
+ {n:"Forever Daily",p:275,i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg",d:"Multivitamines quotidiennes."},
+ {n:"Forever Lean",p:515,i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg",d:"Soutien du métabolisme."},
+ {n:"Gel d'Aloe Vera",p:425,i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg",d:"Renforce l’immunité et la digestion."},
+ {n:"Gelée Royale",p:539,i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg",d:"Énergie et défenses naturelles."},
+ {n:"Kids",p:227,i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg",d:"Vitamines pour enfants."},
+ {n:"Pro-B",p:483,i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg",d:"Équilibre intestinal."},
+ {n:"Propolis comprimés",p:520,i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg",d:"Renforce l’immunité."},
+ {n:"Therm",p:488,i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg",d:"Soutien énergétique."},
+ {n:"Ultra Lite Plus",p:344,i:"https://i.postimg.cc/yxnvMcVL/Screenshot-20260210-155747-Google.jpg",d:"Shake protéiné."}
 ].sort((a,b)=>a.n.localeCompare(b.n));
 
-let selected=null,cart=[];
+let selected = null;
+let cart = [];
 
-const list=document.getElementById("productList");
+const list = document.getElementById("productList");
+const cartDiv = document.getElementById("cart");
+
 products.forEach((p,i)=>{
- list.innerHTML+=`
+ list.innerHTML += `
  <div class="product-item" onclick="selectProduct(${i})">
-  <img src="${p.i}"> ${p.n}
+   <img src="${p.i}"> ${p.n}
  </div>`;
 });
 
 function toggleList(){
- list.style.display=(list.style.display==="none")?"block":"none";
+ list.style.display = list.style.display === "block" ? "none" : "block";
 }
 
 function selectProduct(i){
- selected=products[i];
- pImg.src=selected.i;
- pName.innerText=selected.n;
- pPrice.innerText=selected.p+" DH";
- pDesc.innerText=selected.d;
- productBox.style.display="block";
- list.style.display="none";
+ selected = products[i];
+ pImg.src = selected.i;
+ pName.innerText = selected.n;
+ pPrice.innerText = selected.p + " DH";
+ pDesc.innerText = selected.d;
+ productBox.style.display = "block";
+ list.style.display = "none";
 }
 
 function addToCart(){
- cart.push({n:selected.n,p:selected.p,q:qty.value});
+ if(!selected) return;
+ cart.push({n:selected.n,p:selected.p,q:parseInt(qty.value)});
  updateCart();
 }
 
 function updateCart(){
- let t=0;cartDiv.innerHTML="";
+ let t = 0;
+ cartDiv.innerHTML = "";
  cart.forEach((c,i)=>{
-  const l=c.p*c.q;t+=l;
-  cartDiv.innerHTML+=`
+   const line = c.p * c.q;
+   t += line;
+   cartDiv.innerHTML += `
    <div class="cart-item">
-   ${c.n} x ${c.q} = ${l} DH
-   <button onclick="cart.splice(${i},1);updateCart()">Supprimer</button>
+     ${c.n} x ${c.q} = ${line} DH
+     <button onclick="removeItem(${i})">Supprimer</button>
    </div>`;
  });
- total.innerText="Total : "+t+" DH";
+ total.innerText = "Total : " + t + " DH";
+}
+
+function removeItem(i){
+ cart.splice(i,1);
+ updateCart();
 }
 
 function sendWhatsApp(){
- if(!name.value||!address.value){alert("Veuillez compléter vos informations de livraison");return;}
- let msg="Commande Équilibre Vital%0A%0A";
- let t=0;
- cart.forEach(c=>{t+=c.p*c.q;msg+=`- ${c.n} x${c.q}%0A`;});
- msg+=`%0ATotal : ${t} DH%0A%0ANom : ${name.value}%0AAdresse : ${address.value}`;
- window.open("https://wa.me/"+WHATSAPP+"?text="+msg);
+ if(!name.value || !address.value){
+   alert("Veuillez compléter vos informations de livraison");
+   return;
+ }
+ if(cart.length===0){
+   alert("Votre panier est vide");
+   return;
+ }
+ let msg = "Commande Équilibre Vital%0A%0A";
+ let t = 0;
+ cart.forEach(c=>{
+   t += c.p * c.q;
+   msg += `- ${c.n} x ${c.q}%0A`;
+ });
+ msg += `%0ATotal : ${t} DH%0ANom : ${name.value}%0AAdresse : ${address.value}`;
+ window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
 }
 </script>
 
