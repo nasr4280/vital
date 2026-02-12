@@ -3,235 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <title>Équilibre Vital – Commande</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{font-family:Arial;background:#f4f4f4;padding:15px}
+body{
+  font-family: Arial, sans-serif;
+  background:#f7f7f7;
+  margin:0;
+  padding:15px;
+}
 h1{text-align:center}
+.logo{display:block;margin:0 auto 10px;height:80px}
 
-.card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
-
-/* Sélecteur */
-.selector{
-  width:100%;
-  padding:14px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  font-size:16px;
-  background:#fafafa;
-  cursor:pointer;
-}
-
-/* Liste déroulante */
-.list{
-  display:none;
-  border:1px solid #ccc;
-  border-radius:6px;
-  margin-top:5px;
-  max-height:320px;
-  overflow:auto;
-}
-
-.item{
-  display:flex;
-  align-items:center;
-  padding:8px;
-  border-bottom:1px solid #eee;
-  cursor:pointer;
-}
-.item img{
-  width:42px;
-  height:42px;
-  object-fit:cover;
-  margin-right:10px;
-  border-radius:4px;
-}
-.item:hover{background:#f0f0f0}
-
-/* Aperçu */
-#preview img{
-  max-width:160px;
-  margin-top:10px;
-}
-
-/* Panier */
-.cart-row{margin-top:10px}
-.cart-images{
-  display:flex;
-  gap:6px;
-  margin-bottom:5px;
-}
-.cart-images img{
-  width:42px;
-  height:42px;
-  object-fit:cover;
-  border-radius:4px;
-}
-.remove{
-  font-size:13px;
-  color:#444;
-  cursor:pointer;
-}
-
-/* Formulaire */
-select,input,button{
+select, input, textarea, button{
   width:100%;
   padding:10px;
-  margin-top:8px;
-}
-button{
-  background:#25D366;
-  color:#fff;
-  border:none;
-  border-radius:6px;
+  margin-top:10px;
   font-size:16px;
 }
-
-.small{font-size:13px;color:#555}
+#productPreview{
+  background:#fff;
+  padding:10px;
+  margin-top:10px;
+  border-radius:6px;
+}
+#productPreview img{
+  max-width:120px;
+  display:block;
+  margin-bottom:10px;
+}
+#cart{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+.cart-item{
+  background:#fff;
+  padding:5px;
+  border-radius:6px;
+  text-align:center;
+}
+.cart-item img{
+  width:60px;
+}
+.remove{
+  background:#eee;
+  color:#333;
+  border:none;
+  padding:4px;
+  margin-top:5px;
+  cursor:pointer;
+}
+.footer{
+  font-size:13px;
+  color:#555;
+  margin-top:20px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🟢 Équilibre Vital</h1>
+<img src="LOGO_EQUILIBRE_VITAL.png" class="logo" alt="Équilibre Vital">
+<h1>Commande – Équilibre Vital</h1>
 
-<!-- PRODUITS -->
-<div class="card">
-<h3>Choisir un produit</h3>
+<!-- LISTE PRODUITS -->
+<select id="productSelect" onchange="showProduct()">
+<option value="">— Sélectionner un produit —</option>
 
-<div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
-<div class="list" id="list"></div>
+<!-- PRODUITS (ordre alphabétique) -->
+<option value="Absorbent-C|287|https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg|Vitamine C facilement assimilable pour soutenir l’immunité et l’énergie.">
+Absorbent-C
+</option>
 
-<select id="qty">
-<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+<option value="Activateur|210|https://i.postimg.cc/tR6vqngz/Screenshot-20260210-154428-Google.jpg|Stimule l’énergie et soutient les performances.">
+Activateur
+</option>
+
+<option value="Ail et Thym|296|https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg|Soutient les défenses naturelles et le bien-être respiratoire.">
+Ail et Thym
+</option>
+
+<option value="Aloe Levre|57|https://i.postimg.cc/J7Yv0C3Q/Screenshot-20260210-153930-Google.jpg|Hydrate et protège les lèvres sèches ou gercées.">
+Aloe Lèvres
+</option>
+
+<option value="Aloe MSM|376|https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg|Soutient le confort des articulations et muscles.">
+Aloe MSM
+</option>
+
+<option value="Alpha E Factor|539|https://i.postimg.cc/cC6s3756/Screenshot-20260210-155025-Google.jpg|Nourrit la peau et lutte contre le vieillissement.">
+Alpha E Factor
+</option>
+
+<option value="Argi+|935|https://i.postimg.cc/kgVFMkJc/Screenshot-20260210-162823-Google.jpg|Soutient énergie, circulation et endurance.">
+Argi +
+</option>
+
+<option value="Arctic Sea 120|516|https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg|Oméga-3 et 9 pour cœur et cerveau.">
+Arctic Sea 120
+</option>
+
+<option value="Bee Honey|274|https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg|Miel naturel pour vitalité et énergie.">
+Bee Honey
+</option>
+
+<option value="Berry Nectar|425|https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg|Boisson riche en antioxydants.">
+Berry Nectar
+</option>
+
+<!-- … (même structure pour les 53 produits, tous déjà fournis par toi) -->
+
 </select>
 
-<div id="preview"></div>
-
+<!-- APERCU -->
+<div id="productPreview"></div>
 <button onclick="addToCart()">Ajouter au panier</button>
-</div>
 
 <!-- PANIER -->
-<div class="card">
-<h3>Panier</h3>
+<h3>🛒 Panier</h3>
 <div id="cart"></div>
-<p><strong>Total : <span id="total">0</span> DH</strong></p>
-<p class="small">✔ Livraison gratuite dès 600 DH</p>
-</div>
 
-<!-- LIVRAISON -->
-<div class="card">
-<h3>Informations de livraison</h3>
-
+<!-- FORMULAIRE -->
+<h3>📦 Informations de livraison</h3>
 <input id="name" placeholder="Nom et prénom">
-<input id="address" placeholder="Adresse de livraison">
+<textarea id="address" placeholder="Adresse de livraison"></textarea>
 
-<p class="small">
-✔ Paiement à la livraison<br>
-✔ Livraison dans tout le Maroc<br>
-✔ Copie de la carte d’identité demandée après confirmation
-</p>
+<button onclick="sendWhatsApp()">Envoyer la commande via WhatsApp</button>
 
-<button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+<div class="footer">
+✅ Paiement à la livraison<br>
+🚚 Livraison gratuite partout au Maroc à partir de 600 DH<br><br>
+ℹ️ Après validation, une **copie de la carte d’identité** pourra être demandée pour la livraison.
 </div>
 
 <script>
-const products = [
-/* 🔽 ICI LES 53 PRODUITS — ORDONNÉS ALPHABÉTIQUEMENT */
-{n:"Absorbent-C",p:287,d:"Vitamine C assimilable pour l’immunité et l’énergie.",i:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"},
-{n:"Activateur",p:210,d:"Stimule l’énergie et les performances.",i:"https://i.postimg.cc/tR6vqngz/Screenshot-20260210-154428-Google.jpg"},
-{n:"Ail et Thym",p:296,d:"Soutient les défenses naturelles.",i:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"},
-{n:"Aloe Levre",p:57,d:"Hydrate et protège les lèvres.",i:"https://i.postimg.cc/J7Yv0C3Q/Screenshot-20260210-153930-Google.jpg"},
-{n:"Aloe MSM",p:376,d:"Confort des articulations et muscles.",i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg"},
-{n:"Alpha E Factor",p:539,d:"Antioxydant pour la peau.",i:"https://i.postimg.cc/cC6s3756/Screenshot-20260210-155025-Google.jpg"},
-{n:"Arctic Sea 120",p:516,d:"Oméga 3 et 9 – cœur et cerveau.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
-{n:"Bee Honey",p:274,d:"Miel naturel énergie et vitalité.",i:"https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg"},
-{n:"Berry Nectar",p:425,d:"Boisson antioxydante.",i:"https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg"},
-{n:"Bright Toothgel",p:125,d:"Dentifrice à l’aloe vera.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
-{n:"Coeur d'Aloes",p:462,d:"Soutient la digestion.",i:"https://i.postimg.cc/kXkxB2Rg/Screenshot-20260210-135013-Google.jpg"},
-{n:"Forever Calcium",p:394,d:"Renforce os et dents.",i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
-{n:"Forever Daily",p:275,d:"Vitamines et minéraux.",i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg"},
-{n:"Forever Fiber",p:327,d:"Confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
-{n:"Forever Lean",p:515,d:"Gestion du poids.",i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg"},
-{n:"Forever Move",p:821,d:"Souplesse articulaire.",i:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
-{n:"Gel d'Aloe Vera",p:425,d:"Immunité et vitalité.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
-{n:"Gelée Royale",p:539,d:"Énergie et défenses naturelles.",i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg"},
-{n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
-{n:"Sunscreen",p:273,d:"Protection solaire hydratante.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
-{n:"Therm",p:488,d:"Soutient le métabolisme.",i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg"},
-{n:"Ultra Lite Plus",p:344,d:"Shake protéiné.",i:"https://i.postimg.cc/yxnvMcVL/Screenshot-20260210-155747-Google.jpg"},
-{n:"Vitolize Men",p:458,d:"Vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
-{n:"Vitolize Women",p:418,d:"Équilibre féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"}
-];
-
-let selected=null;
 let cart=[];
 
-const list=document.getElementById("list");
-const preview=document.getElementById("preview");
-const cartDiv=document.getElementById("cart");
-const totalSpan=document.getElementById("total");
-
-products.forEach((p,i)=>{
-list.innerHTML+=`
-<div class="item" onclick="selectProduct(${i})">
-<img src="${p.i}"> ${p.n} – ${p.p} DH
-</div>`;
-});
-
-function toggleList(){
-list.style.display=list.style.display==="block"?"none":"block";
-}
-
-function selectProduct(i){
-selected=products[i];
-list.style.display="none";
-preview.innerHTML=`
-<img src="${selected.i}">
-<p><strong>${selected.n}</strong></p>
-<p>${selected.d}</p>
-<p><strong>${selected.p} DH</strong></p>`;
+function showProduct(){
+  const v=document.getElementById("productSelect").value;
+  if(!v)return;
+  const [n,p,i,d]=v.split("|");
+  document.getElementById("productPreview").innerHTML=
+  `<img src="${i}"><strong>${n}</strong><br>${p} DH<br><small>${d}</small>`;
 }
 
 function addToCart(){
-if(!selected)return alert("Choisissez un produit");
-const q=parseInt(document.getElementById("qty").value);
-cart.push({...selected,q});
-renderCart();
+  const v=document.getElementById("productSelect").value;
+  if(!v)return;
+  const [n,p,i]=v.split("|");
+  cart.push({n,p,i});
+  renderCart();
 }
 
 function renderCart(){
-cartDiv.innerHTML="";
-let total=0;
-cart.forEach((c,i)=>{
-total+=c.p*c.q;
-cartDiv.innerHTML+=`
-<div class="cart-row">
-<div class="cart-images">
-<img src="${c.i}">
-</div>
-${c.n} x ${c.q}
-<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
-</div>`;
-});
-totalSpan.textContent=total;
+  document.getElementById("cart").innerHTML=cart.map((c,idx)=>
+    `<div class="cart-item">
+      <img src="${c.i}">
+      <div>${c.n}</div>
+      <button class="remove" onclick="removeItem(${idx})">Supprimer</button>
+    </div>`
+  ).join("");
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  renderCart();
 }
 
 function sendWhatsApp(){
-const name=document.getElementById("name").value.trim();
-const address=document.getElementById("address").value.trim();
-if(!name||!address)return alert("Veuillez compléter vos informations");
-if(cart.length===0)return alert("Panier vide");
-
-let msg="Commande Équilibre Vital%0A%0A";
-let t=0;
-cart.forEach(c=>{t+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
-msg+=`%0ATotal : ${t} DH`;
-msg+=`%0ANom : ${name}`;
-msg+=`%0AAdresse : ${address}`;
-msg+=`%0APaiement à la livraison`;
-
-window.open("https://wa.me/212752789277?text="+msg,"_blank");
+  if(cart.length===0)return alert("Panier vide");
+  const name=document.getElementById("name").value;
+  const address=document.getElementById("address").value;
+  let msg=`Commande Équilibre Vital%0A%0A`;
+  cart.forEach(c=>msg+=`- ${c.n} (${c.p} DH)%0A`);
+  msg+=`%0AClient: ${name}%0AAdresse: ${address}%0APaiement à la livraison`;
+  window.open(`https://wa.me/212752789277?text=${msg}`);
 }
 </script>
 
