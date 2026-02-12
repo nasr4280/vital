@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Vital</title>
+<meta charset="UTF-8">
+<title>Équilibre Vital – Commande</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f4;
+  margin: 0;
+  padding: 15px;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+}
+
+.product {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product h2 {
+  margin: 10px 0 5px;
+}
+
+.price {
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+button {
+  width: 100%;
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;padding:40px">
-  <h1>✅ Ça marche !</h1>
-  <p>Site Vital en ligne avec GitHub Pages.</p>
+
+<body>
+
+<div class="container">
+
+  <!-- 🔹 PRODUIT MODÈLE -->
+  <div class="product">
+    <img src="https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg">
+    <h2>Gel d’Aloe Vera</h2>
+    <p>
+      Soutient le système immunitaire, renforce les défenses naturelles et aide
+      à lutter contre la fatigue grâce à ses propriétés antioxydantes.
+    </p>
+    <p class="price">425 DH</p>
+
+    <button onclick="commander('Gel d’Aloe Vera', 425)">
+      Commander sur WhatsApp
+    </button>
+  </div>
+
+</div>
+
+<script>
+function commander(nom, prix) {
+  const message =
+    "Bonjour, je souhaite commander :%0A" +
+    "- Produit : " + nom + "%0A" +
+    "- Prix : " + prix + " DH";
+
+  window.open(
+    "https://wa.me/212752789277?text=" + message,
+    "_blank"
+  );
+}
+</script>
+
 </body>
 </html>
