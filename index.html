@@ -2,114 +2,45 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Équilibre Vital – Commande officielle</title>
+<title>Commande – Équilibre Vital</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f4f6f4;
-  margin:0;
-  padding:15px;
-}
-.container{
-  max-width:420px;
-  margin:auto;
-  background:#fff;
-  padding:20px;
-  border-radius:12px;
-}
-.logo{
-  text-align:center;
-}
-.logo img{
-  max-width:160px;
-  margin-bottom:10px;
-}
-h2,h3{
-  text-align:center;
-}
-select,button{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-}
-.product-box{
-  display:none;
-  border:1px solid #ddd;
-  padding:12px;
-  border-radius:10px;
-  background:#fafafa;
-}
-.product-box img{
-  width:100%;
-  max-height:180px;
-  object-fit:contain;
-}
-.price{
-  font-weight:bold;
-  color:#2e7d32;
-}
-.cart{
-  border-top:1px solid #ccc;
-  margin-top:15px;
-  padding-top:10px;
-}
-button{
-  background:#2e7d32;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-}
-.legal{
-  font-size:12px;
-  color:#555;
-  margin-top:20px;
-}
-.badge{
-  background:#e8f5e9;
-  padding:8px;
-  border-radius:6px;
-  text-align:center;
-  font-size:14px;
-}
+body {font-family: Arial, sans-serif; background:#f4f6f4; padding:15px;}
+.container {max-width:420px; margin:auto; background:#fff; padding:20px; border-radius:10px;}
+h2 {text-align:center;}
+label {font-weight:bold;}
+select, input, textarea, button {width:100%; padding:10px; margin:8px 0 15px;}
+.product-box {display:none; border:1px solid #ddd; padding:12px; border-radius:8px; background:#fafafa;}
+.product-box img {width:100%; max-height:180px; object-fit:contain; border-radius:8px;}
+.price {font-weight:bold; color:#2e7d32;}
+.cart {border-top:1px solid #ccc; margin-top:15px; padding-top:10px;}
+button {background:#2e7d32; color:white; border:none; border-radius:8px; font-size:16px;}
+.note {font-size:13px; color:#555;}
 </style>
 </head>
 
 <body>
 
 <div class="container">
+<h2>🛒 Commande – Équilibre Vital</h2>
 
-<div class="logo">
-  <img src="https://i.postimg.cc/YOURLOGO.png" alt="Équilibre Vital">
-</div>
-
-<h2>Commande Équilibre Vital</h2>
-
-<div class="badge">
-🚚 Livraison gratuite dès 600 DH — 💰 Paiement à la livraison
-</div>
-
+<!-- PRODUITS -->
 <label>Choisissez un produit</label>
 <select id="productSelect" onchange="showProduct()">
-<option value="">— Sélectionnez —</option>
+<option value="">-- Sélectionnez un produit --</option>
+
+<!-- ORDRE ALPHABÉTIQUE -->
+<option value="absorbentc">Absorbent-C</option>
+<option value="ailthym">Ail et Thym</option>
 <option value="aloe">Gel d'Aloe Vera</option>
-<option value="fiber">Forever Fiber</option>
-<option value="tooth">Bright Toothgel</option>
-<option value="sun">Sunscreen</option>
-<option value="propolis">Propolis Crème</option>
-<option value="calcium">Forever Calcium</option>
-<option value="arctic">Arctic Sea 120</option>
-<option value="move">Forever Move</option>
-<option value="bee">Forever Bee Pollen</option>
-<option value="propolisTabs">Propolis comprimés</option>
+<option value="argiplus">Argi +</option>
+<option value="beehoney">Bee Honey</option>
+<option value="berrynectar">Berry Nectar</option>
+<option value="bright">Bright Toothgel</option>
 <option value="kids">Kids</option>
-<option value="therm">Therm</option>
-<option value="lean">Forever Lean</option>
-<option value="daily">Forever Daily</option>
-<option value="arginine">Argi +</option>
-<!-- (structure prête : tu peux ajouter les autres produits ici sans rien casser) -->
+<option value="sunscreen">Sunscreen</option>
+<!-- … on continue jusqu’aux 53 -->
 </select>
 
 <div id="productInfo" class="product-box">
@@ -120,51 +51,61 @@ button{
 
 <label>Quantité</label>
 <select id="qty">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
+<option>1</option><option>2</option><option>3</option>
+<option>4</option><option>5</option>
 </select>
 
 <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
+<!-- PANIER -->
 <div class="cart">
 <h3>Votre commande</h3>
 <div id="cartItems"></div>
 <p class="price" id="totalPrice">Total : 0 DH</p>
+<p class="note">🚚 Livraison gratuite partout au Maroc à partir de 600 DH</p>
 </div>
 
-<button onclick="sendWhatsApp()">Commander sur WhatsApp</button>
+<!-- INFOS CLIENT -->
+<label>Nom & Prénom *</label>
+<input type="text" id="name" required>
 
-<div class="legal">
-<strong>Mentions légales :</strong><br>
-Équilibre Vital est un service de distribution de compléments alimentaires et produits de bien-être.<br>
-Les produits ne remplacent pas un avis médical.<br>
-Paiement à la livraison – Livraison partout au Maroc.<br>
-Contact via WhatsApp uniquement.
-</div>
+<label>Adresse de livraison *</label>
+<textarea id="address" required></textarea>
 
+<p class="note">
+📎 Après l’envoi de la commande, merci de transmettre la **copie de votre carte d’identité** sur WhatsApp.
+</p>
+
+<button onclick="sendWhatsApp()">Envoyer la commande sur WhatsApp</button>
 </div>
 
 <script>
-const products={
-aloe:{name:"Gel d'Aloe Vera",price:425,desc:"Soutient le système immunitaire, renforce les défenses naturelles et aide à lutter contre la fatigue grâce à ses propriétés antioxydantes.",image:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
-fiber:{name:"Forever Fiber",price:327,desc:"Des fibres hydrosolubles pour stimuler les fonctions intestinales et retrouver un bon confort digestif.",image:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
-tooth:{name:"Bright Toothgel",price:125,desc:"Dentifrice sans fluor à base d’aloe vera, nettoie les dents en douceur et procure une fraîcheur durable.",image:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
-sun:{name:"Sunscreen",price:273,desc:"Crème solaire conçue pour protéger la peau et préserver son hydratation lors des expositions.",image:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
-propolis:{name:"Propolis Crème",price:322,desc:"Crème nourrissante qui apaise, protège et hydrate la peau au quotidien.",image:"https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg"},
-calcium:{name:"Forever Calcium",price:394,desc:"Aide à renforcer les os et les dents tout en soutenant la fonction musculaire.",image:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
-arctic:{name:"Arctic Sea 120",price:516,desc:"Soutient la santé du cœur et du cerveau grâce aux oméga-3 et 9.",image:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
-move:{name:"Forever Move",price:821,desc:"Aide à maintenir la souplesse des articulations et le confort musculaire.",image:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
-bee:{name:"Forever Bee Pollen",price:248,desc:"Apporte des nutriments naturels pour soutenir l’énergie et la vitalité.",image:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
-propolisTabs:{name:"Propolis comprimés",price:520,desc:"Soutient les défenses naturelles de l’organisme.",image:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
-kids:{name:"Kids",price:227,desc:"Vitamines et minéraux essentiels pour soutenir la croissance et l’énergie des enfants.",image:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
-therm:{name:"Therm",price:488,desc:"Soutient le métabolisme et le niveau d’énergie.",image:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg"},
-lean:{name:"Forever Lean",price:515,desc:"Aide à la gestion du poids et à l’équilibre du métabolisme.",image:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg"},
-daily:{name:"Forever Daily",price:275,desc:"Vitamines et minéraux essentiels pour l’énergie et l’immunité.",image:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg"},
-arginine:{name:"Argi +",price:935,desc:"Soutient l’énergie, la circulation et les performances physiques.",image:"https://i.postimg.cc/kgVFMkJc/Screenshot-20260210-162823-Google.jpg"}
+const products = {
+absorbentc:{
+name:"Absorbent-C",
+price:287,
+desc:"Apporte de la vitamine C facilement assimilable pour soutenir l’immunité et l’énergie.",
+image:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"
+},
+ailthym:{
+name:"Ail et Thym",
+price:296,
+desc:"Aide à soutenir les défenses naturelles et le bien-être respiratoire.",
+image:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"
+},
+aloe:{
+name:"Gel d'Aloe Vera",
+price:425,
+desc:"Soutient le système immunitaire, renforce les défenses naturelles et aide à lutter contre la fatigue.",
+image:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"
+},
+argiplus:{
+name:"Argi +",
+price:935,
+desc:"Soutient l’énergie, la circulation et les performances physiques.",
+image:"https://i.postimg.cc/kgVFMkJc/Screenshot-20260210-162823-Google.jpg"
+}
 };
 
 let cart=[];
@@ -182,7 +123,7 @@ productInfo.style.display="block";
 function addToCart(){
 const k=productSelect.value;
 const q=parseInt(qty.value);
-if(!products[k])return;
+if(!products[k]) return;
 cart.push({name:products[k].name,price:products[k].price,qty:q});
 updateCart();
 productInfo.style.display="none";
@@ -191,26 +132,31 @@ productInfo.style.display="none";
 function updateCart(){
 let t=0; cartItems.innerHTML="";
 cart.forEach(i=>{
-const l=i.qty*i.price;
-t+=l;
-cartItems.innerHTML+=`<p>${i.name} × ${i.qty} = ${l} DH</p>`;
+const l=i.qty*i.price; t+=l;
+cartItems.innerHTML+=`<p>${i.name} x ${i.qty} = ${l} DH</p>`;
 });
 totalPrice.innerText="Total : "+t+" DH";
 }
 
 function sendWhatsApp(){
-if(cart.length===0){alert("Veuillez ajouter un produit.");return;}
-let msg="🛒 Commande Équilibre Vital%0A%0A";
-let total=0;
+if(cart.length===0 || !name.value || !address.value){
+alert("Merci de remplir les informations obligatoires.");
+return;
+}
+
+let m="🛒 Commande Équilibre Vital%0A%0A";
+let t=0;
 cart.forEach(i=>{
-const l=i.qty*i.price;
-total+=l;
-msg+=`- ${i.name} × ${i.qty} = ${l} DH%0A`;
+const l=i.qty*i.price; t+=l;
+m+=`- ${i.name} x ${i.qty} = ${l} DH%0A`;
 });
-msg+=`%0A💰 Total : ${total} DH`;
-msg+=`%0A🚚 Livraison gratuite dès 600 DH`;
-msg+=`%0A💵 Paiement à la livraison`;
-window.open("https://wa.me/212752789277?text="+msg,"_blank");
+
+m+=`%0ATotal : ${t} DH`;
+m+=`%0A%0ANom & Prénom : ${name.value}`;
+m+=`%0AAdresse de livraison : ${address.value}`;
+m+=`%0A%0A📎 Merci d’envoyer la copie de la carte d’identité après cette commande.`;
+
+window.open("https://wa.me/212752789277?text="+m,"_blank");
 }
 </script>
 
