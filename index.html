@@ -1,29 +1,246 @@
-"Arctic Sea 120": {
-  price: 516,
-  img: "https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg",
-  desc: "Soutient la santé du cœur et du cerveau grâce aux oméga-3 et oméga-9."
-},
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Commande – Forever Living</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-"Forever Move": {
-  price: 821,
-  img: "https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg",
-  desc: "Aide à maintenir la souplesse des articulations et le confort musculaire."
-},
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f4;
+  padding:15px;
+}
+.container{
+  max-width:520px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+}
+h2,h3{text-align:center}
+select,input,textarea,button{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+}
+.product-box{
+  border:1px solid #ddd;
+  padding:12px;
+  border-radius:8px;
+  background:#fafafa;
+}
+.product-box img{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+.price{
+  font-weight:bold;
+  color:#2e7d32;
+}
+.cart-item{
+  border-bottom:1px solid #ddd;
+  padding:6px 0;
+}
+.cart-item button{
+  background:#c62828;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  padding:5px;
+}
+button{
+  background:#2e7d32;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+}
+.mention{
+  font-size:12px;
+  color:#555;
+  margin-top:10px;
+}
+</style>
+</head>
 
-"Forever Bee Pollen": {
-  price: 248,
-  img: "https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg",
-  desc: "Apporte des nutriments naturels pour soutenir l’énergie et la vitalité."
-},
+<body>
+<div class="container">
 
-"Propolis comprimés": {
-  price: 520,
-  img: "https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg",
-  desc: "Aide à soutenir les défenses naturelles de l’organisme."
-},
+<h2>🛒 Commande Forever Living</h2>
 
-"Illuminating Gel": {
-  price: 293,
-  img: "https://i.postimg.cc/FHCXdTr0/Screenshot-20260209-194233-Google.jpg",
-  desc: "Hydrate, apaise et rafraîchit la peau grâce à l’aloe vera."
-},
+<label>Choisissez un produit</label>
+<select id="productSelect" onchange="showProduct()">
+  <option value="">-- Sélectionner un produit --</option>
+</select>
+
+<div id="productInfo" class="product-box" style="display:none">
+  <img id="pImg">
+  <h3 id="pName"></h3>
+  <p class="price" id="pPrice"></p>
+  <p id="pDesc"></p>
+
+  <label>Quantité</label>
+  <input type="number" id="qty" min="1" value="1">
+
+  <button onclick="addToCart()">Ajouter au panier</button>
+</div>
+
+<h3>🧾 Panier</h3>
+<div id="cart"></div>
+<p class="price" id="total">Total : 0 DH</p>
+
+<label>Nom & Prénom</label>
+<input id="name">
+
+<label>Adresse</label>
+<textarea id="address"></textarea>
+
+<p class="mention">
+⚠️ Les produits Forever Living sont des compléments alimentaires et produits de bien-être.
+Ils ne remplacent pas un traitement médical ni l’avis d’un professionnel de santé.
+</p>
+
+<button onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "212752789277";
+
+/* ================= PRODUITS (10) ================= */
+const products = {
+  "Gel d'Aloe Vera": {
+    price: 425,
+    img: "https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg",
+    desc: "Soutient le système immunitaire et aide à lutter contre la fatigue."
+  },
+
+  "Forever Fiber": {
+    price: 327,
+    img: "https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg",
+    desc: "Fibres hydrosolubles pour améliorer le confort digestif."
+  },
+
+  "Bright Toothgel": {
+    price: 125,
+    img: "https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg",
+    desc: "Dentifrice sans fluor à base d’aloe vera, doux et rafraîchissant."
+  },
+
+  "Sunscreen": {
+    price: 273,
+    img: "https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg",
+    desc: "Crème solaire qui protège la peau tout en maintenant l’hydratation."
+  },
+
+  "Propolis crème": {
+    price: 322,
+    img: "https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg",
+    desc: "Crème nourrissante pour apaiser et protéger la peau."
+  },
+
+  "Forever Calcium": {
+    price: 394,
+    img: "https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg",
+    desc: "Aide à renforcer les os et les dents."
+  },
+
+  "Arctic Sea 120": {
+    price: 516,
+    img: "https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg",
+    desc: "Oméga-3 et 9 pour soutenir le cœur et le cerveau."
+  },
+
+  "Forever Move": {
+    price: 821,
+    img: "https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg",
+    desc: "Soutient les articulations et le confort musculaire."
+  },
+
+  "Forever Bee Pollen": {
+    price: 248,
+    img: "https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg",
+    desc: "Source naturelle d’énergie et de vitalité."
+  },
+
+  "Propolis comprimés": {
+    price: 520,
+    img: "https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg",
+    desc: "Renforce les défenses naturelles de l’organisme."
+  }
+};
+
+/* ===== REMPLISSAGE LISTE DÉROULANTE ===== */
+const select = document.getElementById("productSelect");
+Object.keys(products).sort().forEach(p => {
+  const opt = document.createElement("option");
+  opt.value = p;
+  opt.textContent = p;
+  select.appendChild(opt);
+});
+
+let cart = [];
+
+function showProduct(){
+  const k = productSelect.value;
+  if(!products[k]){
+    productInfo.style.display = "none";
+    return;
+  }
+  productInfo.style.display = "block";
+  pImg.src = products[k].img;
+  pName.innerText = k;
+  pPrice.innerText = products[k].price + " DH";
+  pDesc.innerText = products[k].desc;
+}
+
+function addToCart(){
+  const k = productSelect.value;
+  const q = parseInt(qty.value);
+  if(!products[k] || q < 1) return;
+  cart.push({name:k, price:products[k].price, qty:q});
+  updateCart();
+}
+
+function updateCart(){
+  let t = 0;
+  cartDiv = document.getElementById("cart");
+  cartDiv.innerHTML = "";
+  cart.forEach((i,idx)=>{
+    const l = i.price * i.qty;
+    t += l;
+    cartDiv.innerHTML += `
+      <div class="cart-item">
+        ${i.name} x ${i.qty} = ${l} DH
+        <button onclick="removeItem(${idx})">Supprimer</button>
+      </div>`;
+  });
+  total.innerText = "Total : " + t + " DH";
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  updateCart();
+}
+
+function sendWhatsApp(){
+  if(cart.length === 0){
+    alert("Panier vide");
+    return;
+  }
+  let msg = "Commande Forever Living%0A%0A";
+  let t = 0;
+  cart.forEach(i=>{
+    const l = i.price * i.qty;
+    t += l;
+    msg += `- ${i.name} x ${i.qty} = ${l} DH%0A`;
+  });
+  msg += `%0ATotal : ${t} DH%0A%0ANom : ${name.value}%0AAdresse : ${address.value}`;
+  window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg, "_blank");
+}
+</script>
+
+</body>
+</html>
