@@ -6,19 +6,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{font-family:Arial;background:#f5f5f5;padding:15px}
+body{font-family:Arial;background:#f4f4f4;padding:15px}
 h1{text-align:center}
+
 .card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
-.dropdown{border:1px solid #ccc;border-radius:5px;cursor:pointer}
-.dropdown-item{display:flex;align-items:center;padding:8px;border-bottom:1px solid #eee}
-.dropdown-item img{width:40px;height:40px;object-fit:cover;margin-right:10px}
-.dropdown-item:hover{background:#f0f0f0}
-#list{display:none;max-height:300px;overflow:auto}
-#preview img{max-width:150px;margin-top:10px}
+
+/* Sélecteur produit */
+.selector{
+  width:100%;
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+  background:#fafafa;
+}
+
+.list{display:none;border:1px solid #ccc;border-radius:6px;margin-top:5px;max-height:300px;overflow:auto}
+
+.item{
+  display:flex;
+  align-items:center;
+  padding:8px;
+  border-bottom:1px solid #eee;
+  cursor:pointer;
+}
+.item img{width:45px;height:45px;object-fit:cover;margin-right:10px}
+.item:hover{background:#f0f0f0}
+
+/* Aperçu */
+#preview img{max-width:160px;margin-top:10px}
+
+/* Panier */
+.cart-row{margin-top:10px}
+.cart-images{display:flex;gap:8px;margin-bottom:5px}
+.cart-images img{width:45px;height:45px;object-fit:cover;border-radius:4px}
+.remove{font-size:13px;color:#555;cursor:pointer}
+
+/* Form */
 select,input,button{width:100%;padding:10px;margin-top:8px}
-button{background:#25D366;color:#fff;border:none;border-radius:5px;font-size:16px}
-.remove{color:#777;font-size:13px;cursor:pointer}
-.cart-item{display:flex;justify-content:space-between;margin-top:5px}
+button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
+
 .small{font-size:13px;color:#555}
 </style>
 </head>
@@ -30,8 +58,8 @@ button{background:#25D366;color:#fff;border:none;border-radius:5px;font-size:16p
 <div class="card">
 <h3>Choisir un produit</h3>
 
-<div class="dropdown" onclick="toggleList()">👇 Sélectionner un produit</div>
-<div id="list"></div>
+<div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
+<div class="list" id="list"></div>
 
 <select id="qty">
 <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -66,19 +94,20 @@ button{background:#25D366;color:#fff;border:none;border-radius:5px;font-size:16p
 const products=[
 {n:"Aloe Vera Gel",p:425,d:"Soutient le système immunitaire et combat la fatigue.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
 {n:"Forever Fiber",p:327,d:"Fibres pour le confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
-{n:"Bright Toothgel",p:125,d:"Dentifrice sans fluor à l’aloe vera.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
+{n:"Bright Toothgel",p:125,d:"Dentifrice à l’aloe vera sans fluor.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
 {n:"Sunscreen",p:273,d:"Protection solaire hydratante.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
 {n:"Propolis Crème",p:322,d:"Apaise et protège la peau.",i:"https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg"},
 {n:"Forever Calcium",p:394,d:"Renforce os et dents.",i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
-{n:"Arctic Sea 120",p:516,d:"Oméga 3 et 9 pour cœur et cerveau.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
+{n:"Arctic Sea 120",p:516,d:"Oméga 3 et 9.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
 {n:"Forever Move",p:821,d:"Souplesse articulaire.",i:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
 {n:"Bee Pollen",p:248,d:"Énergie naturelle.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
-{n:"Kids",p:227,d:"Vitamines pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"}
+{n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"}
 ];
 
 products.sort((a,b)=>a.n.localeCompare(b.n));
 
-let selected=null,cart=[];
+let selected=null;
+let cart=[];
 
 const list=document.getElementById("list");
 const preview=document.getElementById("preview");
@@ -86,61 +115,68 @@ const cartDiv=document.getElementById("cart");
 const totalSpan=document.getElementById("total");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`
-  <div class="dropdown-item" onclick="selectProduct(${i})">
-    <img src="${p.i}">
-    ${p.n} – ${p.p} DH
-  </div>`;
+list.innerHTML+=`
+<div class="item" onclick="selectProduct(${i})">
+<img src="${p.i}">
+${p.n} – ${p.p} DH
+</div>`;
 });
 
-function toggleList(){list.style.display=list.style.display==="block"?"none":"block"}
+function toggleList(){
+list.style.display=list.style.display==="block"?"none":"block";
+}
 
 function selectProduct(i){
-  selected=products[i];
-  list.style.display="none";
-  preview.innerHTML=`
-    <img src="${selected.i}">
-    <p><strong>${selected.n}</strong></p>
-    <p>${selected.d}</p>
-    <p><strong>${selected.p} DH</strong></p>`;
+selected=products[i];
+list.style.display="none";
+preview.innerHTML=`
+<img src="${selected.i}">
+<p><strong>${selected.n}</strong></p>
+<p>${selected.d}</p>
+<p><strong>${selected.p} DH</strong></p>`;
 }
 
 function addToCart(){
-  if(!selected)return alert("Choisissez un produit");
-  const q=parseInt(document.getElementById("qty").value);
-  cart.push({n:selected.n,p:selected.p,q});
-  renderCart();
+if(!selected)return alert("Choisissez un produit");
+const q=parseInt(document.getElementById("qty").value);
+cart.push({...selected,q});
+renderCart();
 }
 
 function renderCart(){
-  cartDiv.innerHTML="";
-  let total=0;
-  cart.forEach((c,i)=>{
-    total+=c.p*c.q;
-    cartDiv.innerHTML+=`
-    <div class="cart-item">
-      ${c.n} x ${c.q}
-      <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
-    </div>`;
-  });
-  totalSpan.textContent=total;
+cartDiv.innerHTML="";
+let total=0;
+
+cart.forEach((c,i)=>{
+total+=c.p*c.q;
+cartDiv.innerHTML+=`
+<div class="cart-row">
+<div class="cart-images">
+<img src="${c.i}">
+</div>
+${c.n} x ${c.q}
+<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
+</div>`;
+});
+
+totalSpan.textContent=total;
 }
 
 function sendWhatsApp(){
-  const name=document.getElementById("name").value.trim();
-  const address=document.getElementById("address").value.trim();
-  if(!name||!address)return alert("Veuillez compléter vos informations");
-  if(cart.length===0)return alert("Panier vide");
+const name=document.getElementById("name").value.trim();
+const address=document.getElementById("address").value.trim();
+if(!name||!address)return alert("Veuillez compléter vos informations");
+if(cart.length===0)return alert("Panier vide");
 
-  let msg="Commande Équilibre Vital%0A%0A";
-  let t=0;
-  cart.forEach(c=>{t+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
-  msg+=`%0ATotal : ${t} DH`;
-  msg+=`%0ANom : ${name}`;
-  msg+=`%0AAdresse : ${address}`;
-  msg+=`%0APaiement à la livraison`;
+let msg="Commande Équilibre Vital%0A%0A";
+let t=0;
+cart.forEach(c=>{t+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
+msg+=`%0ATotal : ${t} DH`;
+msg+=`%0ANom : ${name}`;
+msg+=`%0AAdresse : ${address}`;
+msg+=`%0APaiement à la livraison`;
 
-  window.open("https://wa.me/212752789277?text="+msg,"_blank");
+window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
 
