@@ -117,7 +117,38 @@ function addToCart(){if(!selected)return alert("Choisissez un produit");cart.pus
 function renderCart(){cartDiv.innerHTML="";let t=0;cart.forEach((c,i)=>{t+=c.p*c.q;cartDiv.innerHTML+=`<div class="cart-row"><div class="cart-images"><img src="${c.i}"></div>${c.n} x ${c.q}<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span></div>`});totalSpan.textContent=t;}
 function sendWhatsApp(){
 if(!name.value||!address.value)return alert("Veuillez compléter vos informations");
-if(!cart.length)return alert("Panier vide");
+function sendWhatsApp(){
+  const nameInput = document.getElementById("name").value.trim();
+  const addressInput = document.getElementById("address").value.trim();
+
+  if(!nameInput || !addressInput){
+    alert("Veuillez compléter vos informations");
+    return;
+  }
+
+  if(cart.length === 0){
+    alert("Panier vide");
+    return;
+  }
+
+  let msg = "Commande Équilibre Vital%0A%0A";
+  let total = 0;
+
+  cart.forEach(c=>{
+    total += c.p * c.q;
+    msg += `- ${c.n} x ${c.q}%0A`;
+  });
+
+  msg += `%0ATotal : ${total} DH`;
+  msg += `%0ANom : ${nameInput}`;
+  msg += `%0AAdresse : ${addressInput}`;
+  msg += `%0APaiement à la livraison`;
+
+  window.open(
+    "https://wa.me/212752789277?text=" + msg,
+    "_blank"
+  );
+}
 let msg="Commande Équilibre Vital%0A%0A";let t=0;
 cart.forEach(c=>{t+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
 msg+=`%0ATotal : ${t} DH%0ANom : ${name.value}%0AAdresse : ${address.value}%0APaiement à la livraison`;
