@@ -6,106 +6,174 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {font-family: Arial, sans-serif; background:#f4f6f4; padding:15px;}
-.container {max-width:420px; margin:auto; background:#fff; padding:20px; border-radius:10px;}
-h2 {text-align:center;}
-label {font-weight:bold;}
-select, input, textarea, button {width:100%; padding:10px; margin:8px 0 15px;}
-.product-box {display:none; border:1px solid #ddd; padding:12px; border-radius:8px; background:#fafafa;}
-.product-box img {width:100%; max-height:180px; object-fit:contain; border-radius:8px;}
-.price {font-weight:bold; color:#2e7d32;}
-.cart {border-top:1px solid #ccc; margin-top:15px; padding-top:10px;}
-button {background:#2e7d32; color:white; border:none; border-radius:8px; font-size:16px;}
-.note {font-size:13px; color:#555;}
+body{font-family:Arial,sans-serif;background:#f4f6f4;padding:15px}
+.container{max-width:500px;margin:auto;background:#fff;padding:20px;border-radius:12px}
+h2{text-align:center;margin-bottom:10px}
+select,input,textarea,button{width:100%;padding:10px;margin:8px 0}
+.product-box{display:none;border:1px solid #ddd;padding:12px;border-radius:8px;background:#fafafa}
+.price{font-weight:bold;color:#2e7d32}
+.cart{border-top:1px solid #ccc;margin-top:15px;padding-top:10px}
+button{background:#2e7d32;color:#fff;border:none;border-radius:8px;font-size:16px}
+.remove{background:#c62828;font-size:13px;padding:5px 8px;margin-left:10px}
+.note{font-size:13px;color:#555;margin-top:8px}
 </style>
 </head>
 
 <body>
-
 <div class="container">
-<h2>🛒 Commande – Équilibre Vital</h2>
 
-<!-- PRODUITS -->
-<label>Choisissez un produit</label>
+<h2>🟢 Commande – Équilibre Vital</h2>
+<p class="note">✅ Paiement à la livraison – 🚚 Livraison gratuite dès 600 DH</p>
+
+<label>Produit</label>
 <select id="productSelect" onchange="showProduct()">
-<option value="">-- Sélectionnez un produit --</option>
-
-<!-- ORDRE ALPHABÉTIQUE -->
-<option value="absorbentc">Absorbent-C</option>
-<option value="ailthym">Ail et Thym</option>
-<option value="aloe">Gel d'Aloe Vera</option>
-<option value="argiplus">Argi +</option>
-<option value="beehoney">Bee Honey</option>
-<option value="berrynectar">Berry Nectar</option>
-<option value="bright">Bright Toothgel</option>
-<option value="kids">Kids</option>
-<option value="sunscreen">Sunscreen</option>
-<!-- … on continue jusqu’aux 53 -->
+<option value="">-- Sélectionner un produit --</option>
+<option value="Absorbent-C">Absorbent-C</option>
+<option value="Activateur">Activateur</option>
+<option value="Ail et Thym">Ail et Thym</option>
+<option value="Alpha E Factor">Alpha E Factor</option>
+<option value="Aloe Levre">Aloe Levre</option>
+<option value="Aloe MSM">Aloe MSM</option>
+<option value="Argi +">Argi +</option>
+<option value="Arctic Sea 120">Arctic Sea 120</option>
+<option value="Bee Honey">Bee Honey</option>
+<option value="Berry Nectar">Berry Nectar</option>
+<option value="Bright Toothgel">Bright Toothgel</option>
+<option value="Coeur d'Aloes">Coeur d'Aloes</option>
+<option value="Exfoliator">Exfoliator</option>
+<option value="Field of Greens">Field of Greens</option>
+<option value="Firming Complex">Firming Complex</option>
+<option value="Ferming Serum">Ferming Serum</option>
+<option value="First">First</option>
+<option value="Forever Bee Pollen">Forever Bee Pollen</option>
+<option value="Forever Calcium">Forever Calcium</option>
+<option value="Forever Daily">Forever Daily</option>
+<option value="Forever Fiber">Forever Fiber</option>
+<option value="Forever Lean">Forever Lean</option>
+<option value="Forever Move">Forever Move</option>
+<option value="Gel Cleanser">Gel Cleanser</option>
+<option value="Gel Mask">Gel Mask</option>
+<option value="Gelée Aloes">Gelée Aloes</option>
+<option value="Gelée Royale">Gelée Royale</option>
+<option value="Gel d'Aloe Vera">Gel d'Aloe Vera</option>
+<option value="Hand Sanitizer">Hand Sanitizer</option>
+<option value="Hydrating Cleanser">Hydrating Cleanser</option>
+<option value="Illuminating Gel">Illuminating Gel</option>
+<option value="Infusion">Infusion</option>
+<option value="Kids">Kids</option>
+<option value="Liquid Soap">Liquid Soap</option>
+<option value="Lotion Toner">Lotion Toner</option>
+<option value="Moisturizer">Moisturizer</option>
+<option value="Moisturizing">Moisturizing</option>
+<option value="Pack Sonya">Pack Sonya</option>
+<option value="Pro-B">Pro-B</option>
+<option value="Propolis comprimés">Propolis comprimés</option>
+<option value="Propolis crème">Propolis crème</option>
+<option value="Restoring Cream">Restoring Cream</option>
+<option value="Savon Avocat">Savon Avocat</option>
+<option value="Shampoing">Shampoing</option>
+<option value="Skin Care Kit">Skin Care Kit</option>
+<option value="Stick Deodorant">Stick Deodorant</option>
+<option value="Supergreens">Supergreens</option>
+<option value="Sunscreen">Sunscreen</option>
+<option value="Therm">Therm</option>
+<option value="Thermogen">Thermogen</option>
+<option value="Ultra Lite Plus">Ultra Lite Plus</option>
+<option value="Vitolize Men">Vitolize Men</option>
+<option value="Vitolize Women">Vitolize Women</option>
+<option value="ī Vision">ī Vision</option>
 </select>
 
 <div id="productInfo" class="product-box">
-<img id="productImage">
 <p id="productName"></p>
 <p class="price" id="productPrice"></p>
 <p id="productDesc"></p>
 
 <label>Quantité</label>
 <select id="qty">
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option>
+<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+<option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
 </select>
 
 <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
-<!-- PANIER -->
 <div class="cart">
-<h3>Votre commande</h3>
+<h3>🛒 Votre commande</h3>
 <div id="cartItems"></div>
 <p class="price" id="totalPrice">Total : 0 DH</p>
-<p class="note">🚚 Livraison gratuite partout au Maroc à partir de 600 DH</p>
 </div>
 
-<!-- INFOS CLIENT -->
 <label>Nom & Prénom *</label>
-<input type="text" id="name" required>
+<input id="name" required>
 
 <label>Adresse de livraison *</label>
 <textarea id="address" required></textarea>
 
 <p class="note">
-📎 Après l’envoi de la commande, merci de transmettre la **copie de votre carte d’identité** sur WhatsApp.
+📌 Après validation, merci d’envoyer une **copie de la carte d’identité** par WhatsApp.
 </p>
 
-<button onclick="sendWhatsApp()">Envoyer la commande sur WhatsApp</button>
+<button onclick="sendWhatsApp()">📩 Envoyer la commande</button>
+
 </div>
 
 <script>
-const products = {
-absorbentc:{
-name:"Absorbent-C",
-price:287,
-desc:"Apporte de la vitamine C facilement assimilable pour soutenir l’immunité et l’énergie.",
-image:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"
-},
-ailthym:{
-name:"Ail et Thym",
-price:296,
-desc:"Aide à soutenir les défenses naturelles et le bien-être respiratoire.",
-image:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"
-},
-aloe:{
-name:"Gel d'Aloe Vera",
-price:425,
-desc:"Soutient le système immunitaire, renforce les défenses naturelles et aide à lutter contre la fatigue.",
-image:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"
-},
-argiplus:{
-name:"Argi +",
-price:935,
-desc:"Soutient l’énergie, la circulation et les performances physiques.",
-image:"https://i.postimg.cc/kgVFMkJc/Screenshot-20260210-162823-Google.jpg"
-}
+const products={
+"Absorbent-C":{price:287,desc:"Apporte de la vitamine C facilement assimilable pour soutenir l’immunité et l’énergie."},
+"Activateur":{price:210,desc:"Aide à stimuler l’énergie et soutenir les performances."},
+"Ail et Thym":{price:296,desc:"Soutient les défenses naturelles et le bien-être respiratoire."},
+"Alpha E Factor":{price:539,desc:"Nourrit la peau et lutte contre les signes du vieillissement."},
+"Aloe Levre":{price:57,desc:"Hydrate et protège les lèvres sèches."},
+"Aloe MSM":{price:376,desc:"Soutient le confort des articulations et des muscles."},
+"Argi +":{price:935,desc:"Soutient l’énergie, la circulation et les performances."},
+"Arctic Sea 120":{price:516,desc:"Soutient la santé du cœur et du cerveau."},
+"Bee Honey":{price:274,desc:"Miel naturel pour énergie et vitalité."},
+"Berry Nectar":{price:425,desc:"Boisson riche en antioxydants."},
+"Bright Toothgel":{price:125,desc:"Dentifrice sans fluor à l’aloe vera."},
+"Coeur d'Aloes":{price:462,desc:"Soutient la digestion et le bien-être intestinal."},
+"Exfoliator":{price:239,desc:"Élimine les cellules mortes en douceur."},
+"Field of Greens":{price:196,desc:"Mélange de fruits et légumes verts."},
+"Firming Complex":{price:680,desc:"Améliore la tonicité de la peau."},
+"Ferming Serum":{price:684,desc:"Aide à raffermir la peau."},
+"First":{price:322,desc:"Spray apaisant à l’aloe vera."},
+"Forever Bee Pollen":{price:248,desc:"Source naturelle d’énergie."},
+"Forever Calcium":{price:394,desc:"Renforce os et dents."},
+"Forever Daily":{price:275,desc:"Multivitamines quotidiennes."},
+"Forever Fiber":{price:327,desc:"Fibres pour le confort digestif."},
+"Forever Lean":{price:515,desc:"Soutient la gestion du poids."},
+"Forever Move":{price:821,desc:"Soutient les articulations."},
+"Gel Cleanser":{price:310,desc:"Nettoie la peau en douceur."},
+"Gel Mask":{price:310,desc:"Hydratation intense et fermeté."},
+"Gelée Aloes":{price:242,desc:"Apaise et hydrate la peau."},
+"Gelée Royale":{price:539,desc:"Concentré naturel de vitalité."},
+"Gel d'Aloe Vera":{price:425,desc:"Renforce l’immunité et l’énergie."},
+"Hand Sanitizer":{price:50,desc:"Nettoie les mains sans rinçage."},
+"Hydrating Cleanser":{price:345,desc:"Nettoyage doux hydratant."},
+"Illuminating Gel":{price:293,desc:"Hydrate et rafraîchit la peau."},
+"Infusion":{price:296,desc:"Plantes pour détente et bien-être."},
+"Kids":{price:227,desc:"Vitamines pour enfants."},
+"Liquid Soap":{price:255,desc:"Savon liquide doux."},
+"Lotion Toner":{price:286,desc:"Équilibre la peau après nettoyage."},
+"Moisturizer":{price:339,desc:"Hydratation durable."},
+"Moisturizing":{price:242,desc:"Hydrate et protège la peau."},
+"Pack Sonya":{price:1123,desc:"Routine complète visage."},
+"Pro-B":{price:483,desc:"Équilibre de la flore intestinale."},
+"Propolis comprimés":{price:520,desc:"Renforce l’immunité."},
+"Propolis crème":{price:322,desc:"Apaise et protège la peau."},
+"Restoring Cream":{price:762,desc:"Nourrit et restaure la peau."},
+"Savon Avocat":{price:80,desc:"Savon nourrissant."},
+"Shampoing":{price:307,desc:"Nettoyage doux des cheveux."},
+"Skin Care Kit":{price:2301,desc:"Kit complet de soin."},
+"Stick Deodorant":{price:116,desc:"Neutralise les odeurs."},
+"Supergreens":{price:507,desc:"Super-aliments verts."},
+"Sunscreen":{price:273,desc:"Protection solaire."},
+"Therm":{price:488,desc:"Soutient le métabolisme."},
+"Thermogen":{price:242,desc:"Aide à la gestion du poids."},
+"Ultra Lite Plus":{price:344,desc:"Shake protéiné."},
+"Vitolize Men":{price:458,desc:"Vitalité masculine."},
+"Vitolize Women":{price:418,desc:"Équilibre féminin."},
+"ī Vision":{price:477,desc:"Confort visuel."}
 };
 
 let cart=[];
@@ -113,8 +181,7 @@ let cart=[];
 function showProduct(){
 const k=productSelect.value;
 if(!products[k]){productInfo.style.display="none";return;}
-productImage.src=products[k].image;
-productName.innerText=products[k].name;
+productName.innerText=k;
 productPrice.innerText=products[k].price+" DH";
 productDesc.innerText=products[k].desc;
 productInfo.style.display="block";
@@ -123,39 +190,28 @@ productInfo.style.display="block";
 function addToCart(){
 const k=productSelect.value;
 const q=parseInt(qty.value);
-if(!products[k]) return;
-cart.push({name:products[k].name,price:products[k].price,qty:q});
-updateCart();
-productInfo.style.display="none";
+if(!products[k])return;
+cart.push({name:k,price:products[k].price,qty:q});
+updateCart();productInfo.style.display="none";
 }
 
 function updateCart(){
-let t=0; cartItems.innerHTML="";
-cart.forEach(i=>{
-const l=i.qty*i.price; t+=l;
-cartItems.innerHTML+=`<p>${i.name} x ${i.qty} = ${l} DH</p>`;
+let t=0;cartItems.innerHTML="";
+cart.forEach((i,idx)=>{
+const l=i.qty*i.price;t+=l;
+cartItems.innerHTML+=`<p>${i.name} × ${i.qty} = ${l} DH <button class="remove" onclick="removeItem(${idx})">❌</button></p>`;
 });
 totalPrice.innerText="Total : "+t+" DH";
 }
 
+function removeItem(i){cart.splice(i,1);updateCart();}
+
 function sendWhatsApp(){
-if(cart.length===0 || !name.value || !address.value){
-alert("Merci de remplir les informations obligatoires.");
-return;
-}
-
-let m="🛒 Commande Équilibre Vital%0A%0A";
+if(cart.length===0||!name.value||!address.value){alert("Veuillez compléter la commande");return;}
+let m="Commande Équilibre Vital%0A%0A";
 let t=0;
-cart.forEach(i=>{
-const l=i.qty*i.price; t+=l;
-m+=`- ${i.name} x ${i.qty} = ${l} DH%0A`;
-});
-
-m+=`%0ATotal : ${t} DH`;
-m+=`%0A%0ANom & Prénom : ${name.value}`;
-m+=`%0AAdresse de livraison : ${address.value}`;
-m+=`%0A%0A📎 Merci d’envoyer la copie de la carte d’identité après cette commande.`;
-
+cart.forEach(i=>{const l=i.qty*i.price;t+=l;m+=`- ${i.name} x ${i.qty} = ${l} DH%0A`;});
+m+=`%0ATotal : ${t} DH%0A%0ANom : ${name.value}%0AAdresse : ${address.value}%0A%0A📌 Paiement à la livraison.%0A📎 Merci d’envoyer la copie de la carte d’identité.`;
 window.open("https://wa.me/212752789277?text="+m,"_blank");
 }
 </script>
