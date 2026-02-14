@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kids Vitamins – Vitamines pour enfants</title>
+
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -17,15 +19,9 @@
       background: #ffffff;
       padding: 20px;
     }
-    h1 {
-      color: #2e7d32;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 20px;
-      margin-top: 30px;
-    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
     .badge {
       background: #e8f5e9;
       color: #2e7d32;
@@ -34,52 +30,57 @@
       margin-bottom: 15px;
       font-size: 15px;
     }
+
     .product-img {
       width: 100%;
       max-width: 320px;
       display: block;
       margin: 20px auto;
     }
-    ul {
-      padding-left: 20px;
-    }
-    ul li {
-      margin-bottom: 8px;
-    }
+
     .price {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
       color: #d32f2f;
-      margin: 20px 0 10px;
+      margin: 15px 0;
     }
-    .delivery {
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
       font-size: 15px;
-      color: #444;
-      margin-bottom: 20px;
     }
+
     .btn {
       display: block;
       text-align: center;
       background: #25d366;
-      color: #ffffff;
-      text-decoration: none;
+      color: white;
       padding: 15px;
       border-radius: 8px;
       font-size: 18px;
       font-weight: bold;
+      text-decoration: none;
       margin: 15px 0;
+      border: none;
+      cursor: pointer;
     }
+
     .btn-secondary {
       background: #1976d2;
       font-size: 15px;
     }
-    .trust {
+
+    .cart {
       background: #f1f1f1;
       padding: 15px;
-      border-radius: 6px;
-      margin-top: 30px;
-      font-size: 14px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
+
     footer {
       text-align: center;
       font-size: 13px;
@@ -88,50 +89,116 @@
     }
   </style>
 </head>
+
 <body>
-  <div class="container"><div class="badge">
-  ✅ Produit original – Vitamines pour enfants<br />
-  🚚 Livraison partout au Maroc – Paiement à la livraison
-</div>
+<div class="container">
 
-<h1>Kids Vitamins</h1>
-<p><strong>Vitamines essentielles pour renforcer l’immunité et la croissance des enfants.</strong></p>
-
-<img src="kids-vitamins.jpg" alt="Kids Vitamins" class="product-img" />
-
-<h2>Pourquoi choisir Kids Vitamins ?</h2>
-<ul>
-  <li>✔️ Soutient le système immunitaire</li>
-  <li>✔️ Aide à la croissance et à l’énergie</li>
-  <li>✔️ Goût agréable, facile à prendre</li>
-  <li>✔️ Formule adaptée aux enfants</li>
-</ul>
-
-<h2>Pour qui ?</h2>
-<p>👶 Convient aux enfants de <strong>7 à 77 ans</strong><br>
-<small>(formule Kids – dosage adapté aux enfants)</small></p>
-
-<div class="price">Prix : 227 DH</div>
-<div class="delivery">📦 Livraison incluse – Paiement à la livraison</div>
-
-<a class="btn"
-href="https://wa.me/212752789277?text=Bonjour%2C%20je%20souhaite%20commander%20Kids%20Vitamins.%0A%0ANom%20:%0ATéléphone%20:%0AVille%20:%0AAdresse%20:"
-target="_blank">
-📲 Commander via WhatsApp
-</a>
-  
-
-<a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">Voir tous nos autres produits</a>
-
-<div class="trust">
-  ⭐⭐⭐⭐☆<br />
-  Parents satisfaits – Produit apprécié pour sa qualité et son efficacité.
-</div>
-
-<footer>
-  © Équilibre Vitale – Tous droits réservés
-</footer>
-
+  <div class="badge">
+    ✅ Produit original – Vitamines pour enfants<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
   </div>
+
+  <h1>Kids Vitamins</h1>
+  <p><strong>Vitamines essentielles pour renforcer l’immunité et la croissance des enfants.</strong></p>
+
+  <img src="kids-vitamins.jpg" alt="Kids Vitamins" class="product-img">
+
+  <h2>Pourquoi choisir Kids Vitamins ?</h2>
+  <ul>
+    <li>✔️ Soutient le système immunitaire</li>
+    <li>✔️ Aide à la croissance et à l’énergie</li>
+    <li>✔️ Goût agréable, facile à prendre</li>
+    <li>✔️ Formule adaptée aux enfants</li>
+  </ul>
+
+  <p>👶 Convient aux enfants de <strong>7 à 77 ans</strong><br>
+  <small>(formule Kids – dosage adapté aux enfants)</small></p>
+
+  <div class="price">
+    Prix unitaire : 227 DH
+  </div>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">227</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 227;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Kids Vitamins</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Kids Vitamins%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
 </body>
 </html>
