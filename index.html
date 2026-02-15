@@ -70,59 +70,94 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 </div>
 
 <script>
+/* ================= PRODUITS ================= */
 const products = [
-  {n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
-  {n:"Propolis comprimés",p:520,d:"Immunité renforcée.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"}
+  {
+    n:"Vitolize Women",
+    p:418,
+    d:"Équilibre hormonal et vitalité féminine.",
+    i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"
+  },
+  {
+    n:"Vitolize Men",
+    p:458,
+    d:"Prostate, libido et vitalité masculine.",
+    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
+  }
 ];
 
-const kidsDetails = `
-<h3>Informations détaillées – Kids Vitamins Forever</h3>
-<p>
-Complément alimentaire pour enfants à partir de <strong>4 ans</strong>,
-utile en période de fatigue ou de croissance.
-</p>
-<p>
-Contient <strong>12 vitamines</strong> et <strong>2 minéraux (fer et zinc)</strong>
-pour soutenir l’énergie, le système nerveux et les défenses naturelles.
-</p>
-<h4>Conseils d’utilisation</h4>
-<p><strong>4 comprimés par jour</strong>, à sucer ou croquer.</p>
-<p>Ne remplace pas une alimentation équilibrée.</p>
-`;
+/* ================= TEXTES DÉTAILLÉS ================= */
+const detailsByProduct = {
 
-const propolisDetails = `
-<h3>Informations détaillées – Propolis Forever</h3>
+  "Vitolize Women": `
+<h3>Informations détaillées – Vitolize Women</h3>
 
 <p>
-La propolis est une substance naturelle récoltée par les abeilles à partir
-des résines végétales. Elle est traditionnellement utilisée pour soutenir
-le bien-être général et les défenses naturelles.
+Vitolize Women est un complément alimentaire spécialement formulé pour
+soutenir la vitalité féminine et l’équilibre hormonal à différentes étapes
+de la vie de la femme.
 </p>
 
 <p>
-Riche en <strong>flavonoïdes</strong> et composés végétaux, la propolis est
-appréciée pour ses propriétés antioxydantes et purifiantes, notamment
-en période de fatigue ou de changement de saison.
+Sa composition associe vitamines, minéraux et extraits végétaux reconnus
+pour accompagner les périodes de fatigue, de déséquilibre hormonal
+ou de rythme de vie soutenu.
 </p>
 
 <h4>Bienfaits traditionnellement associés</h4>
 <ul>
-  <li>Soutien des défenses naturelles</li>
-  <li>Confort de la sphère ORL</li>
-  <li>Protection antioxydante</li>
+  <li>Soutien de l’équilibre hormonal</li>
+  <li>Aide en cas de fatigue et de baisse d’énergie</li>
+  <li>Contribue au bien-être général féminin</li>
+  <li>Soutien de la vitalité au quotidien</li>
 </ul>
 
 <h4>Conseils d’utilisation</h4>
 <p>
-<strong>2 comprimés par jour</strong>, de préférence au cours du repas.
+<strong>2 capsules par jour</strong>, de préférence au cours du repas.
 </p>
 
 <p>
-Complément alimentaire. Ne se substitue pas à une alimentation variée.<br>
-Ne pas dépasser la dose recommandée.
+Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+Ne pas dépasser la dose journalière recommandée.
 </p>
-`;
+`,
 
+  "Vitolize Men": `
+<h3>Informations détaillées – Vitolize Men</h3>
+
+<p>
+Vitolize Men est un complément alimentaire conçu pour soutenir
+la vitalité masculine, notamment au niveau de la prostate,
+de la libido et de l’équilibre hormonal.
+</p>
+
+<p>
+Il associe vitamines, minéraux et extraits végétaux traditionnellement
+utilisés pour accompagner le confort urinaire et les fonctions masculines.
+</p>
+
+<h4>Bienfaits traditionnellement associés</h4>
+<ul>
+  <li>Soutien du fonctionnement de la prostate</li>
+  <li>Aide au maintien d’une libido normale</li>
+  <li>Contribue à l’équilibre hormonal masculin</li>
+  <li>Soutien de l’énergie et de la vitalité</li>
+</ul>
+
+<h4>Conseils d’utilisation</h4>
+<p>
+<strong>2 capsules par jour</strong>, de préférence au cours du repas.
+</p>
+
+<p>
+Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+Ne pas dépasser la dose journalière recommandée.
+</p>
+`
+};
+
+/* ================= LOGIQUE ================= */
 let selected=null;
 let cart=[];
 
@@ -133,7 +168,11 @@ const totalSpan=document.getElementById("total");
 const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
+  list.innerHTML+=`
+    <div class="item" onclick="selectProduct(${i})">
+      <img src="${p.i}">
+      ${p.n} – ${p.p} DH
+    </div>`;
 });
 
 function toggleList(){
@@ -151,13 +190,7 @@ function selectProduct(i){
     <p><strong>${selected.p} DH</strong></p>
   `;
 
-  if(selected.n==="Kids"){
-    detailsDiv.innerHTML=kidsDetails;
-  } else if(selected.n==="Propolis comprimés"){
-    detailsDiv.innerHTML=propolisDetails;
-  } else {
-    detailsDiv.innerHTML="";
-  }
+  detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
 }
 
 function addToCart(){
