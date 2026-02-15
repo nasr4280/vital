@@ -19,7 +19,7 @@ h1{text-align:center}
 .remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
 select,input,button{width:100%;padding:10px;margin-top:8px}
 button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
-.small{font-size:13px;color:#555;line-height:1.6}
+.small{font-size:13px;color:#555;line-height:1.7}
 </style>
 </head>
 
@@ -53,6 +53,7 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 
 <div class="card">
   <h3>Informations de livraison</h3>
+
   <input id="customerName" placeholder="Nom et prénom">
   <input id="customerAddress" placeholder="Adresse de livraison">
 
@@ -70,107 +71,99 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 <script>
 /* ================= PRODUITS ================= */
 const products = [
-  {n:"Kids",p:227,d:"Vitamines pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
-  {n:"Propolis comprimés",p:520,d:"Immunité renforcée.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
-  {n:"Vitolize Women",p:418,d:"Équilibre hormonal féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"},
-  {n:"Vitolize Men",p:458,d:"Prostate, libido et vitalité.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"}
+  {
+    n:"Vitolize Men",
+    p:458,
+    d:"Prostate, libido et vitalité masculine.",
+    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
+  }
 ];
 
 /* ================= TEXTES DÉTAILLÉS ================= */
 const detailsByProduct = {
 
-"Kids": `
-<h3>VITAMINES ENFANTS KIDS FOREVER</h3>
-
-<p><strong>Complément alimentaire pour vos enfants, fer, zinc, magnésium et vitamines.</strong></p>
-
-<p>
-Idéal pour les enfants à partir de 4 ans jusqu’à la fin de l’adolescence,
-ainsi que pour les adultes en cas de fatigue passagère.
-Il renferme 12 vitamines et 2 minéraux.
-</p>
-
-<p>
-Vitamines enfants Kids Forever aide à lutter contre la fatigue et les infections,
-favorise le développement cognitif de l’enfant et de l’adolescent,
-avec un agréable goût de fraise.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>Contenance : 120 comprimés<br>12 vitamines, fer, zinc.</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p><strong>Sucer ou croquer 4 comprimés dans la journée.</strong></p>
-
-<h4>BIENFAITS</h4>
-<ul>
-<li>Manque de sommeil</li>
-<li>Mauvaise alimentation</li>
-<li>Rythme scolaire soutenu</li>
-<li>Fatigue chronique chez l’enfant</li>
-<li>Favorise l’attention, la mémoire et le langage</li>
-<li><strong>Sans gluten</strong></li>
-</ul>
-`,
-
-"Propolis comprimés": `
-<h3>PROPOLIS FOREVER</h3>
-<p>
-La propolis est une substance naturelle produite par les abeilles,
-traditionnellement utilisée pour soutenir les défenses naturelles
-et le bien-être général.
-</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p><strong>2 comprimés par jour.</strong></p>
-`,
-
-"Vitolize Women": `
-<h3>VITOLIZE WOMEN</h3>
-
-<p>
-Vitolize Women Forever est un mélange de plantes, vitamines et minéraux
-riche en antioxydants, spécialement conçu pour les femmes.
-</p>
-
-<p>
-Il aide à réguler l’équilibre hormonal, réduire le stress
-et soutenir la vitalité féminine.
-</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p><strong>4 capsules par jour.</strong></p>
-
-<h4>BIENFAITS</h4>
-<ul>
-<li>Troubles hormonaux</li>
-<li>Règles douloureuses</li>
-<li>Vitalité et désir</li>
-<li><strong>Sans gluten</strong></li>
-</ul>
-`,
-
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
 
+<p><strong>Vitolize Men Forever : la clé d’une vitalité durable et d’une performance masculine optimale</strong></p>
+
+<h4>Prostate et libido</h4>
+
 <p>
-Vitolize Men Forever contribue au bon fonctionnement de la prostate,
-au maintien de la fertilité et du taux de testostérone.
+Vitolize Men Forever est un complément alimentaire destiné à l’homme.
+Il associe des vitamines, des minéraux et des phytostérols issus notamment
+de l’huile de pépins de courge. Cette formulation contribue au bon
+fonctionnement de la prostate.
 </p>
 
 <p>
-Il aide à soulager les troubles urinaires et favorise la libido.
+Il participe également au maintien de la fertilité, de la fonction
+reproductive et à un taux normal de testostérone dans le sang.
+Son action aide à réguler l’activité hormonale, tandis que le sélénium
+soutient une spermatogenèse normale.
+</p>
+
+<p>
+L’huile de pépins de courge possède des propriétés diurétiques reconnues.
+Elle aide à soulager les inconforts liés à une vessie irritable ou
+hyperactive ainsi que les troubles urinaires associés à l’hypertrophie
+bénigne de la prostate (HBP).
+</p>
+
+<p>
+L’extrait de peau de grenade est reconnu pour sa forte activité
+antioxydante, contribuant à la protection des cellules contre le stress
+oxydatif.
+</p>
+
+<p>
+La vitamine B6 intervient dans la régulation de l’activité hormonale.
+Les vitamines C, D et E contribuent à la protection contre les radicaux
+libres responsables des phénomènes oxydatifs pouvant affecter la prostate.
+</p>
+
+<p>
+Le zinc aide au maintien d’un taux normal de testostérone, tandis que le
+sélénium joue un rôle essentiel dans la production normale des
+spermatozoïdes.
+</p>
+
+<h4>COMPOSITION DU PRODUIT</h4>
+
+<p><strong>Contenance :</strong> 60 capsules</p>
+
+<p>
+Formule à base d’huile d’olive extra vierge.<br>
+Capsule en gélatine de poisson.
+</p>
+
+<p>
+Contient notamment : huile de pépins de courge (Cucurbita pepo),
+extrait de peau de grenade (Punica granatum) standardisé,
+vitamine C, zinc, lycopène, vitamine E, vitamine D, vitamine B6,
+sélénium, lécithine de soja.
+</p>
+
+<p>
+Contient du poisson et du soja.<br>
+La composition peut être modifiée ; se référer à l’emballage du produit.
 </p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p><strong>2 capsules par jour.</strong></p>
 
-<h4>BIENFAITS</h4>
+<p>
+<strong>2 capsules par jour</strong>, de préférence au cours du repas.
+</p>
+
+<h4>BIENFAITS DE VITOLIZE MEN FOREVER (HOMME)</h4>
+
 <ul>
-<li>Fonctionnement normal de la prostate</li>
-<li>Libido</li>
-<li>Vitalité masculine</li>
-<li><strong>Sans gluten</strong></li>
+  <li>Aide à soulager les troubles urinaires</li>
+  <li>Contribue au fonctionnement normal de la prostate</li>
+  <li>Soutient la libido</li>
+  <li>Participe au bon déroulement de la spermatogenèse</li>
+  <li>Aide à maintenir un taux normal de testostérone</li>
+  <li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
@@ -186,7 +179,11 @@ const totalSpan=document.getElementById("total");
 const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
+  list.innerHTML+=`
+    <div class="item" onclick="selectProduct(${i})">
+      <img src="${p.i}">
+      ${p.n} – ${p.p} DH
+    </div>`;
 });
 
 function toggleList(){
@@ -232,7 +229,7 @@ function sendWhatsApp(){
   const cname=document.getElementById("customerName").value.trim();
   const caddr=document.getElementById("customerAddress").value.trim();
   if(!cname||!caddr||cart.length===0){
-    alert("Informations manquantes");
+    alert("Veuillez compléter toutes les informations");
     return;
   }
 
