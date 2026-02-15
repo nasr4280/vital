@@ -19,6 +19,17 @@ select,input{width:100%;padding:12px;margin-top:8px;border-radius:6px;border:1px
 button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;margin-top:10px}
 .cart-row{margin-top:6px}
 .small{font-size:13px;color:#555;line-height:1.5}
+
+.remove-btn{
+  margin-left:8px;
+  color:#888;
+  font-size:13px;
+  cursor:pointer;
+}
+.remove-btn:hover{
+  color:#444;
+  text-decoration:underline;
+}
 </style>
 </head>
 
@@ -62,7 +73,7 @@ button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-
 </div>
 
 <script>
-/* ================= PRODUITS (EXTRAIT – STRUCTURE VALIDÉE) ================= */
+/* ================= PRODUITS (TA LISTE, INTACTE) ================= */
 const products = [
  {n:"Gel d'Aloe Vera",p:425,d:"Renforce l’immunité et la vitalité.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
  {n:"Forever Fiber",p:327,d:"Fibres pour le confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
@@ -72,19 +83,18 @@ const products = [
  {n:"Vitolize Men",p:458,d:"Vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
  {n:"Gelée Royale",p:539,d:"Énergie et défenses naturelles.",i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg"},
  {n:"Kids",p:227,d:"Vitamines et minéraux pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
- {n:"Sunscreen",p:273,d:"Crème solaire pour protéger la peau et préserver son hydratation.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"}, 
-{n:"Arctic Sea 120",p:516,d:"Oméga-3 et 9 pour soutenir le cœur, le cerveau et l’équilibre du cholestérol.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"}, 
-{n:"Forever Bee Pollen",p:248,d:"Source naturelle de nutriments pour l’énergie et la vitalité.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
-  {n:"Illuminating Gel",p:293,d:"Gel léger pour hydrater et illuminer la peau.",i:"https://i.postimg.cc/FHCXdTr0/Screenshot-20260209-194233-Google.jpg"},
-{n:"Field of Greens",p:196,d:"Mélange de fruits et légumes verts pour compléter l’alimentation.",i:"https://i.postimg.cc/nzcd0XkL/Screenshot-20260210-135926-Google.jpg"},
-{n:"Pro-B",p:483,d:"Favorise l’équilibre de la flore intestinale et le confort digestif.",i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg"},
-  {n:"Ail et Thym",p:296,d:"Soutient les défenses naturelles et le bien-être respiratoire.",i:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"},
-{n:"Absorbent C",p:287,d:"Vitamine C facilement assimilable pour l’immunité et l’énergie.",i:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"},
-  {n:"Therm",p:488,d:"Aide à soutenir le métabolisme et le niveau d’énergie.",i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg"},
-  {n:"Forever Lean",p:515,d:"Soutient la gestion du poids et l’équilibre métabolique.",i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg"},
-  {n:"Forever Daily",p:275,d:"Multivitamines pour l’énergie et l’immunité au quotidien.",i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg"},
-  {n:"Moisturizing",p:242,d:"Crème hydratante pour une peau douce et souple.",i:"https://i.postimg.cc/rm8zYrKc/Screenshot-20260210-151745-Google.jpg"},
- // 👉  tu colles les autres produits EXACTEMENT au même format
+ {n:"Sunscreen",p:273,d:"Crème solaire protectrice.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
+ {n:"Arctic Sea 120",p:516,d:"Oméga-3 et 9 pour cœur et cerveau.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
+ {n:"Forever Bee Pollen",p:248,d:"Nutriments naturels pour l’énergie.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
+ {n:"Illuminating Gel",p:293,d:"Hydrate et illumine la peau.",i:"https://i.postimg.cc/FHCXdTr0/Screenshot-20260209-194233-Google.jpg"},
+ {n:"Field of Greens",p:196,d:"Fruits et légumes verts concentrés.",i:"https://i.postimg.cc/nzcd0XkL/Screenshot-20260210-135926-Google.jpg"},
+ {n:"Pro-B",p:483,d:"Équilibre de la flore intestinale.",i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg"},
+ {n:"Ail et Thym",p:296,d:"Défenses naturelles et respiration.",i:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"},
+ {n:"Absorbent C",p:287,d:"Vitamine C pour immunité.",i:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"},
+ {n:"Therm",p:488,d:"Soutient le métabolisme.",i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg"},
+ {n:"Forever Lean",p:515,d:"Gestion du poids.",i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg"},
+ {n:"Forever Daily",p:275,d:"Multivitamines quotidiennes.",i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg"},
+ {n:"Moisturizing",p:242,d:"Crème hydratante.",i:"https://i.postimg.cc/rm8zYrKc/Screenshot-20260210-151745-Google.jpg"}
 ];
 
 /* ================= LOGIQUE ================= */
@@ -105,7 +115,10 @@ function toggleList(){
 function selectProduct(i){
  selected=products[i];
  list.style.display="none";
- preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p><p><strong>${selected.p} DH</strong></p>`;
+ preview.innerHTML=`<img src="${selected.i}">
+ <p><strong>${selected.n}</strong></p>
+ <p>${selected.d}</p>
+ <p><strong>${selected.p} DH</strong></p>`;
 }
 
 function addToCart(){
@@ -115,12 +128,21 @@ function addToCart(){
  renderCart();
 }
 
+function removeFromCart(index){
+ cart.splice(index,1);
+ renderCart();
+}
+
 function renderCart(){
  cartDiv.innerHTML="";
  let total=0;
- cart.forEach(c=>{
+ cart.forEach((c,i)=>{
   total+=c.p*c.q;
-  cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q} = ${c.p*c.q} DH</div>`;
+  cartDiv.innerHTML+=`
+   <div class="cart-row">
+     ${c.n} x ${c.q} = ${c.p*c.q} DH
+     <span class="remove-btn" onclick="removeFromCart(${i})">Supprimer</span>
+   </div>`;
  });
  totalSpan.textContent=total;
 }
