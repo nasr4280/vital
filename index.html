@@ -2,74 +2,77 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Commande Forever</title>
+<title>Commande Forever Maroc</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{font-family:Arial;background:#f4f4f4;padding:15px}
+body{font-family:Arial;background:#f2f2f2;padding:15px}
 h1{text-align:center}
 .card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
-.selector{padding:12px;border:1px solid #ccc;border-radius:6px;cursor:pointer;background:#fafafa}
-.list{display:none;border:1px solid #ccc;border-radius:6px;margin-top:5px;max-height:300px;overflow:auto}
+.selector{padding:14px;border:1px solid #ccc;border-radius:6px;background:#fafafa;cursor:pointer}
+.list{display:none;border:1px solid #ccc;border-radius:6px;margin-top:5px;max-height:320px;overflow:auto}
 .item{display:flex;align-items:center;padding:8px;border-bottom:1px solid #eee;cursor:pointer}
-.item img{width:40px;height:40px;margin-right:10px;border-radius:4px}
+.item img{width:42px;height:42px;margin-right:10px;border-radius:4px}
 .item:hover{background:#f0f0f0}
 #preview img{max-width:180px;margin-top:10px}
-button{width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;margin-top:10px}
+select,input{width:100%;padding:12px;margin-top:8px;border-radius:6px;border:1px solid #ccc}
+button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;margin-top:10px}
 .cart-row{margin-top:6px}
-.small{font-size:13px;color:#555}
+.small{font-size:13px;color:#555;line-height:1.5}
 </style>
 </head>
 
 <body>
 
-<h1>🟢 Commande Forever</h1>
+<h1>🟢 Commande Forever Maroc</h1>
 
+<!-- PRODUIT -->
 <div class="card">
   <div class="selector" onclick="toggleList()">👇 Choisir un produit</div>
   <div class="list" id="productList"></div>
 
   <select id="qty">
-    <option value="1">1</option><option value="2">2</option>
-    <option value="3">3</option><option value="4">4</option>
-    <option value="5">5</option>
+    <option value="1">Quantité : 1</option>
+    <option value="2">Quantité : 2</option>
+    <option value="3">Quantité : 3</option>
+    <option value="4">Quantité : 4</option>
+    <option value="5">Quantité : 5</option>
   </select>
 
   <div id="preview"></div>
   <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
+<!-- PANIER -->
 <div class="card">
   <h3>🛒 Panier</h3>
   <div id="cart"></div>
   <p><strong>Total : <span id="total">0</span> DH</strong></p>
+  <p class="small">🚚 Livraison gratuite dès <strong>600 DH</strong> sur tout le Maroc</p>
 </div>
 
+<!-- LIVRAISON -->
 <div class="card">
-  <h3>📦 Livraison</h3>
+  <h3>📦 Informations de livraison</h3>
   <input id="name" placeholder="Nom et prénom">
-  <input id="address" placeholder="Adresse">
+  <input id="address" placeholder="Adresse de livraison">
+  <input id="phone" placeholder="Téléphone / WhatsApp">
+
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 </div>
 
 <script>
-/* ================= PRODUITS ================= */
+/* ================= PRODUITS (EXTRAIT – STRUCTURE VALIDÉE) ================= */
 const products = [
- {n:"Gel d'Aloe Vera",p:425,d:"Soutient l’immunité et la vitalité.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
+ {n:"Gel d'Aloe Vera",p:425,d:"Renforce l’immunité et la vitalité.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
  {n:"Forever Fiber",p:327,d:"Fibres pour le confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
  {n:"Bright Toothgel",p:125,d:"Dentifrice à l’aloe vera.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
- {n:"Sunscreen",p:273,d:"Protection solaire.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
- {n:"Propolis crème",p:322,d:"Crème apaisante.",i:"https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg"},
- {n:"Forever Calcium",p:394,d:"Os et dents.",i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
- {n:"Arctic Sea 120",p:516,d:"Oméga 3 & 9.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
- {n:"Forever Move",p:821,d:"Articulations.",i:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
- {n:"Bee Pollen",p:248,d:"Énergie naturelle.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
- {n:"Propolis comprimés",p:520,d:"Défenses naturelles.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
- {n:"Vitolize Women",p:418,d:"Équilibre féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"},
+ {n:"Propolis comprimés",p:520,d:"Soutient les défenses naturelles.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
+ {n:"Vitolize Women",p:418,d:"Équilibre et vitalité féminine.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"},
  {n:"Vitolize Men",p:458,d:"Vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
- {n:"Gelée Royale",p:539,d:"Vitalité & immunité.",i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg"},
- {n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
- {n:"Argi +",p:935,d:"Énergie et endurance.",i:"https://i.postimg.cc/kgVFMkJc/Screenshot-20260210-162823-Google.jpg"}
+ {n:"Gelée Royale",p:539,d:"Énergie et défenses naturelles.",i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg"},
+ {n:"Kids",p:227,d:"Vitamines et minéraux pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"}
+ // 👉 ICI tu colles les autres produits EXACTEMENT au même format
 ];
 
 /* ================= LOGIQUE ================= */
@@ -103,9 +106,9 @@ function addToCart(){
 function renderCart(){
  cartDiv.innerHTML="";
  let total=0;
- cart.forEach((c,i)=>{
+ cart.forEach(c=>{
   total+=c.p*c.q;
-  cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q} (${c.p*c.q} DH)</div>`;
+  cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q} = ${c.p*c.q} DH</div>`;
  });
  totalSpan.textContent=total;
 }
@@ -113,11 +116,14 @@ function renderCart(){
 function sendWhatsApp(){
  const n=document.getElementById("name").value.trim();
  const a=document.getElementById("address").value.trim();
- if(!n||!a||cart.length===0){alert("Informations manquantes");return;}
- let msg="Commande Forever%0A%0A";
+ const ph=document.getElementById("phone").value.trim();
+ if(!n||!a||!ph||cart.length===0){alert("Informations manquantes");return;}
+
+ let msg="Commande Forever Maroc%0A%0A";
  let total=0;
  cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
- msg+=`%0ATotal : ${total} DH%0ANom : ${n}%0AAdresse : ${a}`;
+ msg+=`%0ATotal : ${total} DH%0A👤 ${n}%0A📍 ${a}%0A📞 ${ph}`;
+
  window.open("https://wa.me/212XXXXXXXXX?text="+msg,"_blank");
 }
 </script>
