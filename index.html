@@ -65,95 +65,84 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 
-  <!-- TEXTE DÉTAILLÉ PRODUIT -->
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
 <script>
 /* ================= PRODUITS ================= */
 const products = [
-  {
-    n:"Vitolize Women",
-    p:418,
-    d:"Équilibre hormonal et vitalité féminine.",
-    i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"
-  },
-  {
-    n:"Vitolize Men",
-    p:458,
-    d:"Prostate, libido et vitalité masculine.",
-    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
-  }
+  {n:"Kids",p:227,d:"Vitamines pour enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
+  {n:"Propolis comprimés",p:520,d:"Immunité renforcée.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
+  {n:"Vitolize Women",p:418,d:"Équilibre hormonal féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"},
+  {n:"Vitolize Men",p:458,d:"Prostate, libido et vitalité.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"}
 ];
 
 /* ================= TEXTES DÉTAILLÉS ================= */
 const detailsByProduct = {
 
-  "Vitolize Women": `
-<h3>Informations détaillées – Vitolize Women</h3>
-
+"Kids": `
+<h3>Informations détaillées – Kids Vitamins Forever</h3>
 <p>
-Vitolize Women est un complément alimentaire spécialement formulé pour
-soutenir la vitalité féminine et l’équilibre hormonal à différentes étapes
-de la vie de la femme.
+Complément alimentaire destiné aux enfants à partir de <strong>4 ans</strong>
+et aux jeunes adultes, particulièrement en période de croissance,
+de fatigue passagère ou de rythme scolaire soutenu.
 </p>
-
 <p>
-Sa composition associe vitamines, minéraux et extraits végétaux reconnus
-pour accompagner les périodes de fatigue, de déséquilibre hormonal
-ou de rythme de vie soutenu.
+Formule complète contenant <strong>12 vitamines essentielles</strong>
+et <strong>2 minéraux (fer et zinc)</strong> contribuant au métabolisme énergétique,
+au bon fonctionnement du système nerveux et aux défenses naturelles.
 </p>
-
-<h4>Bienfaits traditionnellement associés</h4>
-<ul>
-  <li>Soutien de l’équilibre hormonal</li>
-  <li>Aide en cas de fatigue et de baisse d’énergie</li>
-  <li>Contribue au bien-être général féminin</li>
-  <li>Soutien de la vitalité au quotidien</li>
-</ul>
-
 <h4>Conseils d’utilisation</h4>
-<p>
-<strong>2 capsules par jour</strong>, de préférence au cours du repas.
-</p>
-
-<p>
-Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
-Ne pas dépasser la dose journalière recommandée.
-</p>
+<p><strong>4 comprimés par jour</strong>, à sucer ou croquer.</p>
+<p>Complément alimentaire. Ne remplace pas une alimentation équilibrée.</p>
 `,
 
-  "Vitolize Men": `
-<h3>Informations détaillées – Vitolize Men</h3>
-
+"Propolis comprimés": `
+<h3>Informations détaillées – Propolis Forever</h3>
 <p>
-Vitolize Men est un complément alimentaire conçu pour soutenir
-la vitalité masculine, notamment au niveau de la prostate,
-de la libido et de l’équilibre hormonal.
+La propolis est une substance naturelle élaborée par les abeilles,
+traditionnellement utilisée pour soutenir les défenses naturelles
+et le bien-être général.
 </p>
-
 <p>
-Il associe vitamines, minéraux et extraits végétaux traditionnellement
-utilisés pour accompagner le confort urinaire et les fonctions masculines.
+Riche en flavonoïdes et composés végétaux, elle est appréciée
+lors des changements de saison ou en période de fatigue.
 </p>
-
-<h4>Bienfaits traditionnellement associés</h4>
-<ul>
-  <li>Soutien du fonctionnement de la prostate</li>
-  <li>Aide au maintien d’une libido normale</li>
-  <li>Contribue à l’équilibre hormonal masculin</li>
-  <li>Soutien de l’énergie et de la vitalité</li>
-</ul>
-
 <h4>Conseils d’utilisation</h4>
-<p>
-<strong>2 capsules par jour</strong>, de préférence au cours du repas.
-</p>
+<p><strong>2 comprimés par jour</strong>, au cours du repas.</p>
+<p>Ne pas dépasser la dose journalière recommandée.</p>
+`,
 
+"Vitolize Women": `
+<h3>Informations détaillées – Vitolize Women</h3>
 <p>
-Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
-Ne pas dépasser la dose journalière recommandée.
+Formule conçue pour accompagner la femme dans son équilibre hormonal
+et soutenir sa vitalité au quotidien.
 </p>
+<h4>Bienfaits</h4>
+<ul>
+<li>Équilibre hormonal</li>
+<li>Soutien de l’énergie</li>
+<li>Bien-être féminin</li>
+</ul>
+<h4>Utilisation</h4>
+<p><strong>2 capsules par jour</strong>.</p>
+`,
+
+"Vitolize Men": `
+<h3>Informations détaillées – Vitolize Men</h3>
+<p>
+Complément alimentaire dédié à la vitalité masculine,
+notamment au niveau de la prostate et de la libido.
+</p>
+<h4>Bienfaits</h4>
+<ul>
+<li>Soutien de la prostate</li>
+<li>Libido normale</li>
+<li>Énergie masculine</li>
+</ul>
+<h4>Utilisation</h4>
+<p><strong>2 capsules par jour</strong>.</p>
 `
 };
 
