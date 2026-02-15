@@ -53,7 +53,6 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 
 <div class="card">
   <h3>Informations de livraison</h3>
-
   <input id="customerName" placeholder="Nom et prénom">
   <input id="customerAddress" placeholder="Adresse de livraison">
 
@@ -64,7 +63,6 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
   </p>
 
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
-
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
@@ -80,152 +78,55 @@ const products = [
 /* ================= TEXTES DÉTAILLÉS ================= */
 const detailsByProduct = {
 
-"Kids": `
-<h3>Informations détaillées – Kids Vitamins Forever</h3>
-<p>
-Complément alimentaire destiné aux enfants à partir de <strong>4 ans</strong>
-et aux jeunes adultes, particulièrement en période de croissance,
-de fatigue passagère ou de rythme scolaire soutenu.
-</p>
-<p>
-Formule complète contenant <strong>12 vitamines essentielles</strong>
-et <strong>2 minéraux (fer et zinc)</strong> contribuant au métabolisme énergétique,
-au bon fonctionnement du système nerveux et aux défenses naturelles.
-</p>
-<h4>Conseils d’utilisation</h4>
-<p><strong>4 comprimés par jour</strong>, à sucer ou croquer.</p>
-<p>Complément alimentaire. Ne remplace pas une alimentation équilibrée.</p>
-`,
+"Vitolize Women": `
+<h3>VITOLIZE WOMEN</h3>
+<h4>Vitolize Women : Comment Énergiser Votre Vie et Épanouir Votre Féminité</h4>
 
-"Propolis comprimés": `
-<h3>Informations détaillées – Propolis Forever</h3>
-<p>
-La propolis est une substance naturelle élaborée par les abeilles,
-traditionnellement utilisée pour soutenir les défenses naturelles
-et le bien-être général.
-</p>
-<p>
-Riche en flavonoïdes et composés végétaux, elle est appréciée
-lors des changements de saison ou en période de fatigue.
-</p>
-<h4>Conseils d’utilisation</h4>
-<p><strong>2 comprimés par jour</strong>, au cours du repas.</p>
-<p>Ne pas dépasser la dose journalière recommandée.</p>
-`,
+<p>Vitolize Women Forever, est un mélange de plantes de vitamines de minéraux riche en antioxydants spécialement conçu pour les femmes.</p>
 
-<h3>"VITOLIZE WOMEN"</h3>
+<p>Vitolize femme est composé d’ingrédients naturels, dont la vitamine B 6, qui régule l’équilibre hormonal, et de passiflore pour aider à diminuer le stress et qui soutient la fonction des voies urinaires.</p>
 
-<h4>"Vitolize Women" : Comment Énergiser Votre Vie et Épanouir Votre Féminité</h4>
+<p>Le magnésium, la vitamine C, la vitamine B sont essentiels pour la production d’hormones souvent déficientes en raison d’une vie stressante, de médicaments (pilules contraceptives, hormonothérapie) et à la ménopause.</p>
 
-<p>
-Vitolize Women Forever, est un mélange de plantes de vitamines de minéraux
-riche en antioxydants spécialement conçu pour les femmes.
-</p>
+<p>Le calcium et le fer présents dans Vitolize sont essentiels pour la santé cardiovasculaire et osseuse.</p>
 
-<p>
-Vitolize femme est composé d’ingrédients naturels, dont la vitamine B 6,
-qui régule l’équilibre hormonal, et de passiflore pour aider à diminuer le
-stress et qui soutient la fonction des voies urinaires.
-</p>
-
-<p>
-Le magnésium , la vitamine C, la vitamine B sont essentiels pour la
-production d’hormones qui sont souvent déficients en raison d’une vie
-stressante, éventuellement de prise de médicaments fréquemment utilisés,
-y compris les pilules contraceptives et l’hormonothérapie, et au moment de
-la ménopause avec l’âge qui avance.
-</p>
-
-<p>
-Le calcium et le fer présent dans Vitolize, sont également deux minéraux
-essentiels pour la santé cardiovasculaire, et osseuse des femmes.
-</p>
-
-<p>
-L’action de Vitolize femme vous aidera à lutter contre les règles
-douloureuses, les troubles hormonaux dus à la ménopause et vous aidera à
-retrouver une activité sexuelle épanouissante.
-</p>
+<p>L’action de Vitolize femme aide à lutter contre les règles douloureuses, les troubles hormonaux et à retrouver une activité sexuelle épanouissante.</p>
 
 <h4>COMPOSITION DU PRODUIT</h4>
+<p>120 tablettes</p>
 
-<p>
-120 tablettes
-</p>
-
-<p>
-Vitolize Women Forever contient des baies de schisandra, de la poudre de
-fruits de canneberge, de la poudre de pomme, du magnésium et des vitamines
-C, D, et B12.
-</p>
+<p>Baies de schisandra, poudre de canneberge, poudre de pomme, magnésium, vitamines C, D et B12.</p>
 
 <h4>CONSEILS D’UTILISATION</h4>
+<p>4 capsules par jour.</p>
 
-<p>
-4 capsules de vitolize par jour.
-</p>
-
-<h4>Bienfaits de Vitolize Women</h4>
-
+<h4>BIENFAITS</h4>
 <ul>
-  <li>Lutte contre les troubles hormonaux, les règles douloureuses</li>
-  <li>Décuple le désir sexuel et la fécondité</li>
-  <li>Soutien l’activité sexuelle épanouissante</li>
-  <li>Sans Gluten</li>
+<li>Lutte contre les troubles hormonaux</li>
+<li>Décuple le désir sexuel et la fécondité</li>
+<li>Soutien l’activité sexuelle</li>
+<li>Sans gluten</li>
 </ul>
+`,
 
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
 
-<p><strong>Vitolize Men Forever : Le Secret pour une Vitalité Éternelle et une Performance Optimale</strong></p>
+<p><strong>Prostate et Libido</strong></p>
 
-<h4>Prostate et Libido</h4>
+<p>Vitolize Men Forever contient vitamines, minéraux et phytostérols issus de l’huile de pépins de courge, contribuant au bon fonctionnement de la prostate, de la fertilité et du taux de testostérone.</p>
 
-<p>
-Vitolize Men Forever (homme) contient des vitamines, des minéraux, et des phytostérols,
-issus de l’huile de pépins de courge qui ont une action permettant de garder un bon
-fonctionnement de la prostate. Il contribue au maintien de la fertilité, de la reproduction
-et du taux de testostérone dans le sang. Il rationalise l’activité hormonale et le sélénium
-aide à une spermatogénèse normale.
-</p>
-
-<p>
-L’huile de pépins de citrouille, diurétique, soulage les symptômes de la vessie irritable
-ou hyperactive et les troubles de la miction associés à l’hypertrophie bénigne de la prostate (HBP).
-</p>
-
-<p>
-La peau de la grenade quant à elle possède de grandes propriétés antioxydantes reconnues.
-</p>
-
-<p>
-La Vitamine B6 contribue à réguler l’activité hormonale.
-Les vitamines C, D et E agissent efficacement contre les radicaux libres responsables
-des dommages oxydatifs sur la prostate.
-</p>
-
-<p>
-Le Zinc favorise le maintien d’un taux normal de testostérone.
-</p>
-
-<p>
-Le Sélénium participe à une spermatogénèse normale.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p><strong>Contenance :</strong> 60 capsules</p>
+<p>Le zinc aide au maintien d’un taux normal de testostérone. Le sélénium participe à une spermatogénèse normale.</p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p><strong>2 capsules de Vitolize par jour.</strong></p>
+<p>2 capsules par jour.</p>
 
 <h4>BIENFAITS</h4>
 <ul>
-  <li>Soulage les troubles urinaires</li>
-  <li>Fonctionnement normal de la prostate</li>
-  <li>Favorise la libido</li>
-  <li>Action bénéfique sur la spermatogénèse</li>
-  <li>Maintien d’un taux de testostérone normal</li>
-  <li><strong>Sans gluten</strong></li>
+<li>Soulage les troubles urinaires</li>
+<li>Fonctionnement normal de la prostate</li>
+<li>Favorise la libido</li>
+<li>Sans gluten</li>
 </ul>
 `
 };
@@ -233,7 +134,6 @@ Le Sélénium participe à une spermatogénèse normale.
 /* ================= LOGIQUE ================= */
 let selected=null;
 let cart=[];
-
 const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
@@ -241,28 +141,15 @@ const totalSpan=document.getElementById("total");
 const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`
-    <div class="item" onclick="selectProduct(${i})">
-      <img src="${p.i}">
-      ${p.n} – ${p.p} DH
-    </div>`;
+  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
 
-function toggleList(){
-  list.style.display=list.style.display==="block"?"none":"block";
-}
+function toggleList(){list.style.display=list.style.display==="block"?"none":"block";}
 
 function selectProduct(i){
   selected=products[i];
   list.style.display="none";
-
-  preview.innerHTML=`
-    <img src="${selected.i}">
-    <p><strong>${selected.n}</strong></p>
-    <p>${selected.d}</p>
-    <p><strong>${selected.p} DH</strong></p>
-  `;
-
+  preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p><p><strong>${selected.p} DH</strong></p>`;
   detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
 }
 
@@ -278,11 +165,7 @@ function renderCart(){
   let total=0;
   cart.forEach((c,i)=>{
     total+=c.p*c.q;
-    cartDiv.innerHTML+=`
-      <div class="cart-row">
-        ${c.n} x ${c.q}
-        <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
-      </div>`;
+    cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q}<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span></div>`;
   });
   totalSpan.textContent=total;
 }
@@ -290,14 +173,11 @@ function renderCart(){
 function sendWhatsApp(){
   const cname=document.getElementById("customerName").value.trim();
   const caddr=document.getElementById("customerAddress").value.trim();
-  if(!cname||!caddr){alert("Veuillez compléter vos informations");return;}
-  if(cart.length===0){alert("Panier vide");return;}
-
+  if(!cname||!caddr||cart.length===0){alert("Informations manquantes");return;}
   let msg="Commande Équilibre Vital%0A%0A";
   let total=0;
   cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
   msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}`;
-
   window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
