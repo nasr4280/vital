@@ -16,8 +16,6 @@ h1{text-align:center}
 .item:hover{background:#f0f0f0}
 #preview img{max-width:160px;margin-top:10px}
 .cart-row{margin-top:10px}
-.cart-images{display:flex;gap:6px;margin-bottom:5px}
-.cart-images img{width:42px;height:42px;object-fit:cover;border-radius:4px}
 .remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
 select,input,button{width:100%;padding:10px;margin-top:8px}
 button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
@@ -67,7 +65,7 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 
-  <!-- TEXTE DÉTAILLÉ PRODUIT (KIDS UNIQUEMENT) -->
+  <!-- TEXTE DÉTAILLÉ PRODUIT -->
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
@@ -79,34 +77,48 @@ const products = [
 
 const kidsDetails = `
 <h3>Informations détaillées – Kids Vitamins Forever</h3>
+<p>
+Complément alimentaire pour enfants à partir de <strong>4 ans</strong>,
+utile en période de fatigue ou de croissance.
+</p>
+<p>
+Contient <strong>12 vitamines</strong> et <strong>2 minéraux (fer et zinc)</strong>
+pour soutenir l’énergie, le système nerveux et les défenses naturelles.
+</p>
+<h4>Conseils d’utilisation</h4>
+<p><strong>4 comprimés par jour</strong>, à sucer ou croquer.</p>
+<p>Ne remplace pas une alimentation équilibrée.</p>
+`;
+
+const propolisDetails = `
+<h3>Informations détaillées – Propolis Forever</h3>
 
 <p>
-Les Vitamines Enfants Kids Forever sont un complément alimentaire destiné
-aux enfants à partir de <strong>4 ans</strong> ainsi qu’aux jeunes adultes,
-notamment en cas de fatigue passagère ou de baisse d’énergie.
+La propolis est une substance naturelle récoltée par les abeilles à partir
+des résines végétales. Elle est traditionnellement utilisée pour soutenir
+le bien-être général et les défenses naturelles.
 </p>
 
 <p>
-Elles contiennent <strong>12 vitamines essentielles</strong> et
-<strong>2 minéraux (fer et zinc)</strong> contribuant au métabolisme énergétique,
-au système nerveux et aux défenses naturelles.
+Riche en <strong>flavonoïdes</strong> et composés végétaux, la propolis est
+appréciée pour ses propriétés antioxydantes et purifiantes, notamment
+en période de fatigue ou de changement de saison.
 </p>
 
-<h4>Composition</h4>
+<h4>Bienfaits traditionnellement associés</h4>
 <ul>
-  <li>12 vitamines + fer et zinc</li>
-  <li>120 comprimés</li>
-  <li>Sans gluten</li>
+  <li>Soutien des défenses naturelles</li>
+  <li>Confort de la sphère ORL</li>
+  <li>Protection antioxydante</li>
 </ul>
 
 <h4>Conseils d’utilisation</h4>
 <p>
-Enfants à partir de 4 ans.<br>
-<strong>Sucer ou croquer 4 comprimés par jour.</strong>
+<strong>2 comprimés par jour</strong>, de préférence au cours du repas.
 </p>
 
 <p>
-Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+Complément alimentaire. Ne se substitue pas à une alimentation variée.<br>
 Ne pas dépasser la dose recommandée.
 </p>
 `;
@@ -141,6 +153,8 @@ function selectProduct(i){
 
   if(selected.n==="Kids"){
     detailsDiv.innerHTML=kidsDetails;
+  } else if(selected.n==="Propolis comprimés"){
+    detailsDiv.innerHTML=propolisDetails;
   } else {
     detailsDiv.innerHTML="";
   }
