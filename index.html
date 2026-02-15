@@ -82,29 +82,25 @@ const detailsByProduct = {
 <h3>VITOLIZE WOMEN</h3>
 <h4>Vitolize Women : Comment Énergiser Votre Vie et Épanouir Votre Féminité</h4>
 
-<p>Vitolize Women Forever, est un mélange de plantes de vitamines de minéraux riche en antioxydants spécialement conçu pour les femmes.</p>
+<p>Vitolize Women Forever est un mélange de plantes, de vitamines et de minéraux riches en antioxydants, spécialement conçu pour les femmes.</p>
 
-<p>Vitolize femme est composé d’ingrédients naturels, dont la vitamine B 6, qui régule l’équilibre hormonal, et de passiflore pour aider à diminuer le stress et qui soutient la fonction des voies urinaires.</p>
+<p>Il contient notamment de la vitamine B6 qui contribue à l’équilibre hormonal, ainsi que de la passiflore aidant à réduire le stress et à soutenir la fonction urinaire.</p>
 
-<p>Le magnésium, la vitamine C, la vitamine B sont essentiels pour la production d’hormones souvent déficientes en raison d’une vie stressante, de médicaments (pilules contraceptives, hormonothérapie) et à la ménopause.</p>
+<p>Le magnésium, la vitamine C et les vitamines B participent à la production hormonale, souvent perturbée par le stress, certains médicaments ou la ménopause.</p>
 
-<p>Le calcium et le fer présents dans Vitolize sont essentiels pour la santé cardiovasculaire et osseuse.</p>
+<p>Le calcium et le fer contribuent à la santé cardiovasculaire et osseuse.</p>
 
-<p>L’action de Vitolize femme aide à lutter contre les règles douloureuses, les troubles hormonaux et à retrouver une activité sexuelle épanouissante.</p>
+<h4>COMPOSITION</h4>
+<p>120 tablettes – schisandra, canneberge, pomme, magnésium, vitamines C, D, B12.</p>
 
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>120 tablettes</p>
-
-<p>Baies de schisandra, poudre de canneberge, poudre de pomme, magnésium, vitamines C, D et B12.</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
+<h4>UTILISATION</h4>
 <p>4 capsules par jour.</p>
 
 <h4>BIENFAITS</h4>
 <ul>
-<li>Lutte contre les troubles hormonaux</li>
-<li>Décuple le désir sexuel et la fécondité</li>
-<li>Soutien l’activité sexuelle</li>
+<li>Équilibre hormonal</li>
+<li>Bien-être féminin</li>
+<li>Vitalité et libido</li>
 <li>Sans gluten</li>
 </ul>
 `,
@@ -112,20 +108,43 @@ const detailsByProduct = {
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
 
-<p><strong>Prostate et Libido</strong></p>
+<h4>Vitolize Men Forever : Le Secret pour une Vitalité Éternelle et une Performance Optimale</h4>
 
-<p>Vitolize Men Forever contient vitamines, minéraux et phytostérols issus de l’huile de pépins de courge, contribuant au bon fonctionnement de la prostate, de la fertilité et du taux de testostérone.</p>
+<h4>Prostate et Libido</h4>
 
-<p>Le zinc aide au maintien d’un taux normal de testostérone. Le sélénium participe à une spermatogénèse normale.</p>
+<p>
+Vitolize Men Forever (homme) contient des vitamines, des minéraux et des phytostérols issus de l’huile de pépins de courge. Cette formule contribue au bon fonctionnement de la prostate.
+</p>
 
-<h4>CONSEILS D’UTILISATION</h4>
+<p>
+Il participe au maintien de la fertilité, de la reproduction et d’un taux normal de testostérone dans le sang. Il aide à réguler l’activité hormonale et le sélénium contribue à une spermatogenèse normale.
+</p>
+
+<p>
+L’huile de pépins de citrouille possède une action diurétique aidant à soulager les troubles urinaires liés à la vessie irritable ou à l’hypertrophie bénigne de la prostate (HBP).
+</p>
+
+<p>
+La peau de grenade est reconnue pour ses propriétés antioxydantes. La vitamine B6 contribue à la régulation hormonale, tandis que les vitamines C, D et E aident à lutter contre le stress oxydatif.
+</p>
+
+<p>
+Le zinc contribue au maintien d’un taux normal de testostérone et le sélénium soutient la spermatogenèse.
+</p>
+
+<h4>COMPOSITION</h4>
+<p>Contenance : 60 capsules</p>
+<p>Huile d’olive extra vierge, gélatine de poisson, huile de pépins de courge, extrait de grenade, vitamines C, D, E, B6, zinc, sélénium, lécithine de soja.</p>
+
+<h4>UTILISATION</h4>
 <p>2 capsules par jour.</p>
 
 <h4>BIENFAITS</h4>
 <ul>
-<li>Soulage les troubles urinaires</li>
-<li>Fonctionnement normal de la prostate</li>
-<li>Favorise la libido</li>
+<li>Soutien de la prostate</li>
+<li>Amélioration du confort urinaire</li>
+<li>Libido et vitalité masculine</li>
+<li>Spermatogenèse normale</li>
 <li>Sans gluten</li>
 </ul>
 `
@@ -144,12 +163,19 @@ products.forEach((p,i)=>{
   list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
 
-function toggleList(){list.style.display=list.style.display==="block"?"none":"block";}
+function toggleList(){
+  list.style.display=list.style.display==="block"?"none":"block";
+}
 
 function selectProduct(i){
   selected=products[i];
   list.style.display="none";
-  preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p><p><strong>${selected.p} DH</strong></p>`;
+  preview.innerHTML=`
+    <img src="${selected.i}">
+    <p><strong>${selected.n}</strong></p>
+    <p>${selected.d}</p>
+    <p><strong>${selected.p} DH</strong></p>
+  `;
   detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
 }
 
@@ -165,7 +191,11 @@ function renderCart(){
   let total=0;
   cart.forEach((c,i)=>{
     total+=c.p*c.q;
-    cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q}<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span></div>`;
+    cartDiv.innerHTML+=`
+      <div class="cart-row">
+        ${c.n} x ${c.q}
+        <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
+      </div>`;
   });
   totalSpan.textContent=total;
 }
@@ -173,7 +203,10 @@ function renderCart(){
 function sendWhatsApp(){
   const cname=document.getElementById("customerName").value.trim();
   const caddr=document.getElementById("customerAddress").value.trim();
-  if(!cname||!caddr||cart.length===0){alert("Informations manquantes");return;}
+  if(!cname||!caddr||cart.length===0){
+    alert("Informations manquantes");
+    return;
+  }
   let msg="Commande Équilibre Vital%0A%0A";
   let total=0;
   cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
