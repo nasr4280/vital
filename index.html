@@ -19,7 +19,7 @@ h1{text-align:center}
 .remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
 select,input,button{width:100%;padding:10px;margin-top:8px}
 button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
-.small{font-size:13px;color:#555;line-height:1.7}
+.small{font-size:13px;color:#555;line-height:1.6}
 </style>
 </head>
 
@@ -33,10 +33,8 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
   <div class="list" id="productList"></div>
 
   <select id="qty">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
+    <option value="1">1</option><option value="2">2</option>
+    <option value="3">3</option><option value="4">4</option>
     <option value="5">5</option>
   </select>
 
@@ -63,31 +61,16 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
   </p>
 
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
-
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
 <script>
 /* ================= PRODUITS ================= */
 const products = [
-  {
-    n:"Kids",
-    p:227,
-    d:"Vitamines et minéraux essentiels pour enfants.",
-    i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"
-  },
-  {
-    n:"Vitolize Men",
-    p:458,
-    d:"Prostate, vitalité masculine et libido.",
-    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
-  },
-  {
-    n:"Vitolize Women",
-    p:418,
-    d:"Équilibre hormonal et vitalité féminine.",
-    i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"
-  }
+ {n:"Kids",p:227,d:"Vitamines enfants Forever.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
+ {n:"Vitolize Men",p:458,d:"Prostate et vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
+ {n:"Vitolize Women",p:418,d:"Équilibre hormonal féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"},
+ {n:"Gelée Royale",p:539,d:"Vitalité naturelle et immunité.",i:"https://i.postimg.cc/9f9ZxZzZ/royal-jelly.jpg"}
 ];
 
 /* ================= TEXTES DÉTAILLÉS ================= */
@@ -95,160 +78,68 @@ const detailsByProduct = {
 
 "Kids": `
 <h3>VITAMINES ENFANTS KIDS FOREVER</h3>
-
-<p>
-Vitamines Enfants Kids Forever est un complément alimentaire conçu pour accompagner
-les enfants à partir de 4 ans, jusqu’à la fin de l’adolescence. Il peut également être
-utilisé chez l’adulte en période de fatigue passagère.
-</p>
-
-<p>
-Sa formule associe 12 vitamines essentielles et deux minéraux majeurs, le fer et le zinc,
-indispensables au bon développement de l’organisme, au métabolisme énergétique et
-au soutien des défenses naturelles.
-</p>
-
-<p>
-Kids Forever contribue à réduire la fatigue, favorise la concentration, la mémoire,
-le langage et les capacités d’apprentissage. Son goût agréable facilite une prise
-quotidienne régulière.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>Contenance : 120 comprimés</p>
-<p>12 vitamines, fer et zinc.</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p>Sucer ou croquer 4 comprimés par jour.</p>
-
+<p>Complément alimentaire destiné aux enfants à partir de 4 ans jusqu’à l’adolescence, ainsi qu’aux adultes en cas de fatigue passagère.</p>
+<p>Il contient 12 vitamines et 2 minéraux (fer et zinc) et aide à lutter contre la fatigue, les infections et soutient le développement cognitif.</p>
+<h4>COMPOSITION</h4>
+<p>120 comprimés – 12 vitamines, fer, zinc.</p>
+<h4>UTILISATION</h4>
+<p>Sucer ou croquer <strong>4 comprimés par jour</strong>.</p>
 <h4>BIENFAITS</h4>
 <ul>
-<li>Soutien en cas de manque de sommeil</li>
-<li>Aide lors d’une alimentation déséquilibrée</li>
-<li>Accompagnement du rythme scolaire</li>
-<li>Réduction de la fatigue chronique</li>
-<li>Soutien des fonctions cognitives</li>
+<li>Fatigue chronique</li><li>Mauvaise alimentation</li>
+<li>Rythme scolaire soutenu</li>
+<li>Attention, mémoire, langage</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `,
 
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
-
-<h4>Vitolize Men Forever : vitalité durable et performance masculine</h4>
-
-<p>
-Vitolize Men Forever est un complément alimentaire destiné à l’homme. Sa formulation
-associe vitamines, minéraux et phytostérols issus notamment de l’huile de pépins de
-courge, reconnus pour soutenir le bon fonctionnement de la prostate.
-</p>
-
-<p>
-Il contribue au maintien de la fertilité masculine, de la fonction reproductive et d’un
-taux normal de testostérone. La vitamine B6 participe à la régulation hormonale tandis
-que le sélénium soutient une spermatogenèse normale.
-</p>
-
-<p>
-L’huile de pépins de courge est reconnue pour ses propriétés diurétiques et aide à
-soulager les inconforts urinaires liés à une vessie irritable ou à l’hypertrophie bénigne
-de la prostate (HBP).
-</p>
-
-<p>
-L’extrait de peau de grenade possède une activité antioxydante importante contribuant
-à la protection cellulaire contre le stress oxydatif. Les vitamines C, D et E renforcent
-cette action protectrice.
-</p>
-
-<p>
-Le zinc aide au maintien d’un taux normal de testostérone, tandis que le sélénium
-participe à la production normale des spermatozoïdes.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>Contenance : 60 capsules</p>
-<p>
-Huile d’olive extra vierge, capsule en gélatine de poisson. Contient notamment huile
-de pépins de courge, extrait de grenade, vitamine C, zinc, lycopène, vitamines E,
-D, B6, sélénium et lécithine de soja.
-</p>
-<p>Contient du poisson et du soja.</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p>2 capsules par jour, au cours du repas.</p>
-
+<p>Complément alimentaire destiné à l’homme, formulé à base de vitamines, minéraux et phytostérols issus de l’huile de pépins de courge.</p>
+<p>Il soutient le fonctionnement de la prostate, la fertilité, la libido et contribue au maintien d’un taux normal de testostérone.</p>
+<p>Le zinc et le sélénium participent à une spermatogenèse normale.</p>
+<h4>UTILISATION</h4>
+<p><strong>2 capsules par jour</strong>.</p>
 <h4>BIENFAITS</h4>
 <ul>
-<li>Soulagement des troubles urinaires</li>
-<li>Fonctionnement normal de la prostate</li>
-<li>Soutien de la libido</li>
-<li>Spermatogenèse normale</li>
-<li>Maintien du taux de testostérone</li>
-<li><strong>Sans gluten</strong></li>
+<li>Soutien urinaire</li><li>Fonction prostatique</li>
+<li>Libido</li><li><strong>Sans gluten</strong></li>
 </ul>
 `,
 
 "Vitolize Women": `
 <h3>VITOLIZE WOMEN</h3>
-
-<h4>Vitolize Women Forever : équilibre féminin et vitalité au quotidien</h4>
-
-<p>
-Vitolize Women Forever est un complément alimentaire formulé spécifiquement pour
-répondre aux besoins nutritionnels de la femme. Il associe des extraits végétaux,
-des vitamines et des minéraux aux propriétés antioxydantes reconnues.
-</p>
-
-<p>
-Sa composition comprend notamment de la vitamine B6, qui contribue à la régulation
-de l’équilibre hormonal, ainsi que de la passiflore, reconnue pour son action apaisante
-et son soutien de la fonction urinaire.
-</p>
-
-<p>
-Le magnésium, la vitamine C et les vitamines du groupe B jouent un rôle clé dans la
-production hormonale, souvent perturbée par le stress, certains traitements
-médicamenteux ou les périodes de transition hormonale telles que la ménopause.
-</p>
-
-<p>
-Le calcium et le fer présents dans la formule participent au maintien de la santé
-osseuse et cardiovasculaire, tout en contribuant à réduire la fatigue.
-</p>
-
-<p>
-Vitolize Women accompagne la femme face aux déséquilibres hormonaux, aide à
-soulager les inconforts liés au cycle menstruel et favorise une vie intime plus
-épanouie.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>Contenance : 120 comprimés</p>
-<p>
-Baies de schisandra, poudre de canneberge, poudre de pomme, magnésium, vitamines
-C, D et B12.
-</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p>4 capsules par jour.</p>
-
+<p>Formule naturelle conçue pour accompagner la femme lors des déséquilibres hormonaux, du stress et de la ménopause.</p>
+<p>Contient vitamines, minéraux et extraits végétaux favorisant l’équilibre hormonal et la vitalité féminine.</p>
+<h4>UTILISATION</h4>
+<p><strong>4 capsules par jour</strong>.</p>
 <h4>BIENFAITS</h4>
 <ul>
-<li>Soutien de l’équilibre hormonal</li>
-<li>Réduction des règles douloureuses</li>
-<li>Amélioration de la vitalité générale</li>
-<li>Soutien de la libido et de la fécondité</li>
-<li>Bien-être féminin global</li>
+<li>Troubles hormonaux</li>
+<li>Règles douloureuses</li>
+<li>Épanouissement sexuel</li>
+<li><strong>Sans gluten</strong></li>
+</ul>
+`,
+
+"Gelée Royale": `
+<h3>GELÉE ROYALE FOREVER</h3>
+<p>La gelée royale est une substance naturelle exceptionnelle produite par les abeilles, riche en vitamines B, minéraux, protéines et oligo-éléments.</p>
+<p>Elle aide à réduire la fatigue physique et intellectuelle, renforce l’immunité et soutient la vitalité globale.</p>
+<p>La reine des abeilles, nourrie exclusivement de gelée royale, vit jusqu’à 50 fois plus longtemps.</p>
+<h4>UTILISATION</h4>
+<p>Prendre <strong>1 à 2 comprimés à croquer par jour</strong>.</p>
+<h4>BIENFAITS</h4>
+<ul>
+<li>Immunité</li><li>Énergie</li>
+<li>Concentration</li><li>Cardiovasculaire</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
 
 /* ================= LOGIQUE ================= */
-let selected=null;
-let cart=[];
-
+let selected=null, cart=[];
 const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
@@ -256,65 +147,34 @@ const totalSpan=document.getElementById("total");
 const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`
-    <div class="item" onclick="selectProduct(${i})">
-      <img src="${p.i}">
-      ${p.n} – ${p.p} DH
-    </div>`;
+ list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
 
-function toggleList(){
-  list.style.display=list.style.display==="block"?"none":"block";
-}
-
+function toggleList(){list.style.display=list.style.display==="block"?"none":"block";}
 function selectProduct(i){
-  selected=products[i];
-  list.style.display="none";
-  preview.innerHTML=`
-    <img src="${selected.i}">
-    <p><strong>${selected.n}</strong></p>
-    <p>${selected.d}</p>
-    <p><strong>${selected.p} DH</strong></p>
-  `;
-  detailsDiv.innerHTML = detailsByProduct[selected.n];
+ selected=products[i]; list.style.display="none";
+ preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p><p><strong>${selected.p} DH</strong></p>`;
+ detailsDiv.innerHTML=detailsByProduct[selected.n];
 }
-
 function addToCart(){
-  if(!selected){alert("Choisissez un produit");return;}
-  const q=parseInt(document.getElementById("qty").value);
-  cart.push({...selected,q});
-  renderCart();
+ if(!selected){alert("Choisissez un produit");return;}
+ const q=parseInt(document.getElementById("qty").value);
+ cart.push({...selected,q}); renderCart();
 }
-
 function renderCart(){
-  cartDiv.innerHTML="";
-  let total=0;
-  cart.forEach((c,i)=>{
-    total+=c.p*c.q;
-    cartDiv.innerHTML+=`
-      <div class="cart-row">
-        ${c.n} x ${c.q}
-        <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
-      </div>`;
-  });
-  totalSpan.textContent=total;
+ cartDiv.innerHTML=""; let total=0;
+ cart.forEach((c,i)=>{total+=c.p*c.q;
+ cartDiv.innerHTML+=`<div class="cart-row">${c.n} x ${c.q}
+ <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span></div>`});
+ totalSpan.textContent=total;
 }
-
 function sendWhatsApp(){
-  const cname=document.getElementById("customerName").value.trim();
-  const caddr=document.getElementById("customerAddress").value.trim();
-  if(!cname||!caddr||cart.length===0){
-    alert("Veuillez compléter toutes les informations");
-    return;
-  }
-  let msg="Commande Équilibre Vital%0A%0A";
-  let total=0;
-  cart.forEach(c=>{
-    total+=c.p*c.q;
-    msg+=`- ${c.n} x ${c.q}%0A`;
-  });
-  msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}`;
-  window.open("https://wa.me/212752789277?text="+msg,"_blank");
+ const n=customerName.value.trim(), a=customerAddress.value.trim();
+ if(!n||!a||!cart.length){alert("Informations manquantes");return;}
+ let msg="Commande Équilibre Vital%0A%0A"; let total=0;
+ cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
+ msg+=`%0ATotal : ${total} DH%0ANom : ${n}%0AAdresse : ${a}`;
+ window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
 
