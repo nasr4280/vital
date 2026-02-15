@@ -15,11 +15,11 @@ h1{text-align:center}
 .item img{width:42px;height:42px;object-fit:cover;margin-right:10px;border-radius:4px}
 .item:hover{background:#f0f0f0}
 #preview img{max-width:160px;margin-top:10px}
-.cart-row{margin-top:8px}
-.remove{font-size:12px;color:red;cursor:pointer;margin-left:10px}
-button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;padding:10px;width:100%}
+.cart-row{margin-top:10px}
+.remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
+select,input,button{width:100%;padding:10px;margin-top:8px}
+button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
 .small{font-size:13px;color:#555;line-height:1.7}
-select,input{width:100%;padding:10px;margin-top:8px}
 </style>
 </head>
 
@@ -27,7 +27,6 @@ select,input{width:100%;padding:10px;margin-top:8px}
 
 <h1>🟢 Équilibre Vital</h1>
 
-<!-- PRODUITS -->
 <div class="card">
   <h3>Choisir un produit</h3>
   <div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
@@ -37,24 +36,32 @@ select,input{width:100%;padding:10px;margin-top:8px}
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
   </select>
 
   <div id="preview"></div>
   <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
-<!-- PANIER -->
 <div class="card">
   <h3>Panier</h3>
   <div id="cart"></div>
   <p><strong>Total : <span id="total">0</span> DH</strong></p>
+  <p class="small">✔ Livraison gratuite dès 600 DH</p>
 </div>
 
-<!-- LIVRAISON -->
 <div class="card">
   <h3>Informations de livraison</h3>
   <input id="customerName" placeholder="Nom et prénom">
   <input id="customerAddress" placeholder="Adresse de livraison">
+
+  <p class="small">
+    ✔ Paiement à la livraison<br>
+    ✔ Livraison dans tout le Maroc<br>
+    ✔ Copie de la carte d’identité demandée après confirmation
+  </p>
+
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 
   <div id="productDetails" class="small" style="margin-top:15px"></div>
@@ -63,124 +70,82 @@ select,input{width:100%;padding:10px;margin-top:8px}
 <script>
 /* ================= PRODUITS ================= */
 const products = [
-  { n:"Kids", p:227, d:"Vitamines enfants – énergie, croissance et immunité.",
-    i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg" },
-
-  { n:"Vitolize Men", p:458, d:"Prostate, libido et vitalité masculine.",
-    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg" },
-
-  { n:"Vitolize Women", p:418, d:"Équilibre hormonal et vitalité féminine.",
-    i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg" }
+  {
+    n:"Kids",
+    p:227,
+    d:"Vitamines et minéraux essentiels pour enfants.",
+    i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"
+  }
 ];
 
-/* ================= TEXTES ================= */
+/* ================= TEXTE DÉTAILLÉ KIDS ================= */
 const detailsByProduct = {
-
 "Kids": `
 <h3>VITAMINES ENFANTS KIDS FOREVER</h3>
 
+<p><strong>Complément alimentaire pour enfants, à base de vitamines et de minéraux essentiels.</strong></p>
+
 <p>
-Complément alimentaire destiné aux enfants à partir de 4 ans, aux adolescents
-et aux adultes en cas de fatigue passagère.
+Vitamines Enfants Kids Forever est un complément alimentaire spécialement formulé
+pour répondre aux besoins nutritionnels des enfants. Il associe des vitamines
+essentielles ainsi que des minéraux tels que le fer, le zinc et le magnésium,
+indispensables au bon développement de l’organisme.
 </p>
 
 <p>
-Il renferme 12 vitamines essentielles ainsi que du fer et du zinc,
-contribuant au développement cognitif, à l’énergie et aux défenses naturelles.
+Ce complément est particulièrement adapté aux enfants à partir de 4 ans jusqu’à
+la fin de l’adolescence. Il convient également aux adultes en cas de fatigue
+passagère. Sa formule complète renferme 12 vitamines et 2 minéraux, contribuant à
+soutenir l’énergie quotidienne et les défenses naturelles.
 </p>
 
-<h4>COMPOSITION</h4>
-<p>120 comprimés – 12 vitamines, fer et zinc.</p>
+<p>
+Vitamines Enfants Kids Forever aide les enfants à mieux résister à la fatigue et
+aux infections. Il soutient le développement cognitif chez l’enfant et
+l’adolescent, tout en favorisant la concentration et la mémoire. Son goût agréable
+de fraise le rend facile et plaisant à consommer.
+</p>
+
+<h4>Vitamines de Forever Kids</h4>
+
+<p><strong>Vitamine A :</strong> contribue au maintien d’une peau saine, des muqueuses et de la vision.</p>
+
+<p><strong>Vitamines du groupe B (B1 à B12) :</strong> jouent un rôle clé dans le métabolisme des cellules,
+contribuent au métabolisme du fer et à la réduction de la fatigue.</p>
+
+<p><strong>Vitamine C :</strong> favorise la formation du collagène et le bon développement des os, dents et vaisseaux.</p>
+
+<p><strong>Vitamine D :</strong> soutient le système immunitaire.</p>
+
+<p><strong>Vitamine E :</strong> participe à la protection des cellules contre le stress oxydatif.</p>
+
+<p><strong>Fer :</strong> contribue à la réduction de la fatigue chronique.</p>
+
+<p><strong>Zinc :</strong> soutient les défenses naturelles, la vision et les fonctions cognitives.</p>
+
+<h4>COMPOSITION DU PRODUIT</h4>
+<p>Contenance : 120 comprimés</p>
+<p>12 vitamines, fer, zinc.</p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p><strong>Sucer ou croquer 4 comprimés par jour.</strong></p>
+<p>Sucer ou croquer 4 comprimés par jour.</p>
 
 <h4>BIENFAITS</h4>
 <ul>
-<li>Aide contre la fatigue chronique</li>
-<li>Soutient la mémoire et la concentration</li>
-<li>Accompagne les périodes scolaires intenses</li>
-<li><strong>Sans gluten</strong></li>
-</ul>
-`,
-
-"Vitolize Men": `
-<h3>VITOLIZE MEN</h3>
-
-<p><strong>Vitalité masculine – Prostate et libido</strong></p>
-
-<p>
-Formule à base de vitamines, minéraux et phytostérols issus notamment
-de l’huile de pépins de courge, contribuant au bon fonctionnement de la prostate.
-</p>
-
-<p>
-Il participe au maintien de la fertilité, de la fonction reproductive
-et d’un taux normal de testostérone.
-</p>
-
-<h4>COMPOSITION</h4>
-<p>60 capsules – huile de pépins de courge, zinc, sélénium, vitamines C, D, E, B6.</p>
-
-<h4>UTILISATION</h4>
-<p><strong>2 capsules par jour</strong></p>
-
-<h4>BIENFAITS</h4>
-<ul>
-<li>Soulage les troubles urinaires</li>
-<li>Soutient la libido</li>
-<li>Favorise la spermatogenèse</li>
-<li><strong>Sans gluten</strong></li>
-</ul>
-`,
-
-"Vitolize Women": `
-<h3>VITOLIZE WOMEN</h3>
-
-<p><strong>Énergiser votre vie et épanouir votre féminité</strong></p>
-
-<p>
-Vitolize Women Forever est un complexe de plantes, vitamines et minéraux,
-riche en antioxydants, spécialement conçu pour les femmes.
-</p>
-
-<p>
-Il contient notamment de la vitamine B6 qui contribue à la régulation
-de l’équilibre hormonal, ainsi que de la passiflore pour aider à réduire
-le stress et soutenir la fonction des voies urinaires.
-</p>
-
-<p>
-Le magnésium, la vitamine C et les vitamines du groupe B participent
-à la production hormonale, souvent perturbée par le stress,
-les traitements médicaux ou la ménopause.
-</p>
-
-<p>
-Le calcium et le fer contribuent à la santé cardiovasculaire et osseuse.
-</p>
-
-<h4>COMPOSITION</h4>
-<p>
-120 tablettes – baies de schisandra, poudre de canneberge,
-poudre de pomme, magnésium, vitamines C, D et B12.
-</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p><strong>4 capsules par jour.</strong></p>
-
-<h4>BIENFAITS</h4>
-<ul>
-<li>Aide à lutter contre les troubles hormonaux</li>
-<li>Réduit les règles douloureuses</li>
-<li>Soutient une vie sexuelle épanouissante</li>
+<li>Manque de sommeil</li>
+<li>Mauvaise alimentation</li>
+<li>Rythme scolaire soutenu</li>
+<li>Fatigue chronique chez l’enfant</li>
+<li>Favorise attention, mémoire et langage</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
 
 /* ================= LOGIQUE ================= */
-let selected=null, cart=[];
+let selected=null;
+let cart=[];
+
 const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
@@ -189,9 +154,10 @@ const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
   list.innerHTML+=`
-  <div class="item" onclick="selectProduct(${i})">
-    <img src="${p.i}">${p.n} – ${p.p} DH
-  </div>`;
+    <div class="item" onclick="selectProduct(${i})">
+      <img src="${p.i}">
+      ${p.n} – ${p.p} DH
+    </div>`;
 });
 
 function toggleList(){
@@ -199,19 +165,21 @@ function toggleList(){
 }
 
 function selectProduct(i){
-  selected=products[i];
+  selected = products[i];
   list.style.display="none";
   preview.innerHTML=`
     <img src="${selected.i}">
     <p><strong>${selected.n}</strong></p>
     <p>${selected.d}</p>
-    <p><strong>${selected.p} DH</strong></p>`;
+    <p><strong>${selected.p} DH</strong></p>
+  `;
   detailsDiv.innerHTML = detailsByProduct[selected.n];
 }
 
 function addToCart(){
-  if(!selected){alert("Choisissez un produit");return;}
-  cart.push({...selected,q:parseInt(qty.value)});
+  if(!selected){ alert("Choisissez un produit"); return; }
+  const q = parseInt(document.getElementById("qty").value);
+  cart.push({...selected,q});
   renderCart();
 }
 
@@ -221,24 +189,29 @@ function renderCart(){
   cart.forEach((c,i)=>{
     total+=c.p*c.q;
     cartDiv.innerHTML+=`
-    <div class="cart-row">
-      ${c.n} x ${c.q}
-      <span class="remove" onclick="cart.splice(${i},1);renderCart()">✖</span>
-    </div>`;
+      <div class="cart-row">
+        ${c.n} x ${c.q}
+        <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
+      </div>`;
   });
-  totalSpan.textContent=total;
+  totalSpan.textContent = total;
 }
 
 function sendWhatsApp(){
-  if(cart.length===0)return alert("Panier vide");
-  if(!customerName.value||!customerAddress.value)
-    return alert("Informations manquantes");
+  const cname=document.getElementById("customerName").value.trim();
+  const caddr=document.getElementById("customerAddress").value.trim();
+  if(!cname||!caddr||cart.length===0){
+    alert("Veuillez compléter toutes les informations");
+    return;
+  }
 
   let msg="Commande Équilibre Vital%0A%0A";
   let total=0;
-  cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
-  msg+=`%0ATotal : ${total} DH%0A${customerName.value}%0A${customerAddress.value}`;
-
+  cart.forEach(c=>{
+    total+=c.p*c.q;
+    msg+=`- ${c.n} x ${c.q}%0A`;
+  });
+  msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}`;
   window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
