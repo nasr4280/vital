@@ -9,24 +9,19 @@
 body{font-family:Arial;background:#f4f4f4;padding:15px}
 h1{text-align:center}
 .card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
-
 .selector{width:100%;padding:14px;border:1px solid #ccc;border-radius:6px;font-size:16px;background:#fafafa;cursor:pointer}
 .list{display:none;border:1px solid #ccc;border-radius:6px;margin-top:5px;max-height:320px;overflow:auto}
-
 .item{display:flex;align-items:center;padding:8px;border-bottom:1px solid #eee;cursor:pointer}
 .item img{width:42px;height:42px;object-fit:cover;margin-right:10px;border-radius:4px}
 .item:hover{background:#f0f0f0}
-
 #preview img{max-width:160px;margin-top:10px}
-
 .cart-row{margin-top:10px}
 .cart-images{display:flex;gap:6px;margin-bottom:5px}
 .cart-images img{width:42px;height:42px;object-fit:cover;border-radius:4px}
 .remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
-
 select,input,button{width:100%;padding:10px;margin-top:8px}
 button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
-.small{font-size:13px;color:#555}
+.small{font-size:13px;color:#555;line-height:1.6}
 </style>
 </head>
 
@@ -35,137 +30,87 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 <h1>🟢 Équilibre Vital</h1>
 
 <div class="card">
-<h3>Choisir un produit</h3>
+  <h3>Choisir un produit</h3>
+  <div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
+  <div class="list" id="productList"></div>
 
-<div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
-<div class="list" id="productList"></div>
+  <select id="qty">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
 
-<select id="qty">
-<option value="1">1</option><option value="2">2</option><option value="3">3</option>
-<option value="4">4</option><option value="5">5</option>
-</select>
-
-<div id="preview"></div>
-<button onclick="addToCart()">Ajouter au panier</button>
+  <div id="preview"></div>
+  <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
 <div class="card">
-<h3>Panier</h3>
-<div id="cart"></div>
-<p><strong>Total : <span id="total">0</span> DH</strong></p>
-<p class="small">✔ Livraison gratuite dès 600 DH</p>
+  <h3>Panier</h3>
+  <div id="cart"></div>
+  <p><strong>Total : <span id="total">0</span> DH</strong></p>
+  <p class="small">✔ Livraison gratuite dès 600 DH</p>
 </div>
 
 <div class="card">
-<h3>Informations de livraison</h3>
+  <h3>Informations de livraison</h3>
 
-<input id="customerName" placeholder="Nom et prénom">
-<input id="customerAddress" placeholder="Adresse de livraison">
+  <input id="customerName" placeholder="Nom et prénom">
+  <input id="customerAddress" placeholder="Adresse de livraison">
 
-<p class="small">
-✔ Paiement à la livraison<br>
-✔ Livraison dans tout le Maroc<br>
-✔ Copie de la carte d’identité demandée après confirmation
-</p>
+  <p class="small">
+    ✔ Paiement à la livraison<br>
+    ✔ Livraison dans tout le Maroc<br>
+    ✔ Copie de la carte d’identité demandée après confirmation
+  </p>
 
-<button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+  <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+
+  <!-- TEXTE DÉTAILLÉ PRODUIT (KIDS UNIQUEMENT) -->
+  <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
 <script>
 const products = [
-{n:"Absorbent-C",p:287,d:"Vitamine C assimilable pour soutenir l’immunité et l’énergie.",i:"https://i.postimg.cc/Ghf7L3j0/Screenshot-20260210-145410-Google.jpg"},
-{n:"Activateur",p:210,d:"Stimule l’énergie et les performances.",i:"https://i.postimg.cc/tR6vqngz/Screenshot-20260210-154428-Google.jpg"},
-{n:"Ail et Thym",p:296,d:"Soutient les défenses naturelles.",i:"https://i.postimg.cc/4N4k73t1/Screenshot-20260210-145152-Google.jpg"},
-{n:"Aloe Lèvres",p:57,d:"Hydrate et protège les lèvres.",i:"https://i.postimg.cc/J7Yv0C3Q/Screenshot-20260210-153930-Google.jpg"},
-{n:"Aloe MSM",p:376,d:"Confort articulaire et musculaire.",i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg"},
-{n:"Alpha E Factor",p:539,d:"Antioxydant pour la peau.",i:"https://i.postimg.cc/cC6s3756/Screenshot-20260210-155025-Google.jpg"},
-{n:"Arctic Sea 120",p:516,d:"Oméga 3 & 9 – cœur et cerveau.",i:"https://i.postimg.cc/vmtCsX1f/Screenshot-20260209-193110-Google.jpg"},
-{n:"Bee Honey",p:274,d:"Miel naturel énergétique.",i:"https://i.postimg.cc/G3xNP1xB/Screenshot-20260210-134652-Google.jpg"},
-{n:"Berry Nectar",p:425,d:"Boisson antioxydante.",i:"https://i.postimg.cc/xCY5qc7M/Screenshot-20260210-134839-Google.jpg"},
-{n:"Bright Toothgel",p:125,d:"Dentifrice aloe vera.",i:"https://i.postimg.cc/sgCKw56d/Screenshot-20260208-220555-Chrome.jpg"},
-{n:"Coeur d'Aloes",p:462,d:"Digestion et bien-être intestinal.",i:"https://i.postimg.cc/kXkxB2Rg/Screenshot-20260210-135013-Google.jpg"},
-{n:"Exfoliator",p:239,d:"Peau lisse et nette.",i:"https://i.postimg.cc/25TCCn36/Screenshot-20260209-212742-Google.jpg"},
-{n:"Field of Greens",p:196,d:"Fruits et légumes verts.",i:"https://i.postimg.cc/nzcd0XkL/Screenshot-20260210-135926-Google.jpg"},
-{n:"Firming Complex",p:680,d:"Raffermit la peau.",i:"https://i.postimg.cc/gcgX6nQx/Screenshot-20260210-133909-Google.jpg"},
-{n:"First",p:322,d:"Spray premiers soins.",i:"https://i.postimg.cc/FHVxfjtT/Screenshot-20260210-152949-Google.jpg"},
-{n:"Forever Bee Pollen",p:248,d:"Énergie et vitalité.",i:"https://i.postimg.cc/wBRc5Bzx/Screenshot-20260209-193614-Google.jpg"},
-{n:"Forever Calcium",p:394,d:"Solidité osseuse.",i:"https://i.postimg.cc/mkYHXcX3/Screenshot-20260209-192617-Google.jpg"},
-{n:"Forever Daily",p:275,d:"Vitamines quotidiennes.",i:"https://i.postimg.cc/6QP1MdHp/Screenshot-20260210-151323-Google.jpg"},
-{n:"Forever Fiber",p:327,d:"Confort digestif.",i:"https://i.postimg.cc/MGp5JnZB/Screenshot-20260208-173222-Google.jpg"},
-{n:"Forever Lean",p:515,d:"Gestion du poids.",i:"https://i.postimg.cc/vZfRg2X4/Screenshot-20260210-150925-Google.jpg"},
-{n:"Forever Move",p:821,d:"Souplesse articulaire.",i:"https://i.postimg.cc/xjzhj0Ns/Screenshot-20260209-193412-Google.jpg"},
-{n:"Gel d'Aloe Vera",p:425,d:"Immunité et vitalité.",i:"https://i.postimg.cc/fWGXbLs2/Screenshot-20260209-134848-Google.jpg"},
-{n:"Gelée Royale",p:539,d:"Tonique naturel.",i:"https://i.postimg.cc/wjKX41VQ/Screenshot-20260210-145639-Google.jpg"},
-{n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
-{n:"Liquid Soap",p:255,d:"Nettoyage doux.",i:"https://i.postimg.cc/t4njpC8c/Screenshot-20260210-153737-Google.jpg"},
-{n:"Moisturizing",p:242,d:"Hydratation quotidienne.",i:"https://i.postimg.cc/rm8zYrKc/Screenshot-20260210-151745-Google.jpg"},
-{n:"Pro-B",p:483,d:"Flore intestinale.",i:"https://i.postimg.cc/KjBz18g0/Screenshot-20260210-144712-Chrome.jpg"},
-{n:"Propolis comprimés",p:520,d:"Immunité renforcée.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"},
-{n:"Propolis crème",p:322,d:"Apaisement cutané.",i:"https://i.postimg.cc/fWx6ZWGJ/Screenshot-20260208-224128-Chrome.jpg"},
-{n:"Sunscreen",p:273,d:"Protection solaire.",i:"https://i.postimg.cc/RCkVp0w8/Screenshot-20260208-223719-Chrome.jpg"},
-{n:"Therm",p:488,d:"Métabolisme.",i:"https://i.postimg.cc/5N8pwccG/Screenshot-20260210-150057-Google.jpg"},
-{n:"Thermogen",p:242,d:"Gestion du poids.",i:"https://i.postimg.cc/mZK1ThnM/Screenshot-20260210-152013-Google.jpg"},
-{n:"Ultra Lite Plus",p:344,d:"Shake protéiné.",i:"https://i.postimg.cc/yxnvMcVL/Screenshot-20260210-155747-Google.jpg"},
-{n:"Vitolize Men",p:458,d:"Vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
-{n:"Vitolize Women",p:418,d:"Équilibre féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"}
+  {n:"Kids",p:227,d:"Vitamines enfants.",i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"},
+  {n:"Propolis comprimés",p:520,d:"Immunité renforcée.",i:"https://i.postimg.cc/VNFsVqmM/Screenshot-20260209-193900-Google.jpg"}
 ];
+
 const kidsDetails = `
 <h3>Informations détaillées – Kids Vitamins Forever</h3>
 
 <p>
 Les Vitamines Enfants Kids Forever sont un complément alimentaire destiné
 aux enfants à partir de <strong>4 ans</strong> ainsi qu’aux jeunes adultes,
-notamment en cas de fatigue passagère, de baisse d’énergie ou de rythme scolaire soutenu.
+notamment en cas de fatigue passagère ou de baisse d’énergie.
 </p>
 
 <p>
-Elles contiennent <strong>12 vitamines essentielles</strong> ainsi que
-<strong>2 minéraux (fer et zinc)</strong>, contribuant au métabolisme énergétique,
-au bon fonctionnement du système nerveux et au soutien des défenses naturelles.
+Elles contiennent <strong>12 vitamines essentielles</strong> et
+<strong>2 minéraux (fer et zinc)</strong> contribuant au métabolisme énergétique,
+au système nerveux et aux défenses naturelles.
 </p>
-
-<h4>Vitamines et minéraux – rôles principaux</h4>
-
-<p><strong>Vitamines du groupe B (B1, B2, B3, B5, B6, B8, B9, B12)</strong></p>
-<ul>
-<li>B1 : métabolisme énergétique et système nerveux</li>
-<li>B2 : vision normale et protection contre le stress oxydatif</li>
-<li>B3 : fonctionnement du système nerveux</li>
-<li>B5 : synthèse hormonale et neurotransmetteurs</li>
-<li>B6 : défenses naturelles</li>
-<li>Biotine (B8) : peau, cheveux et muqueuses</li>
-<li>B9 & B12 : formation des globules rouges</li>
-</ul>
-
-<p><strong>Vitamine C</strong> : contribue à la formation du collagène
-(os, dents, cartilages, gencives).</p>
-
-<p><strong>Vitamine D</strong> : soutient le système immunitaire.</p>
-
-<p><strong>Vitamine E</strong> : protège les cellules contre le stress oxydatif.</p>
-
-<p><strong>Fer</strong> : contribue à la réduction de la fatigue chronique.</p>
-<p><strong>Zinc</strong> : soutient les défenses naturelles et les fonctions cognitives.</p>
 
 <h4>Composition</h4>
 <ul>
-<li>Contenance : <strong>120 comprimés</strong></li>
-<li>12 vitamines + fer et zinc</li>
-<li>Sans gluten</li>
+  <li>12 vitamines + fer et zinc</li>
+  <li>120 comprimés</li>
+  <li>Sans gluten</li>
 </ul>
 
 <h4>Conseils d’utilisation</h4>
 <p>
-Enfants à partir de 4 ans et jeunes adultes.<br>
+Enfants à partir de 4 ans.<br>
 <strong>Sucer ou croquer 4 comprimés par jour.</strong>
 </p>
 
 <p>
 Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
-Ne pas dépasser la dose journalière recommandée.<br>
-Tenir hors de portée des enfants.
+Ne pas dépasser la dose recommandée.
 </p>
 `;
+
 let selected=null;
 let cart=[];
 
@@ -173,49 +118,67 @@ const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
 const totalSpan=document.getElementById("total");
+const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
+  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
 
-function toggleList(){list.style.display=list.style.display==="block"?"none":"block";}
+function toggleList(){
+  list.style.display=list.style.display==="block"?"none":"block";
+}
 
 function selectProduct(i){
-selected=products[i];
-list.style.display="none";
-preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p><p><strong>${selected.p} DH</strong></p>`;
+  selected=products[i];
+  list.style.display="none";
+
+  preview.innerHTML=`
+    <img src="${selected.i}">
+    <p><strong>${selected.n}</strong></p>
+    <p>${selected.d}</p>
+    <p><strong>${selected.p} DH</strong></p>
+  `;
+
+  if(selected.n==="Kids"){
+    detailsDiv.innerHTML=kidsDetails;
+  } else {
+    detailsDiv.innerHTML="";
+  }
 }
 
 function addToCart(){
-if(!selected){alert("Choisissez un produit");return;}
-const q=parseInt(document.getElementById("qty").value);
-cart.push({...selected,q});
-renderCart();
+  if(!selected){alert("Choisissez un produit");return;}
+  const q=parseInt(document.getElementById("qty").value);
+  cart.push({...selected,q});
+  renderCart();
 }
 
 function renderCart(){
-cartDiv.innerHTML="";
-let total=0;
-cart.forEach((c,i)=>{
-total+=c.p*c.q;
-cartDiv.innerHTML+=`<div class="cart-row"><div class="cart-images"><img src="${c.i}"></div>${c.n} x ${c.q}<span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span></div>`;
-});
-totalSpan.textContent=total;
+  cartDiv.innerHTML="";
+  let total=0;
+  cart.forEach((c,i)=>{
+    total+=c.p*c.q;
+    cartDiv.innerHTML+=`
+      <div class="cart-row">
+        ${c.n} x ${c.q}
+        <span class="remove" onclick="cart.splice(${i},1);renderCart()">Supprimer</span>
+      </div>`;
+  });
+  totalSpan.textContent=total;
 }
 
 function sendWhatsApp(){
-const cname=document.getElementById("customerName").value.trim();
-const caddr=document.getElementById("customerAddress").value.trim();
-<div id="productDetails" class="small" style="margin-top:15px"></div>
-if(!cname || !caddr){alert("Veuillez compléter vos informations");return;}
-if(cart.length===0){alert("Panier vide");return;}
+  const cname=document.getElementById("customerName").value.trim();
+  const caddr=document.getElementById("customerAddress").value.trim();
+  if(!cname||!caddr){alert("Veuillez compléter vos informations");return;}
+  if(cart.length===0){alert("Panier vide");return;}
 
-let msg="Commande Équilibre Vital%0A%0A";
-let total=0;
-cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
-msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}%0APaiement à la livraison`;
+  let msg="Commande Équilibre Vital%0A%0A";
+  let total=0;
+  cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
+  msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}`;
 
-window.open("https://wa.me/212752789277?text="+msg,"_blank");
+  window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
 
