@@ -109,7 +109,63 @@ const products = [
 {n:"Vitolize Men",p:458,d:"Vitalité masculine.",i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"},
 {n:"Vitolize Women",p:418,d:"Équilibre féminin.",i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg"}
 ];
+const kidsDetails = `
+<h3>Informations détaillées – Kids Vitamins Forever</h3>
 
+<p>
+Les Vitamines Enfants Kids Forever sont un complément alimentaire destiné
+aux enfants à partir de <strong>4 ans</strong> ainsi qu’aux jeunes adultes,
+notamment en cas de fatigue passagère, de baisse d’énergie ou de rythme scolaire soutenu.
+</p>
+
+<p>
+Elles contiennent <strong>12 vitamines essentielles</strong> ainsi que
+<strong>2 minéraux (fer et zinc)</strong>, contribuant au métabolisme énergétique,
+au bon fonctionnement du système nerveux et au soutien des défenses naturelles.
+</p>
+
+<h4>Vitamines et minéraux – rôles principaux</h4>
+
+<p><strong>Vitamines du groupe B (B1, B2, B3, B5, B6, B8, B9, B12)</strong></p>
+<ul>
+<li>B1 : métabolisme énergétique et système nerveux</li>
+<li>B2 : vision normale et protection contre le stress oxydatif</li>
+<li>B3 : fonctionnement du système nerveux</li>
+<li>B5 : synthèse hormonale et neurotransmetteurs</li>
+<li>B6 : défenses naturelles</li>
+<li>Biotine (B8) : peau, cheveux et muqueuses</li>
+<li>B9 & B12 : formation des globules rouges</li>
+</ul>
+
+<p><strong>Vitamine C</strong> : contribue à la formation du collagène
+(os, dents, cartilages, gencives).</p>
+
+<p><strong>Vitamine D</strong> : soutient le système immunitaire.</p>
+
+<p><strong>Vitamine E</strong> : protège les cellules contre le stress oxydatif.</p>
+
+<p><strong>Fer</strong> : contribue à la réduction de la fatigue chronique.</p>
+<p><strong>Zinc</strong> : soutient les défenses naturelles et les fonctions cognitives.</p>
+
+<h4>Composition</h4>
+<ul>
+<li>Contenance : <strong>120 comprimés</strong></li>
+<li>12 vitamines + fer et zinc</li>
+<li>Sans gluten</li>
+</ul>
+
+<h4>Conseils d’utilisation</h4>
+<p>
+Enfants à partir de 4 ans et jeunes adultes.<br>
+<strong>Sucer ou croquer 4 comprimés par jour.</strong>
+</p>
+
+<p>
+Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+Ne pas dépasser la dose journalière recommandée.<br>
+Tenir hors de portée des enfants.
+</p>
+`;
 let selected=null;
 let cart=[];
 
@@ -150,7 +206,7 @@ totalSpan.textContent=total;
 function sendWhatsApp(){
 const cname=document.getElementById("customerName").value.trim();
 const caddr=document.getElementById("customerAddress").value.trim();
-
+<div id="productDetails" class="small" style="margin-top:15px"></div>
 if(!cname || !caddr){alert("Veuillez compléter vos informations");return;}
 if(cart.length===0){alert("Panier vide");return;}
 
