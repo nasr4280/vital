@@ -63,6 +63,7 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
   </p>
 
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
@@ -78,185 +79,98 @@ const products = [
 /* ================= TEXTES DÉTAILLÉS ================= */
 const detailsByProduct = {
 
-"Vitolize Women": `
-<h3>VITOLIZE WOMEN</h3>
-<h4>Vitolize Women : Comment Énergiser Votre Vie et Épanouir Votre Féminité</h4>
-
-<p>Vitolize Women Forever est un mélange de plantes, de vitamines et de minéraux riches en antioxydants, spécialement conçu pour les femmes.</p>
-
-<p>Il contient notamment de la vitamine B6 qui contribue à l’équilibre hormonal, ainsi que de la passiflore aidant à réduire le stress et à soutenir la fonction urinaire.</p>
-
-<p>Le magnésium, la vitamine C et les vitamines B participent à la production hormonale, souvent perturbée par le stress, certains médicaments ou la ménopause.</p>
-
-<p>Le calcium et le fer contribuent à la santé cardiovasculaire et osseuse.</p>
-
-<h4>COMPOSITION</h4>
-<p>120 tablettes – schisandra, canneberge, pomme, magnésium, vitamines C, D, B12.</p>
-
-<h4>UTILISATION</h4>
-<p>4 capsules par jour.</p>
-
-<h4>BIENFAITS</h4>
-<ul>
-<li>Équilibre hormonal</li>
-<li>Bien-être féminin</li>
-<li>Vitalité et libido</li>
-<li>Sans gluten</li>
-</ul>
-`,
 "Kids": `
 <h3>VITAMINES ENFANTS KIDS FOREVER</h3>
 
 <p><strong>Complément alimentaire pour vos enfants, fer, zinc, magnésium et vitamines.</strong></p>
 
 <p>
-C’est idéal pour les enfants à partir de 4 ans jusqu’à la fin de l’adolescence,
+Idéal pour les enfants à partir de 4 ans jusqu’à la fin de l’adolescence,
 ainsi que pour les adultes en cas de fatigue passagère.
 Il renferme 12 vitamines et 2 minéraux.
-Vitamines enfants Kids Forever aide les enfants à lutter contre la fatigue et les infections.
 </p>
 
 <p>
-Il favorise le développement cognitif de l’enfant et de l’adolescent,
-et possède un agréable goût de fraise.
-Les vitamines contenues dans Forever Kids ont une action positive sur la fatigue des enfants.
-</p>
-
-<h4>Vitamines de Forever Kids</h4>
-
-<p><strong>La vitamine A</strong> contribue au maintien de la peau et des muqueuses et d’une vision normale.</p>
-
-<p>
-<strong>Les vitamines du groupe B (B1, B2, B3, B5, B6, B8, B9 et B12)</strong>
-jouent un rôle prépondérant dans le métabolisme des cellules.
-Elles contribuent au métabolisme du fer et à la réduction de la fatigue.
-</p>
-
-<p><strong>La vitamine B1</strong> contribue au métabolisme énergétique et à la fonction normale du système nerveux.</p>
-
-<p>
-<strong>La vitamine B2</strong> contribue au maintien d’une vision normale,
-à la protection des cellules contre le stress oxydatif
-et à la réduction de la fatigue.
-</p>
-
-<p>
-<strong>La vitamine B3</strong> contribue au rendement normal du métabolisme énergétique
-et au fonctionnement normal du système nerveux.
-</p>
-
-<p>
-<strong>L’acide pantothénique ou vitamine B5</strong>
-contribue à la synthèse et aux métabolismes normaux
-des hormones stéroïdiennes, de la vitamine D
-et de certains neurotransmetteurs.
-</p>
-
-<p>
-<strong>La vitamine B6</strong> contribue à la fonction des défenses naturelles
-et du système nerveux.
-</p>
-
-<p>
-<strong>La biotine ou vitamine B8</strong>
-contribue au maintien des cheveux, de la peau et des muqueuses.
-</p>
-
-<p>
-<strong>La vitamine B9</strong>, comme la vitamine B12,
-contribue à la formation des globules rouges.
-</p>
-
-<p>
-<strong>La vitamine C</strong> favorise la formation du collagène,
-essentiel au bon développement des os, des dents,
-des cartilages, des gencives, de la peau
-et des vaisseaux sanguins.
-</p>
-
-<p>
-<strong>La vitamine D</strong> protège l’organisme contre les infections
-en agissant sur le système immunitaire.
-</p>
-
-<p>
-<strong>La vitamine E</strong> contribue à la protection des cellules
-contre le stress oxydatif.
-</p>
-
-<p>
-<strong>Le fer</strong> contribue à la réduction de la fatigue chronique.
-</p>
-
-<p>
-<strong>Le zinc</strong> contribue à la fonction des défenses naturelles,
-au maintien de la vision,
-à la division cellulaire
-et à la fonction cognitive normale.
+Vitamines enfants Kids Forever aide à lutter contre la fatigue et les infections,
+favorise le développement cognitif de l’enfant et de l’adolescent,
+avec un agréable goût de fraise.
 </p>
 
 <h4>COMPOSITION DU PRODUIT</h4>
-<p><strong>Contenance :</strong> 120 comprimés</p>
-<p>12 vitamines, fer, zinc.</p>
+<p>Contenance : 120 comprimés<br>12 vitamines, fer, zinc.</p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p>
-Vitamines enfants Kids Forever : conseillées pour les enfants à partir de 4 ans
-et les jeunes adultes.
-<br><strong>Sucer ou croquer 4 comprimés dans la journée.</strong>
-</p>
+<p><strong>Sucer ou croquer 4 comprimés dans la journée.</strong></p>
 
-<h4>BIENFAITS DE KIDS FOREVER ENFANT</h4>
+<h4>BIENFAITS</h4>
 <ul>
 <li>Manque de sommeil</li>
 <li>Mauvaise alimentation</li>
 <li>Rythme scolaire soutenu</li>
-<li>Contre la fatigue chronique chez l’enfant</li>
-<li>Favorise l’attention, la mémoire, le langage et les fonctions visuo-spatiales</li>
-<li><strong>Sans Gluten</strong></li>
+<li>Fatigue chronique chez l’enfant</li>
+<li>Favorise l’attention, la mémoire et le langage</li>
+<li><strong>Sans gluten</strong></li>
 </ul>
-`
-"Vitolize Men": `
-<h3>VITOLIZE MEN</h3>
+`,
 
-<h4>Vitolize Men Forever : Le Secret pour une Vitalité Éternelle et une Performance Optimale</h4>
+"Propolis comprimés": `
+<h3>PROPOLIS FOREVER</h3>
+<p>
+La propolis est une substance naturelle produite par les abeilles,
+traditionnellement utilisée pour soutenir les défenses naturelles
+et le bien-être général.
+</p>
 
-<h4>Prostate et Libido</h4>
+<h4>CONSEILS D’UTILISATION</h4>
+<p><strong>2 comprimés par jour.</strong></p>
+`,
+
+"Vitolize Women": `
+<h3>VITOLIZE WOMEN</h3>
 
 <p>
-Vitolize Men Forever (homme) contient des vitamines, des minéraux et des phytostérols issus de l’huile de pépins de courge. Cette formule contribue au bon fonctionnement de la prostate.
+Vitolize Women Forever est un mélange de plantes, vitamines et minéraux
+riche en antioxydants, spécialement conçu pour les femmes.
 </p>
 
 <p>
-Il participe au maintien de la fertilité, de la reproduction et d’un taux normal de testostérone dans le sang. Il aide à réguler l’activité hormonale et le sélénium contribue à une spermatogenèse normale.
+Il aide à réguler l’équilibre hormonal, réduire le stress
+et soutenir la vitalité féminine.
 </p>
 
-<p>
-L’huile de pépins de citrouille possède une action diurétique aidant à soulager les troubles urinaires liés à la vessie irritable ou à l’hypertrophie bénigne de la prostate (HBP).
-</p>
-
-<p>
-La peau de grenade est reconnue pour ses propriétés antioxydantes. La vitamine B6 contribue à la régulation hormonale, tandis que les vitamines C, D et E aident à lutter contre le stress oxydatif.
-</p>
-
-<p>
-Le zinc contribue au maintien d’un taux normal de testostérone et le sélénium soutient la spermatogenèse.
-</p>
-
-<h4>COMPOSITION</h4>
-<p>Contenance : 60 capsules</p>
-<p>Huile d’olive extra vierge, gélatine de poisson, huile de pépins de courge, extrait de grenade, vitamines C, D, E, B6, zinc, sélénium, lécithine de soja.</p>
-
-<h4>UTILISATION</h4>
-<p>2 capsules par jour.</p>
+<h4>CONSEILS D’UTILISATION</h4>
+<p><strong>4 capsules par jour.</strong></p>
 
 <h4>BIENFAITS</h4>
 <ul>
-<li>Soutien de la prostate</li>
-<li>Amélioration du confort urinaire</li>
-<li>Libido et vitalité masculine</li>
-<li>Spermatogenèse normale</li>
-<li>Sans gluten</li>
+<li>Troubles hormonaux</li>
+<li>Règles douloureuses</li>
+<li>Vitalité et désir</li>
+<li><strong>Sans gluten</strong></li>
+</ul>
+`,
+
+"Vitolize Men": `
+<h3>VITOLIZE MEN</h3>
+
+<p>
+Vitolize Men Forever contribue au bon fonctionnement de la prostate,
+au maintien de la fertilité et du taux de testostérone.
+</p>
+
+<p>
+Il aide à soulager les troubles urinaires et favorise la libido.
+</p>
+
+<h4>CONSEILS D’UTILISATION</h4>
+<p><strong>2 capsules par jour.</strong></p>
+
+<h4>BIENFAITS</h4>
+<ul>
+<li>Fonctionnement normal de la prostate</li>
+<li>Libido</li>
+<li>Vitalité masculine</li>
+<li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
@@ -264,6 +178,7 @@ Le zinc contribue au maintien d’un taux normal de testostérone et le séléni
 /* ================= LOGIQUE ================= */
 let selected=null;
 let cart=[];
+
 const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
@@ -281,12 +196,14 @@ function toggleList(){
 function selectProduct(i){
   selected=products[i];
   list.style.display="none";
+
   preview.innerHTML=`
     <img src="${selected.i}">
     <p><strong>${selected.n}</strong></p>
     <p>${selected.d}</p>
     <p><strong>${selected.p} DH</strong></p>
   `;
+
   detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
 }
 
@@ -318,10 +235,15 @@ function sendWhatsApp(){
     alert("Informations manquantes");
     return;
   }
+
   let msg="Commande Équilibre Vital%0A%0A";
   let total=0;
-  cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
+  cart.forEach(c=>{
+    total+=c.p*c.q;
+    msg+=`- ${c.n} x ${c.q}%0A`;
+  });
   msg+=`%0ATotal : ${total} DH%0ANom : ${cname}%0AAdresse : ${caddr}`;
+
   window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
