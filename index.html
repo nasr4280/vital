@@ -17,7 +17,7 @@ h1{text-align:center}
 #preview img{max-width:160px;margin-top:10px}
 .cart-row{margin-top:8px}
 .remove{font-size:12px;color:red;cursor:pointer;margin-left:10px}
-button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;padding:10px}
+button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;padding:10px;width:100%}
 .small{font-size:13px;color:#555;line-height:1.7}
 select,input{width:100%;padding:10px;margin-top:8px}
 </style>
@@ -27,7 +27,7 @@ select,input{width:100%;padding:10px;margin-top:8px}
 
 <h1>🟢 Équilibre Vital</h1>
 
-<!-- PRODUIT -->
+<!-- PRODUITS -->
 <div class="card">
   <h3>Choisir un produit</h3>
   <div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
@@ -63,68 +63,43 @@ select,input{width:100%;padding:10px;margin-top:8px}
 <script>
 /* ================= PRODUITS ================= */
 const products = [
-  {
-    n:"Kids",
-    p:227,
-    d:"Vitamines enfants – énergie, croissance et immunité.",
-    i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"
-  },
-  {
-    n:"Vitolize Men",
-    p:458,
-    d:"Prostate, libido et vitalité masculine.",
-    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
-  }
+  { n:"Kids", p:227, d:"Vitamines enfants – énergie, croissance et immunité.",
+    i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg" },
+
+  { n:"Vitolize Men", p:458, d:"Prostate, libido et vitalité masculine.",
+    i:"https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg" },
+
+  { n:"Vitolize Women", p:418, d:"Équilibre hormonal et vitalité féminine.",
+    i:"https://i.postimg.cc/13vVD4fH/Screenshot-20260210-135156-Google.jpg" }
 ];
 
-/* ================= TEXTES DÉTAILLÉS ================= */
+/* ================= TEXTES ================= */
 const detailsByProduct = {
 
 "Kids": `
 <h3>VITAMINES ENFANTS KIDS FOREVER</h3>
 
 <p>
-Kids Forever est un complément alimentaire spécialement conçu pour les enfants
-à partir de <strong>4 ans</strong>, mais également adapté aux adolescents et aux adultes
-en cas de fatigue passagère.
+Complément alimentaire destiné aux enfants à partir de 4 ans, aux adolescents
+et aux adultes en cas de fatigue passagère.
 </p>
 
 <p>
-Sa formule associe <strong>12 vitamines essentielles</strong> et <strong>2 minéraux clés : le fer et le zinc</strong>.
-Elle contribue à soutenir l’énergie, les défenses naturelles et le bon développement
-cognitif de l’enfant.
+Il renferme 12 vitamines essentielles ainsi que du fer et du zinc,
+contribuant au développement cognitif, à l’énergie et aux défenses naturelles.
 </p>
 
-<p>
-Les vitamines du groupe B jouent un rôle majeur dans le métabolisme énergétique
-et aident à réduire la fatigue.  
-La vitamine C participe à la formation du collagène et soutient les os, les dents
-et le système immunitaire.  
-La vitamine D aide l’organisme à mieux se défendre contre les infections.
-</p>
-
-<p>
-Le fer contribue à réduire la fatigue chronique, tandis que le zinc soutient
-les défenses naturelles, la vision et les fonctions cognitives.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p>
-Contenance : <strong>120 comprimés</strong><br>
-12 vitamines, fer et zinc.
-</p>
+<h4>COMPOSITION</h4>
+<p>120 comprimés – 12 vitamines, fer et zinc.</p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p>
-<strong>Sucer ou croquer 4 comprimés par jour.</strong>
-</p>
+<p><strong>Sucer ou croquer 4 comprimés par jour.</strong></p>
 
-<h4>BIENFAITS DE KIDS FOREVER</h4>
+<h4>BIENFAITS</h4>
 <ul>
-<li>Aide à lutter contre la fatigue chez l’enfant</li>
-<li>Soutient l’attention, la mémoire et l’apprentissage</li>
-<li>Accompagne les périodes de rythme scolaire soutenu</li>
-<li>Contribue aux défenses naturelles</li>
+<li>Aide contre la fatigue chronique</li>
+<li>Soutient la mémoire et la concentration</li>
+<li>Accompagne les périodes scolaires intenses</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `,
@@ -132,75 +107,80 @@ Contenance : <strong>120 comprimés</strong><br>
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
 
-<p><strong>
-Vitolize Men Forever : la clé d’une vitalité durable et d’une performance masculine optimale
-</strong></p>
-
-<h4>Prostate et libido</h4>
+<p><strong>Vitalité masculine – Prostate et libido</strong></p>
 
 <p>
-Vitolize Men Forever est un complément alimentaire destiné à l’homme.
-Il associe des vitamines, des minéraux et des phytostérols issus notamment
-de l’huile de pépins de courge, reconnus pour leur action bénéfique sur
-le bon fonctionnement de la prostate.
+Formule à base de vitamines, minéraux et phytostérols issus notamment
+de l’huile de pépins de courge, contribuant au bon fonctionnement de la prostate.
 </p>
 
 <p>
-Il contribue au maintien de la fertilité, de la fonction reproductive et
-d’un taux normal de testostérone dans le sang.
-Son action aide à réguler l’activité hormonale, tandis que le sélénium
-soutient une spermatogenèse normale.
+Il participe au maintien de la fertilité, de la fonction reproductive
+et d’un taux normal de testostérone.
+</p>
+
+<h4>COMPOSITION</h4>
+<p>60 capsules – huile de pépins de courge, zinc, sélénium, vitamines C, D, E, B6.</p>
+
+<h4>UTILISATION</h4>
+<p><strong>2 capsules par jour</strong></p>
+
+<h4>BIENFAITS</h4>
+<ul>
+<li>Soulage les troubles urinaires</li>
+<li>Soutient la libido</li>
+<li>Favorise la spermatogenèse</li>
+<li><strong>Sans gluten</strong></li>
+</ul>
+`,
+
+"Vitolize Women": `
+<h3>VITOLIZE WOMEN</h3>
+
+<p><strong>Énergiser votre vie et épanouir votre féminité</strong></p>
+
+<p>
+Vitolize Women Forever est un complexe de plantes, vitamines et minéraux,
+riche en antioxydants, spécialement conçu pour les femmes.
 </p>
 
 <p>
-L’huile de pépins de courge possède des propriétés diurétiques reconnues,
-aidant à soulager les inconforts liés aux troubles urinaires et à
-l’hypertrophie bénigne de la prostate (HBP).
+Il contient notamment de la vitamine B6 qui contribue à la régulation
+de l’équilibre hormonal, ainsi que de la passiflore pour aider à réduire
+le stress et soutenir la fonction des voies urinaires.
 </p>
 
 <p>
-L’extrait de peau de grenade est reconnu pour sa forte activité antioxydante,
-participant à la protection des cellules contre le stress oxydatif.
+Le magnésium, la vitamine C et les vitamines du groupe B participent
+à la production hormonale, souvent perturbée par le stress,
+les traitements médicaux ou la ménopause.
 </p>
 
 <p>
-La vitamine B6 intervient dans la régulation hormonale.
-Les vitamines C, D et E contribuent à la protection contre les radicaux libres
-pouvant affecter la prostate.
-Le zinc aide au maintien d’un taux normal de testostérone.
+Le calcium et le fer contribuent à la santé cardiovasculaire et osseuse.
 </p>
 
-<h4>COMPOSITION DU PRODUIT</h4>
+<h4>COMPOSITION</h4>
 <p>
-Contenance : <strong>60 capsules</strong><br>
-Formule à base d’huile d’olive extra vierge.<br>
-Capsule en gélatine de poisson.<br>
-Contient notamment : huile de pépins de courge, extrait de grenade,
-vitamines C, D, E, B6, zinc, sélénium, lycopène.<br>
-Contient du poisson et du soja.
+120 tablettes – baies de schisandra, poudre de canneberge,
+poudre de pomme, magnésium, vitamines C, D et B12.
 </p>
 
 <h4>CONSEILS D’UTILISATION</h4>
-<p>
-<strong>2 capsules par jour</strong>, de préférence au cours du repas.
-</p>
+<p><strong>4 capsules par jour.</strong></p>
 
-<h4>BIENFAITS DE VITOLIZE MEN</h4>
+<h4>BIENFAITS</h4>
 <ul>
-<li>Aide à soulager les troubles urinaires</li>
-<li>Contribue au fonctionnement normal de la prostate</li>
-<li>Soutient la libido</li>
-<li>Participe à une spermatogenèse normale</li>
-<li>Aide à maintenir un taux normal de testostérone</li>
+<li>Aide à lutter contre les troubles hormonaux</li>
+<li>Réduit les règles douloureuses</li>
+<li>Soutient une vie sexuelle épanouissante</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
 
 /* ================= LOGIQUE ================= */
-let selected=null;
-let cart=[];
-
+let selected=null, cart=[];
 const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
@@ -209,10 +189,9 @@ const detailsDiv=document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
   list.innerHTML+=`
-    <div class="item" onclick="selectProduct(${i})">
-      <img src="${p.i}">
-      ${p.n} – ${p.p} DH
-    </div>`;
+  <div class="item" onclick="selectProduct(${i})">
+    <img src="${p.i}">${p.n} – ${p.p} DH
+  </div>`;
 });
 
 function toggleList(){
@@ -227,13 +206,12 @@ function selectProduct(i){
     <p><strong>${selected.n}</strong></p>
     <p>${selected.d}</p>
     <p><strong>${selected.p} DH</strong></p>`;
-  detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
+  detailsDiv.innerHTML = detailsByProduct[selected.n];
 }
 
 function addToCart(){
   if(!selected){alert("Choisissez un produit");return;}
-  const q=parseInt(document.getElementById("qty").value);
-  cart.push({...selected,q});
+  cart.push({...selected,q:parseInt(qty.value)});
   renderCart();
 }
 
@@ -243,24 +221,23 @@ function renderCart(){
   cart.forEach((c,i)=>{
     total+=c.p*c.q;
     cartDiv.innerHTML+=`
-      <div class="cart-row">
-        ${c.n} x ${c.q}
-        <span class="remove" onclick="cart.splice(${i},1);renderCart()">✖</span>
-      </div>`;
+    <div class="cart-row">
+      ${c.n} x ${c.q}
+      <span class="remove" onclick="cart.splice(${i},1);renderCart()">✖</span>
+    </div>`;
   });
   totalSpan.textContent=total;
 }
 
 function sendWhatsApp(){
-  if(cart.length===0){alert("Panier vide");return;}
-  const name=document.getElementById("customerName").value;
-  const addr=document.getElementById("customerAddress").value;
-  if(!name||!addr){alert("Informations manquantes");return;}
+  if(cart.length===0)return alert("Panier vide");
+  if(!customerName.value||!customerAddress.value)
+    return alert("Informations manquantes");
 
   let msg="Commande Équilibre Vital%0A%0A";
   let total=0;
   cart.forEach(c=>{total+=c.p*c.q;msg+=`- ${c.n} x ${c.q}%0A`;});
-  msg+=`%0ATotal : ${total} DH%0A${name}%0A${addr}`;
+  msg+=`%0ATotal : ${total} DH%0A${customerName.value}%0A${customerAddress.value}`;
 
   window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
