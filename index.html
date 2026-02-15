@@ -15,11 +15,11 @@ h1{text-align:center}
 .item img{width:42px;height:42px;object-fit:cover;margin-right:10px;border-radius:4px}
 .item:hover{background:#f0f0f0}
 #preview img{max-width:160px;margin-top:10px}
-.cart-row{margin-top:10px}
-.remove{font-size:13px;color:#444;cursor:pointer;margin-left:10px}
-select,input,button{width:100%;padding:10px;margin-top:8px}
-button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px}
+.cart-row{margin-top:8px}
+.remove{font-size:12px;color:red;cursor:pointer;margin-left:10px}
+button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;padding:10px}
 .small{font-size:13px;color:#555;line-height:1.7}
+select,input{width:100%;padding:10px;margin-top:8px}
 </style>
 </head>
 
@@ -27,6 +27,7 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 
 <h1>🟢 Équilibre Vital</h1>
 
+<!-- PRODUIT -->
 <div class="card">
   <h3>Choisir un produit</h3>
   <div class="selector" onclick="toggleList()">👇 Sélectionner un produit</div>
@@ -36,26 +37,26 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
   </select>
 
   <div id="preview"></div>
   <button onclick="addToCart()">Ajouter au panier</button>
 </div>
 
+<!-- PANIER -->
 <div class="card">
   <h3>Panier</h3>
   <div id="cart"></div>
   <p><strong>Total : <span id="total">0</span> DH</strong></p>
 </div>
 
+<!-- LIVRAISON -->
 <div class="card">
   <h3>Informations de livraison</h3>
   <input id="customerName" placeholder="Nom et prénom">
   <input id="customerAddress" placeholder="Adresse de livraison">
-
   <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+
   <div id="productDetails" class="small" style="margin-top:15px"></div>
 </div>
 
@@ -63,9 +64,9 @@ button{background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16p
 /* ================= PRODUITS ================= */
 const products = [
   {
-    n:"Kids Forever",
+    n:"Kids",
     p:227,
-    d:"Vitamines enfants – fer, zinc, magnésium et vitamines.",
+    d:"Vitamines enfants – fer, zinc, magnésium.",
     i:"https://i.postimg.cc/Ss52XP1s/Screenshot-20260210-145857-Google.jpg"
   },
   {
@@ -79,100 +80,120 @@ const products = [
 /* ================= TEXTES DÉTAILLÉS ================= */
 const detailsByProduct = {
 
+"Kids": `
+<h3>VITAMINES ENFANTS KIDS FOREVER</h3>
+<p>
+Complément alimentaire pour enfants à partir de 4 ans, contenant 12 vitamines,
+fer et zinc. Idéal en cas de fatigue, rythme scolaire soutenu ou alimentation déséquilibrée.
+</p>
+
+<h4>COMPOSITION</h4>
+<p>Contenance : 120 comprimés<br>12 vitamines, fer, zinc.</p>
+
+<h4>CONSEILS D’UTILISATION</h4>
+<p>Sucer ou croquer 4 comprimés par jour.</p>
+
+<h4>BIENFAITS</h4>
+<ul>
+<li>Réduction de la fatigue</li>
+<li>Soutien de l’attention et de la mémoire</li>
+<li>Renforcement des défenses naturelles</li>
+<li><strong>Sans gluten</strong></li>
+</ul>
+`,
+
 "Vitolize Men": `
 <h3>VITOLIZE MEN</h3>
 
-<p><strong>Vitolize Men Forever : la clé d’une vitalité durable et d’une performance masculine optimale</strong></p>
-
-<h4>Prostate et libido</h4>
+<p><strong>Vitolize Men Forever : vitalité masculine et performance optimale</strong></p>
 
 <p>
-Vitolize Men Forever est un complément alimentaire destiné à l’homme.
-Il associe des vitamines, des minéraux et des phytostérols issus notamment
-de l’huile de pépins de courge.
-Cette formulation contribue au bon fonctionnement de la prostate.
+Complément alimentaire associant vitamines, minéraux et phytostérols issus
+de l’huile de pépins de courge pour soutenir la prostate, la fertilité et
+un taux normal de testostérone.
 </p>
 
-<p>
-Il participe également au maintien de la fertilité, de la fonction reproductive
-et à un taux normal de testostérone dans le sang.
-Son action aide à réguler l’activité hormonale,
-tandis que le sélénium soutient une spermatogenèse normale.
-</p>
+<h4>COMPOSITION</h4>
+<p>60 capsules – huile de pépins de courge, zinc, sélénium, vitamines C, D, E, B6.</p>
 
-<p>
-L’huile de pépins de courge possède des propriétés diurétiques reconnues.
-Elle aide à soulager les inconforts liés à une vessie irritable ou hyperactive
-ainsi que les troubles urinaires associés à l’hypertrophie bénigne de la prostate (HBP).
-</p>
+<h4>UTILISATION</h4>
+<p>2 capsules par jour, au cours du repas.</p>
 
-<p>
-L’extrait de peau de grenade est reconnu pour sa forte activité antioxydante,
-contribuant à la protection des cellules contre le stress oxydatif.
-</p>
-
-<p>
-La vitamine B6 intervient dans la régulation de l’activité hormonale.
-Les vitamines C, D et E contribuent à la protection contre les radicaux libres
-responsables des phénomènes oxydatifs pouvant affecter la prostate.
-</p>
-
-<p>
-Le zinc aide au maintien d’un taux normal de testostérone,
-tandis que le sélénium joue un rôle essentiel
-dans la production normale des spermatozoïdes.
-</p>
-
-<h4>COMPOSITION DU PRODUIT</h4>
-<p><strong>Contenance :</strong> 60 capsules</p>
-
-<p>
-Formule à base d’huile d’olive extra vierge.
-Capsule en gélatine de poisson.
-Contient notamment : huile de pépins de courge (Cucurbita pepo),
-extrait de peau de grenade (Punica granatum) standardisé,
-vitamine C, zinc, lycopène, vitamine E, vitamine D,
-vitamine B6, sélénium, lécithine de soja.
-</p>
-
-<p>Contient du poisson et du soja.</p>
-<p>La composition peut être modifiée ; se référer à l’emballage du produit.</p>
-
-<h4>CONSEILS D’UTILISATION</h4>
-<p>2 capsules par jour, de préférence au cours du repas.</p>
-
-<h4>BIENFAITS DE VITOLIZE MEN FOREVER (HOMME)</h4>
+<h4>BIENFAITS</h4>
 <ul>
-<li>Aide à soulager les troubles urinaires</li>
-<li>Contribue au fonctionnement normal de la prostate</li>
-<li>Soutient la libido</li>
-<li>Participe au bon déroulement de la spermatogenèse</li>
-<li>Aide à maintenir un taux normal de testostérone</li>
+<li>Fonctionnement normal de la prostate</li>
+<li>Soutien de la libido</li>
+<li>Spermatogenèse normale</li>
 <li><strong>Sans gluten</strong></li>
 </ul>
 `
 };
 
 /* ================= LOGIQUE ================= */
-let selected=null;
-let cart=[];
-const list=document.getElementById("productList");
-const preview=document.getElementById("preview");
-const detailsDiv=document.getElementById("productDetails");
-const cartDiv=document.getElementById("cart");
-const totalSpan=document.getElementById("total");
+let selected = null;
+let cart = [];
+
+const list = document.getElementById("productList");
+const preview = document.getElementById("preview");
+const cartDiv = document.getElementById("cart");
+const totalSpan = document.getElementById("total");
+const detailsDiv = document.getElementById("productDetails");
 
 products.forEach((p,i)=>{
-  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
+  list.innerHTML += `
+    <div class="item" onclick="selectProduct(${i})">
+      <img src="${p.i}">${p.n} – ${p.p} DH
+    </div>`;
 });
 
-function toggleList(){list.style.display=list.style.display==="block"?"none":"block";}
+function toggleList(){
+  list.style.display = list.style.display==="block" ? "none" : "block";
+}
 
 function selectProduct(i){
-  selected=products[i];
+  selected = products[i];
   list.style.display="none";
-  preview.innerHTML=`<img src="${selected.i}"><p><strong>${selected.n}</strong></p><p>${selected.d}</p>`;
+  preview.innerHTML = `
+    <img src="${selected.i}">
+    <p><strong>${selected.n}</strong></p>
+    <p>${selected.d}</p>
+    <p><strong>${selected.p} DH</strong></p>`;
   detailsDiv.innerHTML = detailsByProduct[selected.n] || "";
+}
+
+function addToCart(){
+  if(!selected){ alert("Choisissez un produit"); return; }
+  const q = parseInt(document.getElementById("qty").value);
+  cart.push({...selected, q});
+  renderCart();
+}
+
+function renderCart(){
+  cartDiv.innerHTML="";
+  let total=0;
+  cart.forEach((c,i)=>{
+    total += c.p * c.q;
+    cartDiv.innerHTML += `
+      <div class="cart-row">
+        ${c.n} x ${c.q}
+        <span class="remove" onclick="cart.splice(${i},1);renderCart()">✖</span>
+      </div>`;
+  });
+  totalSpan.textContent = total;
+}
+
+function sendWhatsApp(){
+  if(cart.length===0){alert("Panier vide");return;}
+  const name=document.getElementById("customerName").value;
+  const addr=document.getElementById("customerAddress").value;
+  if(!name||!addr){alert("Infos manquantes");return;}
+
+  let msg="Commande Équilibre Vital%0A%0A";
+  let total=0;
+  cart.forEach(c=>{total+=c.p*c.q; msg+=`- ${c.n} x ${c.q}%0A`;});
+  msg+=`%0ATotal : ${total} DH%0A${name}%0A${addr}`;
+
+  window.open("https://wa.me/212752789277?text="+msg,"_blank");
 }
 </script>
 
