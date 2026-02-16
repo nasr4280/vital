@@ -97,6 +97,9 @@ const products = [
  {n:"Moisturizing",p:242,d:"Crème hydratante.",i:"https://i.postimg.cc/rm8zYrKc/Screenshot-20260210-151745-Google.jpg"},
   {n:"Aloe MSM",p:376,d:"Soutient le confort des articulations et des muscles.",i:"https://i.postimg.cc/8c4R0G1H/Screenshot-20260210-151519-Google.jpg"},
 
+{n:"Thermogen",p:242,d:"Aide à stimuler le métabolisme et l’énergie.",i:"https://i.postimg.cc/mZK1ThnM/Screenshot-20260210-152013-Google.jpg"},
+
+
 ];
 
 /* ================= LOGIQUE ================= */
@@ -105,7 +108,6 @@ const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
 const totalSpan=document.getElementById("total");
-
 products.forEach((p,i)=>{
  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
