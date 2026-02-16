@@ -199,6 +199,7 @@ const list=document.getElementById("productList");
 const preview=document.getElementById("preview");
 const cartDiv=document.getElementById("cart");
 const totalSpan=document.getElementById("total");
+  products.sort((a,b)=> a.n.localeCompare(b.n));
 products.forEach((p,i)=>{
  list.innerHTML+=`<div class="item" onclick="selectProduct(${i})"><img src="${p.i}">${p.n} – ${p.p} DH</div>`;
 });
