@@ -68,8 +68,9 @@ button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-
   <input id="name" placeholder="Nom et prénom">
   <input id="address" placeholder="Adresse de livraison">
   <input id="phone" placeholder="Téléphone / WhatsApp">
+<button onclick="sendWhatsApp()">Commander via WhatsApp</button>
 
-  <button onclick="sendWhatsApp()">Commander via WhatsApp</button>
+<div id="detailsProduit" class="small" style="margin-top:15px"></div>
 </div>
 
 <script>
@@ -193,6 +194,50 @@ const products = [
 
 // 👉 ICI tu colles les autres produits EXACTEMENT au même format
 ];
+const detailsProduits = {
+  "Kids": `
+<h3>Informations détaillées – Kids Vitamins Forever</h3>
+
+<p><strong>Kids Vitamins Forever</strong> est un complément alimentaire destiné aux enfants à partir de <strong>4 ans</strong> ainsi qu’aux jeunes adultes, notamment en cas de fatigue passagère, de baisse d’énergie ou de rythme scolaire soutenu.</p>
+
+<p>Il contient <strong>12 vitamines essentielles</strong> ainsi que <strong>2 minéraux (fer et zinc)</strong>, contribuant au métabolisme énergétique, au bon fonctionnement du système nerveux et au soutien des défenses naturelles.</p>
+
+<h4>Vitamines et minéraux – rôles principaux</h4>
+
+<p><strong>Vitamines du groupe B (B1, B2, B3, B5, B6, B8, B9, B12)</strong> : participent au métabolisme des cellules, à la réduction de la fatigue et au fonctionnement normal du système nerveux.</p>
+
+<ul>
+<li><strong>B1</strong> : métabolisme énergétique et système nerveux</li>
+<li><strong>B2</strong> : vision normale et protection contre le stress oxydatif</li>
+<li><strong>B3</strong> : fonctionnement du système nerveux</li>
+<li><strong>B5</strong> : synthèse hormonale et neurotransmetteurs</li>
+<li><strong>B6</strong> : soutien des défenses naturelles</li>
+<li><strong>Biotine (B8)</strong> : peau, cheveux et muqueuses</li>
+<li><strong>B9 & B12</strong> : formation des globules rouges</li>
+</ul>
+
+<p><strong>Vitamine C</strong> : contribue à la formation du collagène (os, dents, cartilages, gencives).</p>
+<p><strong>Vitamine D</strong> : soutient le système immunitaire.</p>
+<p><strong>Vitamine E</strong> : protège les cellules contre le stress oxydatif.</p>
+<p><strong>Fer</strong> : contribue à la réduction de la fatigue chronique.</p>
+<p><strong>Zinc</strong> : soutient les défenses naturelles et les fonctions cognitives.</p>
+
+<h4>Composition</h4>
+<ul>
+<li>Contenance : <strong>120 comprimés</strong></li>
+<li>12 vitamines + fer et zinc</li>
+<li><strong>Sans gluten</strong></li>
+</ul>
+
+<h4>Conseils d’utilisation</h4>
+<p>Enfants à partir de 4 ans et jeunes adultes.</p>
+<p><strong>Sucer ou croquer 4 comprimés par jour.</strong></p>
+
+<p><em>Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+Ne pas dépasser la dose journalière recommandée.<br>
+Tenir hors de portée des enfants.</em></p>
+`
+};
 /* ================= LOGIQUE ================= */
 let selected=null, cart=[];
 const list=document.getElementById("productList");
@@ -209,12 +254,19 @@ function toggleList(){
 }
 
 function selectProduct(i){
- selected=products[i];
- list.style.display="none";
- preview.innerHTML=`<img src="${selected.i}">
- <p><strong>${selected.n}</strong></p>
- <p>${selected.d}</p>
- <p><strong>${selected.p} DH</strong></p>`;
+  selected = products[i];
+  list.style.display = "none";
+
+  preview.innerHTML = `
+    <img src="${selected.i}">
+    <p><strong>${selected.n}</strong></p>
+    <p>${selected.d}</p>
+    <p><strong>${selected.p} DH</strong></p>
+  `;
+
+  // 🔽 AJOUT OBLIGATOIRE ICI
+  const detailsDiv = document.getElementById("detailsProduit");
+  detailsDiv.innerHTML = detailsProduits[selected.n] || "";
 }
 
 function addToCart(){
