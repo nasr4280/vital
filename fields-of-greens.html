@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fields of Greens – Équilibre Vitale</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .important {
+      background: #fff6f6;
+      border-left: 4px solid #d32f2f;
+      padding: 15px;
+      margin-top: 25px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- BADGE -->
+  <div class="badge">
+    ✅ Produit original – Forever Living<br>
+    🚚 Livraison gratuite partout au Maroc – Paiement à la livraison
+  </div>
+
+  <!-- TITRE -->
+  <h1>Fields of Greens</h1>
+  <p><strong>Complément alimentaire à base de légumes et plantes pour soutenir l’équilibre nutritionnel.</strong></p>
+
+  <!-- IMAGE PRODUIT -->
+  <img
+    src="https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
+    alt="Fields of Greens"
+    class="product-img"
+  />
+
+  <!-- POURQUOI -->
+  <h2>Pourquoi choisir Fields of Greens ?</h2>
+  <ul>
+    <li>✔️ Apporte des extraits de légumes et de plantes</li>
+    <li>✔️ Soutient l’équilibre nutritionnel</li>
+    <li>✔️ Complète une alimentation parfois déséquilibrée</li>
+    <li>✔️ Facile à intégrer dans la routine quotidienne</li>
+  </ul>
+
+  <!-- UTILISATION -->
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Adultes.<br>
+    <strong>Prendre 1 comprimé par jour</strong>, de préférence au cours d’un repas.
+  </p>
+
+  <p>
+    <small>
+      Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </small>
+  </p>
+
+  <!-- IMAGE INFO -->
+  <img
+    src="https://i.postimg.cc/nzcd0XkL/Screenshot-20260210-135926-Google.jpg"
+    alt="Informations Fields of Greens"
+    class="product-img"
+  />
+
+  <!-- PRIX -->
+  <div class="price">
+    Prix unitaire : 196 DH
+  </div>
+
+  <!-- COMMANDE -->
+  <h2>Commander</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="tel" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="index.html">
+    🔙 Voir nos autres produits
+  </a>
+
+  <!-- INFO IMPORTANTE -->
+  <div class="important">
+    <strong>⚠️ Information importante</strong><br><br>
+    Fields of Greens est un complément alimentaire destiné à accompagner
+    une alimentation équilibrée et un mode de vie sain.
+    Il ne constitue pas un traitement médical
+    et ne remplace ni un avis médical ni un traitement prescrit.
+  </div>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+function sendWhatsApp() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Fields of Greens%0A" +
+    "Prix : 196 DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
