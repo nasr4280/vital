@@ -28,12 +28,14 @@
       border-left: 4px solid #2e7d32;
       padding: 18px;
       line-height: 1.7;
+      margin-bottom: 25px;
     }
 
     .routine {
       background: #f9f9f9;
       padding: 18px;
       border-radius: 8px;
+      margin-bottom: 25px;
     }
 
     .product a {
@@ -42,17 +44,34 @@
       font-weight: 600;
     }
 
-    .prices {
+    /* BLOC PRIX CORRIGÉ */
+    .prices-box {
       background: #fafafa;
-      padding: 18px;
-      border-radius: 8px;
+      padding: 22px 20px;
+      border-radius: 10px;
+      margin: 20px auto 30px;
+      max-width: 520px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
-    .total {
-      color: #d32f2f;
-      font-weight: bold;
+    .prices-box ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .prices-box li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .total-price {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+      text-align: center;
       font-size: 22px;
-      margin-top: 12px;
+      font-weight: bold;
+      color: #d32f2f;
     }
 
     .important {
@@ -126,7 +145,6 @@
 
 <h1>Protocole d’accompagnement – Gestion du poids</h1>
 
-<!-- INTRODUCTION -->
 <div class="intro">
   La gestion du poids ne se résume pas à manger moins ou à suivre un régime strict.
   Elle repose avant tout sur <strong>l’équilibre digestif</strong>,
@@ -164,19 +182,18 @@
 </div>
 
 <h2>Prix du protocole</h2>
-<div class="prices">
+<div class="prices-box">
   <ul>
     <li>1 bouteille de Gel d’Aloe Vera : <strong>425 DH</strong></li>
     <li>1 boîte Forever Therm : <strong>488 DH</strong></li>
     <li>1 boîte Fields of Greens (comprimés) : <strong>196 DH</strong></li>
   </ul>
 
-  <div class="total">
+  <div class="total-price">
     Total du protocole : 1109 DH
   </div>
 </div>
 
-<!-- INFORMATION IMPORTANTE -->
 <div class="important">
   <strong>⚠️ Information importante</strong><br><br>
   Ce protocole est une <strong>approche d’accompagnement naturel</strong>.
@@ -188,7 +205,6 @@
 </div>
 
 <h2>Commander le protocole</h2>
-
 <p><strong>🚚 Livraison gratuite partout au Maroc – sous 48h</strong></p>
 
 <input type="text" id="name" placeholder="Nom et prénom">
@@ -196,14 +212,8 @@
 <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
 <a class="cta" href="#" onclick="sendWhatsApp()">📲 Commander via WhatsApp</a>
-
-<a class="cta-secondary" href="#" onclick="sendAccompagnement()">
-  🤝 Demander un accompagnement personnalisé
-</a>
-
-<a class="cta-tertiary" href="index.html">
-  🔙 Voir nos autres produits
-</a>
+<a class="cta-secondary" href="#" onclick="sendAccompagnement()">🤝 Demander un accompagnement personnalisé</a>
+<a class="cta-tertiary" href="index.html">🔙 Voir nos autres produits</a>
 
 <p class="note">
   Notre équipe vous accompagne avant, pendant et après la mise en place du protocole.
