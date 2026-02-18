@@ -1,73 +1,62 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forever Aloe Vera Gel – Équilibre Vitale</title>
-  <meta name="description" content="Aloe Vera Gel – soutien digestif et bien-être quotidien. Livraison au Maroc, paiement à la livraison.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aloe Vera Gel – Équilibre Vitale</title>
+  <meta name="description" content="Forever Aloe Vera Gel – soutien digestif et bien-être. Livraison partout au Maroc, paiement à la livraison." />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body><!-- Bandeau info --><div class="info-banner">
+  ✅ Produit original – Aloe Vera Forever<br>
+  🚚 Livraison partout au Maroc – Paiement à la livraison
+</div><!-- Titre produit --><h1 class="product-title">Aloe Vera Gel</h1>
+<p class="product-subtitle">
+  Boisson naturelle à base d’Aloe Vera pour soutenir la digestion et l’équilibre général.
+</p><!-- Image produit --><div class="product-image">
+  <img src="images/aloe-vera-gel.png" alt="Forever Aloe Vera Gel" />
+</div><!-- Pourquoi choisir --><h2>Pourquoi choisir Aloe Vera Gel ?</h2>
+<ul class="check-list">
+  <li>✔️ Soutient la digestion et le confort intestinal</li>
+  <li>✔️ Aide à l’hydratation interne</li>
+  <li>✔️ Favorise une meilleure assimilation</li>
+  <li>✔️ Utilisation quotidienne simple</li>
+</ul><p>Convient aux adultes et aux jeunes adultes.</p><!-- Prix --><p class="price">Prix unitaire : <span>450 DH</span></p><!-- Conseils --><h2>Conseils d’utilisation</h2>
+<p>
+  Adultes : 30 à 60 ml par jour, de préférence le matin à jeun.
+</p>
+<p class="note">
+  Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+  Ne pas dépasser la dose journalière recommandée.
+</p><!-- Commande --><h2>Commande</h2>
+<label>Quantité</label>
+<select id="quantity" onchange="updateTotal()">
+  <option value="1">1 bouteille</option>
+  <option value="2">2 bouteilles</option>
+  <option value="3">3 bouteilles</option>
+</select><p class="total">Total : <span id="total">450</span> DH</p><button class="btn-cart">🛒 Ajouter au panier</button>
 
-<!-- CONTENU PRINCIPAL -->
-<div class="produit-container">
+<p class="cart-empty">Aucun produit ajouté.</p><!-- Livraison --><h2>Informations de livraison</h2>
+<input type="text" placeholder="Nom et prénom" />
+<input type="tel" placeholder="Téléphone" />
+<textarea placeholder="Adresse de livraison"></textarea><!-- WhatsApp --><a class="btn-whatsapp" href="https://wa.me/212600000000" target="_blank">
+  📱 Commander via WhatsApp
+</a><a class="btn-all" href="index.html">Voir tous nos autres produits</a>
 
-  <!-- IMAGE DU PRODUIT -->
-  <img src="images/aloe-vera-gel.jpg" alt="Forever Aloe Vera Gel" class="produit-img">
-
-  <!-- TITRE +
-       SOUS-TITRE / DESCRIPTION COURTE -->
-  <h1 class="produit-titre">Forever Aloe Vera Gel</h1>
-  <p class="produit-sous-titre">Soutien digestif naturel & bien-être quotidien</p>
-
-  <!-- LISTE DES AVANTAGES -->
-  <ul class="produit-avantages">
-    <li>✔️ Favorise une digestion plus confortable</li>
-    <li>✔️ Aide à l’hydratation interne</li>
-    <li>✔️ Participe à l’équilibre global</li>
-    <li>✔️ Boisson naturelle à base d’Aloe Vera</li>
-  </ul>
-
-  <!-- PRIX -->
-  <p class="produit-prix">Prix : <strong>450 DH</strong></p>
-
-  <!-- BOUTON COMMANDER (WHATSAPP) -->
-  <div class="produit-cta">
-    <a href="https://wa.me/212600000000" target="_blank">📱 Commander via WhatsApp</a>
-  </div>
-
-  <!-- SECTION DETAILS LONGS -->
-  <div class="produit-details">
-    <h2>Description complète</h2>
-    <p>
-      Le Forever Aloe Vera Gel est un concentré de gel d’Aloe Vera stabilisé,
-      reconnu pour soutenir naturellement le confort digestif, aider à l’hydratation
-      interne et accompagner le bien-être global au quotidien.
-    </p>
-    <p>
-      Il est idéal pour les personnes qui veulent un soutien doux et naturel
-      sans additifs artificiels.
-    </p>
-
-    <h3>Utilisation recommandée</h3>
-    <p>
-      Prendre 30 à 60 ml par jour, de préférence le matin à jeun.
-      Peut être intégré dans une routine saine avec une alimentation équilibrée.
-    </p>
-
-    <h3>Composition</h3>
-    <p>
-      Gel d’Aloe Vera stabilisé, eau purifiée, regolateurs d’acidité.
-    </p>
-
-    <p class="produit-note">
-      ⚠️ Ce produit s’inscrit dans une démarche de bien-être.
-      Il ne remplace pas un avis médical ni un traitement prescrit.
-    </p>
-  </div>
-
-</div>
-<!-- FIN CONTENU -->
-
-</body>
+<hr /><!-- Infos détaillées --><h2>Informations détaillées – Aloe Vera Gel Forever</h2>
+<p>
+  Le Forever Aloe Vera Gel est une boisson à base de gel d’aloe vera stabilisé,
+  utilisée traditionnellement pour accompagner le confort digestif et soutenir
+  l’équilibre interne.
+</p><p>
+  Sa consommation régulière s’inscrit dans une démarche de bien-être global
+  et d’hygiène de vie saine.
+</p><p class="footer-note">
+  © Équilibre Vitale – Tous droits réservés
+</p><script>
+  const price = 450;
+  function updateTotal() {
+    const qty = document.getElementById('quantity').value;
+    document.getElementById('total').innerText = price * qty;
+  }
+</script></body>
 </html>
