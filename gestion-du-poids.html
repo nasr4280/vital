@@ -86,6 +86,19 @@
       margin-top: 20px;
     }
 
+    .cta-secondary {
+      display: block;
+      background: #1976d2;
+      color: #fff;
+      text-align: center;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+
     .note {
       font-size: 13px;
       color: #555;
@@ -168,14 +181,16 @@
 
 <input type="text" id="name" placeholder="Nom et prénom">
 <input type="tel" id="phone" placeholder="Téléphone">
-
 <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
 <a class="cta" href="#" onclick="sendWhatsApp()">📲 Commander via WhatsApp</a>
 
+<a class="cta-secondary" href="#" onclick="sendAccompagnement()">
+  🤝 Demander un accompagnement personnalisé
+</a>
+
 <p class="note">
-  Pour toute question ou adaptation du protocole,
-  notre équipe reste à votre disposition.
+  Notre équipe vous accompagne avant, pendant et après la mise en place du protocole.
 </p>
 
 </div>
@@ -184,7 +199,6 @@
 function sendWhatsApp() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
   const address = document.getElementById("address").value;
 
   const message =
@@ -193,8 +207,15 @@ function sendWhatsApp() {
     "Total : 1109 DH%0A%0A" +
     "Nom : " + name + "%0A" +
     "Téléphone : " + phone + "%0A" +
-    "Email : " + email + "%0A" +
     "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+
+function sendAccompagnement() {
+  const message =
+    "Bonjour,%0A%0A" +
+    "Je souhaite un accompagnement personnalisé pour le protocole Gestion du poids.";
 
   window.open("https://wa.me/212752789277?text=" + message, "_blank");
 }
