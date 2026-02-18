@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fields of Greens – Équilibre Vitale</title>
+  <title>Field of Greens – Forever</title>
 
   <style>
     body {
@@ -45,11 +45,7 @@
       margin: 15px 0;
     }
 
-    ul {
-      margin-left: 20px;
-    }
-
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       padding: 10px;
       margin: 6px 0 15px;
@@ -78,13 +74,11 @@
       font-size: 15px;
     }
 
-    .important {
-      background: #fff6f6;
-      border-left: 4px solid #d32f2f;
+    .cart {
+      background: #f1f1f1;
       padding: 15px;
-      margin-top: 25px;
-      font-size: 14px;
-      line-height: 1.6;
+      border-radius: 8px;
+      margin-top: 20px;
     }
 
     footer {
@@ -99,37 +93,35 @@
 <body>
 <div class="container">
 
-  <!-- BADGE -->
   <div class="badge">
-    ✅ Produit original – Forever Living<br>
-    🚚 Livraison gratuite partout au Maroc – Paiement à la livraison
+    ✅ Produit original – Field of Greens Forever<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
   </div>
 
-  <!-- TITRE -->
-  <h1>Fields of Greens</h1>
-  <p><strong>Complément alimentaire à base de légumes et plantes pour soutenir l’équilibre nutritionnel.</strong></p>
+  <h1>Field of Greens</h1>
+  <p><strong>Mélange naturel de fruits, légumes et herbes pour soutenir l’énergie et l’équilibre nutritionnel.</strong></p>
 
-  <!-- IMAGE PRODUIT -->
-  <img
-    src="https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
-    alt="Fields of Greens"
-    class="product-img"
-  />
+  <img src="https://i.postimg.cc/gkY04m91/Screenshot-20260210-135601-Google.jpg"
+       class="product-img"
+       alt="Field of Greens Forever">
 
-  <!-- POURQUOI -->
-  <h2>Pourquoi choisir Fields of Greens ?</h2>
+  <h2>Pourquoi choisir Field of Greens ?</h2>
   <ul>
-    <li>✔️ Apporte des extraits de légumes et de plantes</li>
-    <li>✔️ Soutient l’équilibre nutritionnel</li>
-    <li>✔️ Complète une alimentation parfois déséquilibrée</li>
+    <li>✔️ Apporte des nutriments issus de fruits et légumes</li>
+    <li>✔️ Soutient l’énergie et la vitalité quotidienne</li>
+    <li>✔️ Aide à combler les carences alimentaires</li>
     <li>✔️ Facile à intégrer dans la routine quotidienne</li>
   </ul>
 
-  <!-- UTILISATION -->
+  <p>🌱 Convient aux <strong>adultes</strong></p>
+
+  <div class="price">
+    Prix unitaire : 196 DH
+  </div>
+
   <h2>Conseils d’utilisation</h2>
   <p>
-    Adultes.<br>
-    <strong>Prendre 1 comprimé par jour</strong>, de préférence au cours d’un repas.
+    Adultes : <strong>1 comprimé par jour</strong>, de préférence pendant un repas.
   </p>
 
   <p>
@@ -139,38 +131,73 @@
     </small>
   </p>
 
-  <!-- IMAGE INFO -->
-  <img
-    src="https://i.postimg.cc/nzcd0XkL/Screenshot-20260210-135926-Google.jpg"
-    alt="Informations Fields of Greens"
-    class="product-img"
-  />
+  <h2>Commande</h2>
 
-  <!-- PRIX -->
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
   <div class="price">
-    Prix unitaire : 196 DH
+    Total : <span id="total">196</span> DH
   </div>
 
-  <!-- COMMANDE -->
-  <h2>Commander</h2>
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
 
   <input type="text" id="name" placeholder="Nom et prénom">
-  <input type="tel" id="phone" placeholder="Téléphone">
+  <input type="text" id="phone" placeholder="Téléphone">
   <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
   <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
 
-  <a class="btn btn-secondary" href="index.html">
-    🔙 Voir nos autres produits
+  <a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">
+    Voir tous nos autres produits
   </a>
 
-  <!-- INFO IMPORTANTE -->
-  <div class="important">
-    <strong>⚠️ Information importante</strong><br><br>
-    Fields of Greens est un complément alimentaire destiné à accompagner
-    une alimentation équilibrée et un mode de vie sain.
-    Il ne constitue pas un traitement médical
-    et ne remplace ni un avis médical ni un traitement prescrit.
+  <div style="font-size:13px; line-height:1.6; color:#555; margin-top:30px;">
+    <hr>
+
+    <h3 style="font-size:15px;">Informations détaillées – Field of Greens</h3>
+
+    <p>
+      <strong>Field of Greens Forever</strong> est un complément alimentaire à base de
+      fruits, légumes et plantes soigneusement sélectionnés pour soutenir
+      l’équilibre nutritionnel quotidien.
+    </p>
+
+    <p>
+      Il est particulièrement utile pour les personnes qui consomment peu
+      de fruits et légumes au quotidien.
+    </p>
+
+    <h4 style="font-size:14px;">Composition</h4>
+    <ul>
+      <li>Mélange de fruits et légumes</li>
+      <li>Extraits végétaux</li>
+      <li>Sans colorants artificiels</li>
+    </ul>
+
+    <h4 style="font-size:14px;">Conseils d’utilisation</h4>
+    <p>
+      Adultes : <strong>1 comprimé par jour</strong> pendant un repas.
+    </p>
+
+    <p>
+      <em>
+        Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+        Ne pas dépasser la dose journalière recommandée.
+      </em>
+    </p>
   </div>
 
   <footer>
@@ -180,15 +207,40 @@
 </div>
 
 <script>
+const unitPrice = 196;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Field of Greens</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
 function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
 
   const message =
     "Bonjour,%0A%0A" +
-    "Commande : Fields of Greens%0A" +
-    "Prix : 196 DH%0A%0A" +
+    "Commande : Field of Greens%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
     "Nom : " + name + "%0A" +
     "Téléphone : " + phone + "%0A" +
     "Adresse de livraison : " + address;
