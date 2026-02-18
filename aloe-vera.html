@@ -1,62 +1,253 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aloe Vera Gel – Équilibre Vitale</title>
-  <meta name="description" content="Forever Aloe Vera Gel – soutien digestif et bien-être. Livraison partout au Maroc, paiement à la livraison." />
-  <link rel="stylesheet" href="style.css" />
+  <title>Aloe Vera Gel – Forever</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
 </head>
-<body><!-- Bandeau info --><div class="info-banner">
-  ✅ Produit original – Aloe Vera Forever<br>
-  🚚 Livraison partout au Maroc – Paiement à la livraison
-</div><!-- Titre produit --><h1 class="product-title">Aloe Vera Gel</h1>
-<p class="product-subtitle">
-  Boisson naturelle à base d’Aloe Vera pour soutenir la digestion et l’équilibre général.
-</p><!-- Image produit --><div class="product-image">
-  <img src="images/aloe-vera-gel.png" alt="Forever Aloe Vera Gel" />
-</div><!-- Pourquoi choisir --><h2>Pourquoi choisir Aloe Vera Gel ?</h2>
-<ul class="check-list">
-  <li>✔️ Soutient la digestion et le confort intestinal</li>
-  <li>✔️ Aide à l’hydratation interne</li>
-  <li>✔️ Favorise une meilleure assimilation</li>
-  <li>✔️ Utilisation quotidienne simple</li>
-</ul><p>Convient aux adultes et aux jeunes adultes.</p><!-- Prix --><p class="price">Prix unitaire : <span>450 DH</span></p><!-- Conseils --><h2>Conseils d’utilisation</h2>
-<p>
-  Adultes : 30 à 60 ml par jour, de préférence le matin à jeun.
-</p>
-<p class="note">
-  Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
-  Ne pas dépasser la dose journalière recommandée.
-</p><!-- Commande --><h2>Commande</h2>
-<label>Quantité</label>
-<select id="quantity" onchange="updateTotal()">
-  <option value="1">1 bouteille</option>
-  <option value="2">2 bouteilles</option>
-  <option value="3">3 bouteilles</option>
-</select><p class="total">Total : <span id="total">450</span> DH</p><button class="btn-cart">🛒 Ajouter au panier</button>
 
-<p class="cart-empty">Aucun produit ajouté.</p><!-- Livraison --><h2>Informations de livraison</h2>
-<input type="text" placeholder="Nom et prénom" />
-<input type="tel" placeholder="Téléphone" />
-<textarea placeholder="Adresse de livraison"></textarea><!-- WhatsApp --><a class="btn-whatsapp" href="https://wa.me/212600000000" target="_blank">
-  📱 Commander via WhatsApp
-</a><a class="btn-all" href="index.html">Voir tous nos autres produits</a>
+<body>
+<div class="container">
 
-<hr /><!-- Infos détaillées --><h2>Informations détaillées – Aloe Vera Gel Forever</h2>
-<p>
-  Le Forever Aloe Vera Gel est une boisson à base de gel d’aloe vera stabilisé,
-  utilisée traditionnellement pour accompagner le confort digestif et soutenir
-  l’équilibre interne.
-</p><p>
-  Sa consommation régulière s’inscrit dans une démarche de bien-être global
-  et d’hygiène de vie saine.
-</p><p class="footer-note">
-  © Équilibre Vitale – Tous droits réservés
-</p><script>
-  const price = 450;
-  function updateTotal() {
-    const qty = document.getElementById('quantity').value;
-    document.getElementById('total').innerText = price * qty;
+  <div class="badge">
+    ✅ Produit original – Aloe Vera Forever<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Aloe Vera Gel</h1>
+  <p><strong>Boisson naturelle à base d’aloe vera pour soutenir la digestion et l’équilibre interne.</strong></p>
+
+  <img src="https://i.postimg.cc/MTtPj2g8/aloe-vera-gel.png"
+       class="product-img"
+       alt="Aloe Vera Gel Forever">
+
+  <h2>Pourquoi choisir Aloe Vera Gel ?</h2>
+  <ul>
+    <li>✔️ Soutient la digestion et le confort intestinal</li>
+    <li>✔️ Aide à l’hydratation interne</li>
+    <li>✔️ Favorise l’assimilation des nutriments</li>
+    <li>✔️ Utilisation quotidienne simple</li>
+  </ul>
+
+  <p>🌿 Convient aux <strong>adultes et jeunes adultes</strong></p>
+
+  <div class="price">
+    Prix unitaire : 450 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Adultes : <strong>30 à 60 ml par jour</strong>, de préférence le matin à jeun.
+  </p>
+
+  <p>
+    <small>
+      Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </small>
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 bouteille</option>
+    <option value="2">2 bouteilles</option>
+    <option value="3">3 bouteilles</option>
+    <option value="4">4 bouteilles</option>
+    <option value="5">5 bouteilles</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">450</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">
+    Voir tous nos autres produits
+  </a>
+
+  <div style="font-size:13px; line-height:1.6; color:#555; margin-top:30px;">
+    <hr>
+
+    <h3 style="font-size:15px;">Informations détaillées – Aloe Vera Gel Forever</h3>
+
+    <p>
+      Le <strong>Forever Aloe Vera Gel</strong> est une boisson à base de gel d’aloe vera stabilisé,
+      utilisé traditionnellement pour accompagner le confort digestif et soutenir
+      l’équilibre interne.
+    </p>
+
+    <p>
+      L’aloe vera est reconnu pour sa richesse naturelle et son utilisation ancestrale
+      dans les routines de bien-être.
+    </p>
+
+    <h4 style="font-size:14px;">Composition</h4>
+    <ul>
+      <li>Gel d’aloe vera stabilisé</li>
+      <li>Eau purifiée</li>
+      <li>Sans gluten</li>
+    </ul>
+
+    <h4 style="font-size:14px;">Conseils d’utilisation</h4>
+    <p>
+      Adultes : <strong>30 à 60 ml par jour</strong>, de préférence le matin à jeun.
+    </p>
+
+    <p>
+      <em>
+        Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+        Ne pas dépasser la dose journalière recommandée.
+      </em>
+    </p>
+  </div>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 450;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Aloe Vera Gel</strong><br>" +
+    "Quantité : " + cartQty + " bouteille(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
   }
-</script></body>
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Aloe Vera Gel%0A" +
+    "Quantité : " + cartQty + " bouteille(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
 </html>
