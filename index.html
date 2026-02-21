@@ -54,7 +54,6 @@
   float:right;
   transition:transform .2s ease;
 }
-
 .menu-title.active::after{
   transform:rotate(90deg);
 }
@@ -65,7 +64,7 @@
 }
 .panel.open{display:block}
 
-/* catégories */
+/* Sous-catégories */
 .submenu-toggle{
   font-weight:bold;
   margin:10px 0 5px;
@@ -99,19 +98,13 @@
 
 /* ================= SITE ================= */
 body{
-  font-family:Arial;
+  font-family:Arial, Helvetica, sans-serif;
   background:#f2f2f2;
   padding:15px;
 }
 h1{
   text-align:center;
   margin-top:60px;
-}
-.card{
-  background:#fff;
-  padding:15px;
-  border-radius:8px;
-  margin-bottom:15px;
 }
 .small{
   font-size:13px;
@@ -141,14 +134,15 @@ h1{
       <div class="subpanel">
         <a href="aloe-vera.html">Gel d’Aloe Vera</a>
         <a href="pro-b.html">Pro-B</a>
+        <a href="forever-fiber.html">Forever Fiber</a>
         <a href="fields-of-greens.html">Fields of Greens</a>
-        <a href="forever-fiber.html">forever-fiber</a>
       </div>
 
-      <div class="submenu-title">Hygiène & soins de la peau</div>
-       <a href="moisturizer.html">Moisturizer</a>
-    </div>
-    
+      <div class="submenu-toggle" onclick="toggleSub(this)">Hygiène & soins de la peau</div>
+      <div class="subpanel">
+        <a href="moisturizer.html">Moisturizer</a>
+      </div>
+
       <div class="submenu-toggle" onclick="toggleSub(this)">Gestion du poids</div>
       <div class="subpanel">
         <a href="forever-therm.html">Forever Therm</a>
@@ -203,7 +197,7 @@ h1{
 Sélectionnez vos produits Forever et commandez facilement par WhatsApp.
 </p>
 
-<!-- ICI TU LAISSES TON CONTENU EXISTANT (panier, produits, scripts) -->
+<!-- ICI ton contenu existant (panier, produits, scripts) -->
 
 <script>
 function toggleMenu(){
