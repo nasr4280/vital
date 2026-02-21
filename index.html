@@ -120,7 +120,15 @@ button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-
 
   </ul>
 </nav>
+<div id="menu"></div>
 
+<script>
+fetch("menu.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("menu").innerHTML = html;
+  });
+</script>
 <h1>🟢 Commande Forever Maroc</h1>
 
 <!-- 🔽 TON CONTENU EXISTANT : INTACT -->
