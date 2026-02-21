@@ -28,27 +28,50 @@
   overflow-y:auto;
 }
 #sideMenu.open{left:0}
+
 .menu-header{
   padding:15px;
   text-align:right;
   font-size:22px;
 }
+
 .menu-list{
   list-style:none;
   padding:0 15px 30px;
   margin:0;
 }
+
 .menu-title{
   font-weight:bold;
   margin:15px 0 8px;
   color:#2e7d32;
+  cursor:pointer;
 }
+
+.menu-title::after{
+  content:"▸";
+  float:right;
+  transition:transform .2s ease;
+}
+
+.menu-title.active::after{
+  transform:rotate(90deg);
+}
+
+.panel{
+  display:none;
+  margin-left:5px;
+}
+
+.panel.open{display:block}
+
 .submenu-title{
   font-weight:bold;
   margin-top:12px;
   font-size:14px;
   color:#555;
 }
+
 .menu-list a{
   display:block;
   padding:6px 0;
@@ -60,20 +83,9 @@
 
 /* ================= SITE ================= */
 body{font-family:Arial;background:#f2f2f2;padding:15px}
-h1{text-align:center}
+h1{text-align:center;margin-top:60px}
 .card{background:#fff;padding:15px;border-radius:8px;margin-bottom:15px}
-.selector{padding:14px;border:1px solid #ccc;border-radius:6px;background:#fafafa;cursor:pointer}
-.list{display:none;border:1px solid #ccc;border-radius:6px;margin-top:5px;max-height:320px;overflow:auto}
-.item{display:flex;align-items:center;padding:8px;border-bottom:1px solid #eee;cursor:pointer}
-.item img{width:42px;height:42px;margin-right:10px;border-radius:4px}
-.item:hover{background:#f0f0f0}
-#preview img{max-width:180px;margin-top:10px}
-select,input{width:100%;padding:12px;margin-top:8px;border-radius:6px;border:1px solid #ccc}
-button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-radius:6px;font-size:16px;margin-top:10px}
-.cart-row{margin-top:6px}
 .small{font-size:13px;color:#555;line-height:1.5}
-.remove-btn{margin-left:8px;color:#888;font-size:13px;cursor:pointer}
-.remove-btn:hover{color:#444;text-decoration:underline}
 </style>
 </head>
 
@@ -88,45 +100,64 @@ button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-
   </div>
 
   <ul class="menu-list">
-    <li class="menu-title">Produits</li>
 
-    <li class="submenu-title">Appareil digestif</li>
-    <li><a href="aloe-vera.html">Gel d’Aloe Vera</a></li>
-    <li><a href="pro-b.html">Pro-B</a></li>
-    <li><a href="fields-of-greens.html">Fields of Greens</a></li>
+    <!-- PRODUITS -->
+    <li class="menu-title" onclick="toggleAccordion(this)">Produits</li>
+    <div class="panel">
+      <div class="submenu-title">Appareil digestif</div>
+      <a href="aloe-vera.html">Gel d’Aloe Vera</a>
+      <a href="pro-b.html">Pro-B</a>
+      <a href="fields-of-greens.html">Fields of Greens</a>
 
-    <li class="submenu-title">Gestion du poids</li>
-    <li><a href="forever-therm.html">Forever Therm</a></li>
-    <li><a href="thermogen.html">Thermogen</a></li>
-    <li><a href="forever-lite-ultra.html">Forever Lite Ultra</a></li>
+      <div class="submenu-title">Gestion du poids</div>
+      <a href="forever-therm.html">Forever Therm</a>
+      <a href="thermogen.html">Thermogen</a>
+      <a href="forever-lite-ultra.html">Forever Lite Ultra</a>
 
-    <li class="submenu-title">Immunité & vitalité</li>
-    <li><a href="propolis.html">Propolis</a></li>
-    <li><a href="kids-vitamins.html">Kids Vitamins</a></li>
+      <div class="submenu-title">Immunité & vitalité</div>
+      <a href="propolis.html">Propolis</a>
+      <a href="kids-vitamins.html">Kids Vitamins</a>
+    </div>
 
     <hr>
 
-    <li class="menu-title">Programmes / Protocoles</li>
-    <li><a href="gestion-du-poids.html">Gestion du poids</a></li>
-    <li><a href="plan-detox.html">Plan Détox</a></li>
-    <li><a href="gestion-colon-irritable.html">Côlon irritable</a></li>
-    <li><a href="gestion-migraine.html">Gestion de la migraine</a></li>
+    <!-- PROGRAMMES -->
+    <li class="menu-title" onclick="toggleAccordion(this)">Programmes / Protocoles</li>
+    <div class="panel">
+      <a href="gestion-du-poids.html">Gestion du poids</a>
+      <a href="plan-detox.html">Plan Détox</a>
+      <a href="gestion-colon-irritable.html">Côlon irritable</a>
+      <a href="gestion-migraine.html">Gestion de la migraine</a>
+    </div>
 
     <hr>
 
     <li class="menu-title"><a href="#">Contact</a></li>
     <li class="menu-title"><a href="#">À propos</a></li>
+
   </ul>
 </nav>
 
+<!-- CONTENU -->
 <h1>🟢 Commande Forever Maroc</h1>
 
-<!-- LE RESTE DE TON CONTENU (panier, produits, scripts) RESTE IDENTIQUE -->
-<!-- TU PEUX RECOPIER TON SCRIPT PRODUITS ICI SANS CHANGER UNE LIGNE -->
+<p class="small" style="text-align:center">
+Sélectionnez vos produits Forever et commandez facilement par WhatsApp.
+</p>
+
+<!-- 👉 ICI tu remets TOUT ton contenu existant (produits, panier, scripts) -->
 
 <script>
 function toggleMenu(){
   document.getElementById("sideMenu").classList.toggle("open");
+}
+
+function toggleAccordion(el){
+  el.classList.toggle("active");
+  const panel = el.nextElementSibling;
+  if(panel){
+    panel.classList.toggle("open");
+  }
 }
 </script>
 
