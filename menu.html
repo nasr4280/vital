@@ -1,5 +1,18 @@
 <!-- MENU HAMBURGER -->
 <style>
+  #menuOverlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.35);
+  display:none;
+  z-index:1998;
+}
+#sideMenu.open + #menuOverlay{
+  display:block;
+}
 #menuToggle{
   position:fixed;
   top:15px;
@@ -92,7 +105,7 @@
 
   </ul>
 </nav>
-
+<div id="menuOverlay" onclick="toggleMenu()"></div>
 <script>
 function toggleMenu(){
   document.getElementById("sideMenu").classList.toggle("open");
