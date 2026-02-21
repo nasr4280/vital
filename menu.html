@@ -1,1 +1,100 @@
+<!-- MENU HAMBURGER -->
+<style>
+#menuToggle{
+  position:fixed;
+  top:15px;
+  left:15px;
+  font-size:28px;
+  cursor:pointer;
+  z-index:2000;
+}
+#sideMenu{
+  position:fixed;
+  top:0;
+  left:-260px;
+  width:260px;
+  height:100%;
+  background:#fff;
+  box-shadow:2px 0 10px rgba(0,0,0,.15);
+  transition:left .3s ease;
+  z-index:1999;
+  overflow-y:auto;
+}
+#sideMenu.open{left:0}
+.menu-header{
+  padding:15px;
+  text-align:right;
+  font-size:22px;
+}
+.menu-list{
+  list-style:none;
+  padding:0 15px 30px;
+  margin:0;
+}
+.menu-title{
+  font-weight:bold;
+  margin:15px 0 8px;
+  color:#2e7d32;
+}
+.submenu-title{
+  font-weight:bold;
+  margin-top:12px;
+  font-size:14px;
+  color:#555;
+}
+.menu-list a{
+  display:block;
+  padding:6px 0;
+  color:#1a73e8;
+  text-decoration:none;
+}
+.menu-list a:hover{text-decoration:underline}
+.menu-list hr{margin:15px 0}
+</style>
 
+<div id="menuToggle" onclick="toggleMenu()">☰</div>
+
+<nav id="sideMenu">
+  <div class="menu-header">
+    <span onclick="toggleMenu()">✕</span>
+  </div>
+
+  <ul class="menu-list">
+
+    <li class="menu-title">Produits</li>
+
+    <li class="submenu-title">Appareil digestif</li>
+    <li><a href="aloe-vera.html">Gel d’Aloe Vera</a></li>
+    <li><a href="pro-b.html">Pro-B</a></li>
+    <li><a href="fields-of-greens.html">Fields of Greens</a></li>
+
+    <li class="submenu-title">Gestion du poids</li>
+    <li><a href="forever-therm.html">Forever Therm</a></li>
+    <li><a href="thermogen.html">Thermogen</a></li>
+    <li><a href="forever-lite-ultra.html">Forever Lite Ultra</a></li>
+
+    <li class="submenu-title">Immunité & vitalité</li>
+    <li><a href="propolis.html">Propolis</a></li>
+    <li><a href="kids-vitamins.html">Kids Vitamins</a></li>
+
+    <hr>
+
+    <li class="menu-title">Programmes / Protocoles</li>
+    <li><a href="gestion-du-poids.html">Gestion du poids</a></li>
+    <li><a href="plan-detox.html">Plan Détox</a></li>
+    <li><a href="gestion-colon-irritable.html">Côlon irritable</a></li>
+    <li><a href="gestion-migraine.html">Gestion de la migraine</a></li>
+
+    <hr>
+
+    <li class="menu-title"><a href="contact.html">Contact</a></li>
+    <li class="menu-title"><a href="a-propos.html">À propos</a></li>
+
+  </ul>
+</nav>
+
+<script>
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("open");
+}
+</script>
