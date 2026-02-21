@@ -123,12 +123,28 @@ button{width:100%;padding:14px;background:#25D366;color:#fff;border:none;border-
 <div id="menu"></div>
 
 <script>
-fetch("menu.html")
+fetch("/vital/menu.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("menu").innerHTML = html;
   });
 </script>
+  <body>
+
+<!-- MENU GLOBAL -->
+<div id="menu"></div>
+
+<script>
+fetch("/vital/menu.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("menu").innerHTML = html;
+  });
+</script>
+
+<!-- CONTENU DE LA PAGE -->
+<h1>🟢 Commande Forever Maroc</h1>
+...
 <h1>🟢 Commande Forever Maroc</h1>
 
 <!-- 🔽 TON CONTENU EXISTANT : INTACT -->
