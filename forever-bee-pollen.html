@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forever Bee Pollen – Énergie & Vitalité</title>
 
+  <style>
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      margin:0;
+      background:#f7f9fb;
+      color:#222;
+    }
+    .container{
+      max-width:700px;
+      margin:auto;
+      background:#fff;
+      padding:20px;
+    }
+    h1{color:#2e7d32}
+    h2{margin-top:30px}
+
+    .badge{
+      background:#e8f5e9;
+      color:#2e7d32;
+      padding:10px;
+      border-radius:6px;
+      margin-bottom:15px;
+      font-size:15px;
+    }
+
+    .product-img{
+      width:100%;
+      max-width:320px;
+      display:block;
+      margin:20px auto;
+    }
+
+    .price{
+      font-size:22px;
+      font-weight:bold;
+      color:#d32f2f;
+      margin:15px 0;
+    }
+
+    select,input,textarea{
+      width:100%;
+      padding:10px;
+      margin:6px 0 15px;
+      border-radius:6px;
+      border:1px solid #ccc;
+      font-size:15px;
+    }
+
+    .btn{
+      display:block;
+      width:100%;
+      text-align:center;
+      background:#25d366;
+      color:white;
+      padding:15px;
+      border-radius:8px;
+      font-size:18px;
+      font-weight:bold;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      margin:15px 0;
+    }
+
+    .btn-secondary{
+      background:#1976d2;
+      font-size:15px;
+    }
+
+    .cart{
+      background:#f1f1f1;
+      padding:15px;
+      border-radius:8px;
+      margin-top:20px;
+    }
+
+    .small{
+      font-size:13px;
+      color:#555;
+      line-height:1.6;
+    }
+
+    footer{
+      text-align:center;
+      font-size:13px;
+      color:#777;
+      margin-top:30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    ✅ Produit original Forever<br>
+    🚚 Livraison partout au Maroc – 💵 Paiement à la livraison
+  </div>
+
+  <h1>Forever Bee Pollen</h1>
+  <p><strong>Des nutriments naturels pour soutenir l’énergie et la vitalité au quotidien.</strong></p>
+
+  <img
+    src="https://i.postimg.cc/0yrMV1pG/Screenshot-20260221-232329-Google.jpg"
+    alt="Forever Bee Pollen"
+    class="product-img"
+  />
+
+  <h2>Pourquoi choisir Forever Bee Pollen ?</h2>
+  <ul>
+    <li>✔️ Source naturelle de nutriments essentiels</li>
+    <li>✔️ Soutient l’énergie et la vitalité</li>
+    <li>✔️ Aide à lutter contre la fatigue</li>
+    <li>✔️ Convient aux adultes actifs</li>
+  </ul>
+
+  <div class="price">
+    Prix unitaire : 248 DH
+  </div>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">248</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone / WhatsApp">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://equilibrevital.github.io/">
+    Voir tous nos autres produits
+  </a>
+
+  <hr>
+
+  <h3>Informations complémentaires</h3>
+  <p class="small">
+    <strong>Forever Bee Pollen</strong> est un complément alimentaire issu du pollen d’abeille,
+    reconnu pour sa richesse naturelle en nutriments.
+    Il aide à soutenir l’énergie, la vitalité et le bien-être général.
+  </p>
+
+  <p class="small">
+    <em>
+      Complément alimentaire. Ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </em>
+  </p>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 248;
+let cartQty = 0;
+
+function updateTotal(){
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart(){
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Forever Bee Pollen</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp(){
+  if(cartQty === 0){
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Forever Bee Pollen%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
