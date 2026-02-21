@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moisturizer – Hydratation & douceur | Équilibre Vitale</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+
+    ul { margin-left: 20px; }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+
+    .important {
+      background: #fff6f6;
+      border-left: 4px solid #d32f2f;
+      padding: 15px;
+      margin-top: 25px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🌍 Bouton traduction -->
+<div style="position:fixed;top:15px;right:15px;z-index:3000;">
+  <button onclick="translateToArabic()" style="
+    padding:6px 10px;
+    border:none;
+    border-radius:6px;
+    background:#2e7d32;
+    color:white;
+    font-size:14px;
+    cursor:pointer;">
+    🌍 العربية
+  </button>
+</div>
+
+<div class="container">
+
+  <div class="badge">
+    ✅ Produit original Forever<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Moisturizer</h1>
+  <p><strong>Crème hydratante pour nourrir la peau en profondeur et préserver sa douceur.</strong></p>
+
+  <img src="https://i.postimg.cc/pdjV4G93/Screenshot-20260221-191836-Google.jpg"
+       alt="Moisturizer Forever"
+       class="product-img">
+
+  <h2>Pourquoi choisir Moisturizer ?</h2>
+  <ul>
+    <li>✔️ Hydrate intensément la peau</li>
+    <li>✔️ Aide à maintenir la douceur et l’élasticité</li>
+    <li>✔️ Texture agréable, non grasse</li>
+    <li>✔️ Convient à un usage quotidien</li>
+  </ul>
+
+  <p>
+    Moisturizer aide à protéger la peau contre la sécheresse,
+    tout en lui apportant confort et souplesse au quotidien.
+  </p>
+
+  <div class="price">
+    Prix unitaire : 339 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Appliquer sur une peau propre et sèche.<br>
+    <strong>Utiliser matin et/ou soir</strong> en massant délicatement.
+  </p>
+
+  <h2>Commander</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="tel" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">
+    🔙 Voir tous nos autres produits
+  </a>
+
+  <div class="important">
+    <strong>⚠️ Information importante</strong><br><br>
+    Ce produit s’inscrit dans une <strong>démarche de soin et de bien-être</strong>.
+    Il ne remplace pas un avis dermatologique en cas de problème cutané.
+  </div>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<!-- Google Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    { pageLanguage: 'fr', includedLanguages: 'fr,ar' },
+    'google_translate_element'
+  );
+}
+
+function translateToArabic(){
+  const select = document.querySelector("select.goog-te-combo");
+  if(select){
+    select.value = "ar";
+    select.dispatchEvent(new Event("change"));
+  }
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+function sendWhatsApp(){
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  const message =
+    "Commande : Moisturizer%0A" +
+    "Prix : 339 DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
