@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bee Honey – Miel naturel & vitalité</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #fff8e1;
+      color: #8d6e63;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    🍯 Produit naturel – Miel de qualité<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Bee Honey</h1>
+  <p><strong>Miel naturel pour soutenir l’énergie et le bien-être au quotidien.</strong></p>
+
+  <img src="https://i.postimg.cc/PqT8BRsM/Screenshot-20260222-153619-Google.jpg"
+       class="product-img"
+       alt="Bee Honey">
+
+  <h2>Pourquoi choisir Bee Honey ?</h2>
+  <ul>
+    <li>✔️ Source naturelle d’énergie</li>
+    <li>✔️ Contribue au bien-être général</li>
+    <li>✔️ Goût agréable et facile à consommer</li>
+    <li>✔️ Idéal pour accompagner une alimentation équilibrée</li>
+  </ul>
+
+  <p>
+    🍯 <strong>Bee Honey</strong> est un miel naturel sélectionné pour sa qualité,
+    idéal pour soutenir la vitalité au quotidien et apporter un complément énergétique naturel.
+  </p>
+
+  <div class="price">
+    Prix unitaire : 274 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Prendre <strong>1 à 2 cuillères par jour</strong>, seul ou mélangé à une boisson tiède
+    ou à un aliment, selon les préférences.
+  </p>
+
+  <p>
+    <small>
+      Produit naturel – à intégrer dans une alimentation équilibrée.
+    </small>
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 pot</option>
+    <option value="2">2 pots</option>
+    <option value="3">3 pots</option>
+    <option value="4">4 pots</option>
+    <option value="5">5 pots</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">274</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://equilibrevitale.github.io/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 274;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Bee Honey</strong><br>" +
+    "Quantité : " + cartQty + " pot(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Bee Honey%0A" +
+    "Quantité : " + cartQty + " pot(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
