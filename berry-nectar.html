@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berry Nectar – Antioxydants & vitalité</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #7b1fa2; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #f3e5f5;
+      color: #6a1b9a;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    🍇 Boisson riche en antioxydants<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Berry Nectar</h1>
+  <p><strong>Boisson concentrée aux baies pour soutenir l’énergie et le bien-être général.</strong></p>
+
+  <img src="https://i.postimg.cc/43LK0v6V/Screenshot-20260222-164436-Google.jpg"
+       class="product-img"
+       alt="Berry Nectar">
+
+  <h2>Pourquoi choisir Berry Nectar ?</h2>
+  <ul>
+    <li>✔️ Riche en antioxydants naturels</li>
+    <li>✔️ Aide à soutenir l’énergie au quotidien</li>
+    <li>✔️ Contribue au bien-être général</li>
+    <li>✔️ Goût fruité agréable</li>
+  </ul>
+
+  <p>
+    🍇 <strong>Berry Nectar</strong> est une boisson à base de fruits riches en antioxydants,
+    idéale pour accompagner une hygiène de vie saine et soutenir la vitalité.
+  </p>
+
+  <div class="price">
+    Prix unitaire : 425 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Prendre <strong>30 à 60 ml par jour</strong>, pur ou dilué dans un verre d’eau,
+    de préférence le matin ou dans la journée.
+  </p>
+
+  <p>
+    <small>
+      Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </small>
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 bouteille</option>
+    <option value="2">2 bouteilles</option>
+    <option value="3">3 bouteilles</option>
+    <option value="4">4 bouteilles</option>
+    <option value="5">5 bouteilles</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">425</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://equilibrevitale.github.io/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 425;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Berry Nectar</strong><br>" +
+    "Quantité : " + cartQty + " bouteille(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Berry Nectar%0A" +
+    "Quantité : " + cartQty + " bouteille(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+</body>
+</html>
