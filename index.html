@@ -48,7 +48,6 @@
   color:#2e7d32;
   cursor:pointer;
 }
-
 .menu-title::after{
   content:"▸";
   float:right;
@@ -126,11 +125,10 @@ h1{
 
   <ul class="menu-list">
 
-    <!-- PRODUITS -->
+    <!-- ================= PRODUITS ================= -->
     <li class="menu-title" onclick="toggleAccordion(this)">Produits</li>
     <div class="panel">
 
-      <!-- Appareil digestif -->
       <div class="submenu-toggle" onclick="toggleSub(this)">Appareil digestif</div>
       <div class="subpanel">
         <a href="aloe-vera.html">Gel d’Aloe Vera</a>
@@ -139,7 +137,6 @@ h1{
         <a href="fields-of-greens.html">Fields of Greens</a>
       </div>
 
-      <!-- Hygiène & soins -->
       <div class="submenu-toggle" onclick="toggleSub(this)">Hygiène & soins de la peau</div>
       <div class="subpanel">
         <a href="moisturizer.html">Aloe Moisturizer Lotion</a>
@@ -147,26 +144,22 @@ h1{
         <a href="propolis-creme.html">Propolis Crème</a>
       </div>
 
-      <!-- Gestion du poids -->
       <div class="submenu-toggle" onclick="toggleSub(this)">Gestion du poids</div>
       <div class="subpanel">
         <a href="forever-therm.html">Forever Therm</a>
         <a href="forever-lite-ultra.html">Forever Lite Ultra</a>
       </div>
 
-      
-  <!-- OS ET ARTICULATIONS -->
-  <div class="submenu-toggle" onclick="toggleSub(this)">Os & articulations</div>
-  <div class="subpanel">
-    <a href="forever-calcium.html">Forever Calcium</a>
-  </div>
+      <div class="submenu-toggle" onclick="toggleSub(this)">Os & articulations</div>
+      <div class="subpanel">
+        <a href="forever-calcium.html">Forever Calcium</a>
+      </div>
 
-      <!-- Immunité -->
       <div class="submenu-toggle" onclick="toggleSub(this)">Immunité & vitalité</div>
       <div class="subpanel">
         <a href="propolis.html">Propolis</a>
         <a href="forever-bee-pollen.html">Forever Bee Pollen</a>
-        <a href="vitolize-men.html">Vitolize men</a>
+        <a href="vitolize-men.html">Vitolize Men</a>
         <a href="kids-vitamins.html">Kids Vitamins</a>
         <a href="bee-honey.html">Bee Honey</a>
         <a href="berry-nectar.html">Berry Nectar</a>
@@ -177,37 +170,14 @@ h1{
 
     <hr>
 
-    <!-- PROGRAMMES -->
-<!-- PROGRAMMES -->
-<li class="menu-title" onclick="toggleAccordion(this)">Programmes / Protocoles</li>
-<div class="panel">
+    <!-- ================= PROGRAMMES ================= -->
+    <li class="menu-title" onclick="toggleAccordion(this)">Programmes / Protocoles</li>
+    <div class="panel">
 
-  <!-- Appareil digestif -->
-  <div class="submenu-toggle" onclick="toggleSub(this)">Appareil digestif</div>
-  <div class="subpanel">
-    <a href="gestion-colon-irritable.html">Côlon irritable</a>
-  </div>
-
-  <!-- Gestion du poids -->
-  <div class="submenu-toggle" onclick="toggleSub(this)">Gestion du poids</div>
-  <div class="subpanel">
-    <a href="gestion-du-poids.html">Gestion du poids</a>
-    <a href="plan-detox.html">Plan Détox</a>
-  </div>
-
-  <!-- Neurologie -->
-  <div class="submenu-toggle" onclick="toggleSub(this)">Neurologie</div>
-  <div class="subpanel">
-    <a href="gestion-migraine.html">Gestion de la migraine</a>
-  </div>
-
-  <!-- SANTÉ MASCULINE -->
-  <div class="submenu-toggle" onclick="toggleSub(this)">Santé masculine</div>
-  <div class="subpanel">
-    <a href="Gestion-de-la-prostate.html">Gestion de la prostate</a>
-  </div>
-
-</div>
+      <div class="submenu-toggle" onclick="toggleSub(this)">Appareil digestif</div>
+      <div class="subpanel">
+        <a href="gestion-colon-irritable.html">Côlon irritable</a>
+      </div>
 
       <div class="submenu-toggle" onclick="toggleSub(this)">Gestion du poids</div>
       <div class="subpanel">
@@ -218,6 +188,11 @@ h1{
       <div class="submenu-toggle" onclick="toggleSub(this)">Neurologie</div>
       <div class="subpanel">
         <a href="gestion-migraine.html">Gestion de la migraine</a>
+      </div>
+
+      <div class="submenu-toggle" onclick="toggleSub(this)">Santé masculine</div>
+      <div class="subpanel">
+        <a href="Gestion-de-la-prostate.html">Gestion de la prostate</a>
       </div>
 
     </div>
@@ -232,7 +207,6 @@ h1{
 
 <!-- CONTENU -->
 <h1>🟢 Commande Équilibre Vitale</h1>
-
 <p class="small" style="text-align:center">
 Sélectionnez vos produits Forever et commandez facilement par WhatsApp.
 </p>
@@ -241,13 +215,11 @@ Sélectionnez vos produits Forever et commandez facilement par WhatsApp.
 function toggleMenu(){
   document.getElementById("sideMenu").classList.toggle("open");
 }
-
 function toggleAccordion(el){
   el.classList.toggle("active");
   const panel = el.nextElementSibling;
   if(panel) panel.classList.toggle("open");
 }
-
 function toggleSub(el){
   el.classList.toggle("active");
   const sub = el.nextElementSibling;
