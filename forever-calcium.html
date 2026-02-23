@@ -1,164 +1,277 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Forever Calcium – Renforcement des os et des dents</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forever Calcium – Os, dents & muscles</title>
 
-<style>
-body{
-  font-family:Arial, Helvetica, sans-serif;
-  background:#f2f2f2;
-  margin:0;
-  padding:15px;
-}
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
 
-.container{
-  max-width:600px;
-  margin:auto;
-  background:#fff;
-  border-radius:10px;
-  padding:20px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-}
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
 
-h1{
-  font-size:22px;
-  text-align:center;
-  color:#2e7d32;
-  margin-bottom:5px;
-}
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+    }
 
-.ref{
-  text-align:center;
-  color:#777;
-  font-size:14px;
-  margin-bottom:15px;
-}
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
 
-.product-img{
-  text-align:center;
-}
-.product-img img{
-  max-width:100%;
-  border-radius:10px;
-}
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
 
-.section{
-  margin-top:20px;
-}
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
 
-.section h2{
-  font-size:18px;
-  color:#333;
-  margin-bottom:8px;
-}
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
 
-.section p{
-  font-size:14px;
-  color:#555;
-  line-height:1.6;
-}
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
 
-ul{
-  padding-left:18px;
-}
-ul li{
-  font-size:14px;
-  color:#555;
-  margin-bottom:6px;
-}
-
-.cta{
-  margin-top:25px;
-  text-align:center;
-}
-
-.cta a{
-  display:inline-block;
-  background:#25d366;
-  color:#fff;
-  padding:12px 20px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-}
-.cta a:hover{
-  background:#1ebe5d;
-}
-
-.note{
-  font-size:12px;
-  color:#777;
-  margin-top:15px;
-  line-height:1.5;
-}
-</style>
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 
 <body>
-
 <div class="container">
 
-  <h1>🦴 Forever Calcium</h1>
-  <div class="ref">Réf. 394</div>
-
-  <div class="product-img">
-    <img src="https://i.postimg.cc/PfQbr3wr/Screenshot-20260223-134021-Google.jpg" alt="Forever Calcium">
+  <div class="badge">
+    🦴 Santé des os & des dents<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
   </div>
 
-  <div class="section">
-    <h2>🌿 Description</h2>
-    <p>
-      <strong>Forever Calcium</strong> est un complément alimentaire conçu pour
-      <strong>aider à renforcer les os et les dents</strong>, tout en
-      <strong>soutenant la fonction musculaire</strong>.
-      Il est idéal pour préserver la solidité osseuse et la vitalité au quotidien.
-    </p>
+  <h1>Forever Calcium</h1>
+  <p><strong>Complément alimentaire aidant à renforcer les os et les dents tout en soutenant la fonction musculaire.</strong></p>
+
+  <img src="https://i.postimg.cc/PfQbr3wr/Screenshot-20260223-134021-Google.jpg"
+       class="product-img"
+       alt="Forever Calcium">
+
+  <h2>Pourquoi choisir Forever Calcium ?</h2>
+  <ul>
+    <li>✔️ Contribue au maintien d’os solides</li>
+    <li>✔️ Aide à renforcer les dents</li>
+    <li>✔️ Soutient la fonction musculaire normale</li>
+    <li>✔️ Participe à la vitalité au quotidien</li>
+  </ul>
+
+  <p>
+    <strong>Forever Calcium</strong> est spécialement formulé pour accompagner les besoins
+    quotidiens en calcium, un minéral essentiel à la solidité du squelette
+    et au bon fonctionnement musculaire.
+  </p>
+
+  <div class="price">
+    Prix unitaire : 275 DH
   </div>
 
-  <div class="section">
-    <h2>✅ Bienfaits principaux</h2>
-    <ul>
-      <li>Contribue au maintien d’os solides et en bonne santé</li>
-      <li>Aide à renforcer les dents</li>
-      <li>Soutient la fonction musculaire normale</li>
-      <li>Participe à la vitalité générale</li>
-      <li>Utile en prévention des carences en calcium</li>
-    </ul>
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Prendre <strong>1 à 2 comprimés par jour</strong>, de préférence au cours d’un repas,
+    avec un grand verre d’eau.
+  </p>
+
+  <p>
+    <small>
+      Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </small>
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">275</span> DH
   </div>
 
-  <div class="section">
-    <h2>👨‍👩‍👧‍👦 Pour qui ?</h2>
-    <ul>
-      <li>Adultes et seniors</li>
-      <li>Personnes souhaitant préserver leur capital osseux</li>
-      <li>Femmes après 40 ans</li>
-      <li>Personnes ayant une alimentation pauvre en calcium</li>
-    </ul>
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
   </div>
 
-  <div class="section">
-    <h2>🕒 Conseils d’utilisation</h2>
-    <p>
-      À prendre selon les recommandations Forever ou sur conseil d’un professionnel de santé.
-      À consommer de préférence pendant les repas avec un verre d’eau.
-    </p>
-  </div>
+  <h2>Informations de livraison</h2>
 
-  <div class="cta">
-    <a href="https://wa.me/212XXXXXXXXX?text=Bonjour%20je%20souhaite%20commander%20Forever%20Calcium">
-      📲 Commander via WhatsApp
-    </a>
-  </div>
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
 
-  <div class="note">
-    ⚠️ Complément alimentaire. Ne remplace pas une alimentation variée et équilibrée
-    ni un mode de vie sain. Tenir hors de portée des enfants.
-  </div>
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://equilibrevitale.github.io/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
 
 </div>
 
+<script>
+const unitPrice = 275;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Forever Calcium</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Forever Calcium%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+<hr>
+
+<section id="description-complete-calcium" style="padding:20px; line-height:1.7; font-size:15px;">
+
+  <h2>🟢 FOREVER CALCIUM – SOLIDITÉ OSSEUSE & MUSCULAIRE</h2>
+
+  <h3>🦴 Un minéral essentiel à chaque étape de la vie</h3>
+
+  <p>
+    Le calcium est un minéral indispensable à la construction et au maintien
+    de la structure osseuse et dentaire. Il joue également un rôle clé
+    dans la contraction musculaire et la transmission nerveuse.
+  </p>
+
+  <p>
+    Avec l’âge, le stress, certaines habitudes alimentaires ou des besoins accrus,
+    les apports en calcium peuvent devenir insuffisants.
+    <strong>Forever Calcium</strong> aide à compléter ces apports afin de préserver
+    la solidité osseuse et la vitalité au quotidien.
+  </p>
+
+  <h3>🌿 Une formule adaptée et bien assimilée</h3>
+
+  <p>
+    La formule de <strong>Forever Calcium</strong> est conçue pour offrir
+    une bonne biodisponibilité du calcium, facilitant son assimilation
+    par l’organisme et son utilisation par les os et les muscles.
+  </p>
+
+  <p>
+    Une supplémentation régulière contribue à soutenir la santé osseuse,
+    à réduire les risques de fragilisation et à maintenir une bonne fonction musculaire.
+  </p>
+
+  <h3>🧪 Informations produit</h3>
+
+  <p><strong>Référence :</strong> 394</p>
+  <p><strong>Forme :</strong> Comprimés</p>
+
+  <h3>📌 Conseils d’utilisation</h3>
+  <p>
+    Prendre <strong>1 à 2 comprimés par jour</strong>, de préférence au cours d’un repas.
+  </p>
+
+  <h3>💚 Bienfaits de Forever Calcium</h3>
+  <ul>
+    <li>Aide à maintenir des os solides</li>
+    <li>Contribue à la santé des dents</li>
+    <li>Soutient la fonction musculaire normale</li>
+    <li>Participe à la vitalité générale</li>
+    <li>Convient à une utilisation quotidienne</li>
+  </ul>
+
+</section>
 </body>
 </html>
