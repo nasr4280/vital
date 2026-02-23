@@ -1,1 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitolize Men – Forever</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #1e3a8a; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #eef2ff;
+      color: #1e3a8a;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    ✅ Produit original – Vitolize Men Forever<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Vitolize Men</h1>
+  <p><strong>Complément nutritionnel spécialement formulé pour soutenir l’énergie, la vitalité et le bien-être masculin.</strong></p>
+
+  <img src="https://i.postimg.cc/nLByRtN9/Screenshot-20260223-210959-Google.jpg"
+       class="product-img"
+       alt="Vitolize Men Forever">
+
+  <h2>Pourquoi choisir Vitolize Men ?</h2>
+  <ul>
+    <li>✔️ Apporte des nutriments essentiels pour l’énergie masculine</li>
+    <li>✔️ Contribue à la vitalité et au bien-être général</li>
+    <li>✔️ Soutient les performances au quotidien</li>
+    <li>✔️ Formule adaptée aux besoins spécifiques des hommes</li>
+  </ul>
+
+  <p>💪 Convient aux <strong>hommes adultes</strong></p>
+
+  <div class="price">
+    Prix unitaire : 458 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Adultes : <strong>1 comprimé par jour</strong>, de préférence au cours d’un repas.
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">458</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://nasr4280.github.io/vital/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 458;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Vitolize Men</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Vitolize Men%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+<hr>
+
+<section style="padding:20px; line-height:1.7; font-size:15px;">
+
+  <h2>🔵 VITOLIZE MEN – FOREVER LIVING</h2>
+  <h3>Soutien nutritionnel pour l’homme actif</h3>
+
+  <p>
+    <strong>Vitolize Men Forever</strong> est un complément alimentaire
+    conçu pour accompagner les hommes dans leur vie quotidienne,
+    en apportant des nutriments essentiels
+    qui contribuent à l’énergie,
+    à la vitalité
+    et au bien-être général.
+  </p>
+
+  <p>
+    Sa formule est pensée pour répondre
+    aux besoins spécifiques masculins,
+    notamment en période de fatigue,
+    de stress
+    ou de rythme de vie soutenu.
+  </p>
+
+  <p>
+    Vitolize Men aide à maintenir
+    un bon niveau d’énergie,
+    soutient les performances quotidiennes
+    et participe à l’équilibre nutritionnel global.
+  </p>
+
+  <h3>🧪 Informations produit</h3>
+
+  <p><strong>Forme :</strong> Comprimés</p>
+
+  <p style="font-size:13px; color:#666;">
+    Ce complément alimentaire ne remplace pas
+    une alimentation variée et équilibrée
+    ni un mode de vie sain.
+  </p>
+
+  <h3>💙 Les atouts de Vitolize Men</h3>
+
+  <ul>
+    <li>Soutien de l’énergie et de la vitalité masculine</li>
+    <li>Aide au bien-être général</li>
+    <li>Accompagnement des performances quotidiennes</li>
+    <li>Formule adaptée aux hommes</li>
+  </ul>
+
+</section>
+
+</body>
+</html>
