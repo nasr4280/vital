@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activateur – Énergie & performances</title>
 
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+    }
+    h1 { color: #2e7d32; }
+    h2 { margin-top: 30px; }
+
+    .badge {
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .product-img {
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin: 15px 0;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #1976d2;
+      font-size: 15px;
+    }
+
+    .cart {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    ⚡ Énergie & vitalité<br>
+    🚚 Livraison partout au Maroc – Paiement à la livraison
+  </div>
+
+  <h1>Activateur</h1>
+  <p><strong>Complément alimentaire aidant à stimuler l’énergie et à soutenir les performances au quotidien.</strong></p>
+
+  <img src="https://i.postimg.cc/tR6vqngz/Screenshot-20260210-154428-Google.jpg"
+       class="product-img"
+       alt="Activateur">
+
+  <h2>Pourquoi choisir Activateur ?</h2>
+  <ul>
+    <li>✔️ Aide à stimuler l’énergie physique et mentale</li>
+    <li>✔️ Soutient les performances au quotidien</li>
+    <li>✔️ Contribue à réduire la sensation de fatigue</li>
+    <li>✔️ Idéal pour un mode de vie actif et dynamique</li>
+  </ul>
+
+  <p>
+    <strong>Activateur</strong> est conçu pour accompagner les personnes actives,
+    les journées intenses et les périodes de fatigue passagère.
+    Il aide l’organisme à maintenir un bon niveau d’énergie
+    et à soutenir les performances physiques et mentales.
+  </p>
+
+  <div class="price">
+    Prix unitaire : 275 DH
+  </div>
+
+  <h2>Conseils d’utilisation</h2>
+  <p>
+    Prendre <strong>1 comprimé par jour</strong>, de préférence le matin
+    ou avant une activité physique, avec un verre d’eau.
+  </p>
+
+  <p>
+    <small>
+      Complément alimentaire – ne remplace pas une alimentation équilibrée.<br>
+      Ne pas dépasser la dose journalière recommandée.
+    </small>
+  </p>
+
+  <h2>Commande</h2>
+
+  <label>Quantité</label>
+  <select id="qty" onchange="updateTotal()">
+    <option value="1">1 boîte</option>
+    <option value="2">2 boîtes</option>
+    <option value="3">3 boîtes</option>
+    <option value="4">4 boîtes</option>
+    <option value="5">5 boîtes</option>
+  </select>
+
+  <div class="price">
+    Total : <span id="total">275</span> DH
+  </div>
+
+  <button class="btn" onclick="addToCart()">🛒 Ajouter au panier</button>
+
+  <div class="cart" id="cart">
+    Aucun produit ajouté.
+  </div>
+
+  <h2>Informations de livraison</h2>
+
+  <input type="text" id="name" placeholder="Nom et prénom">
+  <input type="text" id="phone" placeholder="Téléphone">
+  <textarea id="address" placeholder="Adresse de livraison"></textarea>
+
+  <button class="btn" onclick="sendWhatsApp()">📲 Commander via WhatsApp</button>
+
+  <a class="btn btn-secondary" href="https://equilibrevitale.github.io/">
+    Voir tous nos autres produits
+  </a>
+
+  <footer>
+    © Équilibre Vitale – Tous droits réservés
+  </footer>
+
+</div>
+
+<script>
+const unitPrice = 275;
+let cartQty = 0;
+
+function updateTotal() {
+  const qty = document.getElementById("qty").value;
+  document.getElementById("total").innerText = qty * unitPrice;
+}
+
+function addToCart() {
+  cartQty = document.getElementById("qty").value;
+  const total = cartQty * unitPrice;
+
+  document.getElementById("cart").innerHTML =
+    "<strong>Activateur</strong><br>" +
+    "Quantité : " + cartQty + " boîte(s)<br>" +
+    "Total : " + total + " DH";
+}
+
+function sendWhatsApp() {
+  if (cartQty === 0) {
+    alert("Veuillez ajouter le produit au panier.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const total = cartQty * unitPrice;
+
+  const message =
+    "Bonjour,%0A%0A" +
+    "Commande : Activateur%0A" +
+    "Quantité : " + cartQty + " boîte(s)%0A" +
+    "Total : " + total + " DH%0A%0A" +
+    "Nom : " + name + "%0A" +
+    "Téléphone : " + phone + "%0A" +
+    "Adresse de livraison : " + address;
+
+  window.open("https://wa.me/212752789277?text=" + message, "_blank");
+}
+</script>
+
+<hr>
+
+<section id="description-complete-activateur" style="padding:20px; line-height:1.7; font-size:15px;">
+
+  <h2>🟢 ACTIVATEUR – ÉNERGIE & PERFORMANCE</h2>
+
+  <h3>⚡ Un soutien essentiel pour un quotidien actif</h3>
+
+  <p>
+    Le rythme de vie moderne exige souvent un niveau d’énergie constant,
+    aussi bien sur le plan physique que mental.
+    <strong>Activateur</strong> a été conçu pour aider l’organisme
+    à faire face aux journées intenses et aux périodes de baisse de tonus.
+  </p>
+
+  <p>
+    En accompagnant les fonctions naturelles de l’organisme,
+    Activateur contribue à soutenir la vitalité,
+    la concentration et les performances au quotidien.
+  </p>
+
+  <h3>🌿 Une formule pensée pour la vitalité</h3>
+
+  <p>
+    La formule d’<strong>Activateur</strong> associe des nutriments
+    sélectionnés pour leur rôle dans la production d’énergie
+    et le soutien des performances physiques et mentales.
+  </p>
+
+  <p>
+    Utilisé régulièrement, il s’intègre parfaitement
+    à un mode de vie actif et dynamique.
+  </p>
+
+  <h3>🧪 Informations produit</h3>
+
+  <p><strong>Référence :</strong> 210</p>
+  <p><strong>Forme :</strong> Comprimés</p>
+
+  <h3>📌 Conseils d’utilisation</h3>
+  <p>
+    Prendre <strong>1 comprimé par jour</strong>, de préférence le matin
+    ou avant une activité physique.
+  </p>
+
+  <h3>💚 Bienfaits d’Activateur</h3>
+  <ul>
+    <li>Aide à stimuler l’énergie</li>
+    <li>Soutient les performances quotidiennes</li>
+    <li>Contribue à réduire la fatigue</li>
+    <li>Favorise la vitalité et le dynamisme</li>
+    <li>Adapté à un mode de vie actif</li>
+  </ul>
+
+</section>
+</body>
+</html>
